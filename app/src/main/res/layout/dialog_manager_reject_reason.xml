@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#B1D6D9"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="Reason Of Rejection: "
+        android:textColor="@color/black"
+        android:textSize="24sp"/>
+
+    <EditText
+        android:id="@+id/manager_reject_reason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:hint="Reason"
+        android:textColor="@color/black"
+        android:textSize="24sp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/manager_reject_confirm"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="Confirm"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="20dp"/>
+
+</LinearLayout>

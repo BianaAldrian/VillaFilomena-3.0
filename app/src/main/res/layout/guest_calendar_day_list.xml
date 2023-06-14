@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="15dp">
+
+    <TextView
+        android:id="@+id/guest_calendar_dayTxt"
+        android:layout_width="20dp"
+        android:layout_height="30dp"
+        android:layout_columnWeight="1"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/balsamiqsans_regular"
+        android:gravity="center"
+        android:text="1"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:id="@+id/guest_calendar_dayIncator"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/balsamiqsans_regular"
+        android:gravity="center|bottom"
+        android:text="•"
+        android:textColor="@color/teal_700"
+        android:textSize="24sp"/>
+
+</FrameLayout>

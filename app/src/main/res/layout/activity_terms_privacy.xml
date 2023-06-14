@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".TermsPrivacy"
+    android:orientation="vertical"
+    android:background="@drawable/background1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/header"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/guest_menuToolbar"
+            android:layout_width="55dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/beaurivage_regular"
+            android:gravity="center"
+            android:text="Terms and Privacy"
+            android:textColor="#F5F5F5"
+            android:textSize="35sp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B8C2C0"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/eb_garamond_semi_bold"
+            android:text="Terms and Privacy"
+            android:textColor="@color/black"
+            android:textSize="32sp"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:fontFamily="@font/eb_garamond_regular"
+                    android:text="This Privacy Policy governs the manner in which Villa Filomena
+            application collects, uses, maintains, and discloses information collected
+            from users (referred to as 'User' or 'you') of the Villa Filomena mobile
+            application  (referred to as the 'App'). This Privacy Policy applies to the
+            App and all products and services offered by Villa Filomena application.
+            \n\n1. Information Collection
+            \n\nWe may collect personal identification information from Users in various ways, including but not limited to when Users install the App, register an account, fill out a form within the App, or interact with the App's features. The information we collect may include:
+            \n\n•Name
+            \n•Email address
+            \n•Phone number
+            \n•Username and password
+            \n•Profile picture
+            \n\nWe may also collect non-personal identification information about Users whenever they interact with the App. This may include technical information about the User's device, such as the operating system, IP address, mobile network information, and usage data.
+            \n\n2. Information Usage
+            \n\nWe may use the collected information for the following purposes:
+            \n\n•To personalize User experience: We may use the information to understand how Users interact with the App and customize their experience accordingly.
+            \n•To improve the App: We continually strive to improve our App based on the feedback we receive from Users.
+            \n•To send periodic emails: We may use the User's email address to send them information and updates related to the App. It may also be used to respond to their inquiries, questions, and/or other requests.
+            \n\n3. Information Protection
+            \n\nWe adopt appropriate data collection, storage, and processing practices and security measures to protect against unauthorized access, alteration, disclosure, or destruction of Users' personal information, username, password, transaction information, and data stored in the App. However, please note that no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.
+            \n\n4. Information Disclosure
+            \n\nWe do not sell, trade, or rent Users' personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information regarding Users with our business partners, trusted affiliates, and advertisers for the purposes outlined above.
+            \n\n5. Third-Party Websites and Services
+            \n\nUsers may find content or services in the App that link to the websites and services of our partners, suppliers, advertisers, sponsors, licensors, and other third parties. We do not control the content or links that appear on these websites and are not responsible for the practices employed by websites linked to or from the App. Browsing and interaction on any other website, including websites that have a link to the App, are subject to that website's own terms and policies.
+            \n\n6. Changes to this Privacy Policy
+            \n\nWe reserve the right to update or modify this Privacy Policy at any time without prior notice. Users are encouraged to frequently check this page for any changes to stay informed about how we are helping to protect the personal information we collect. You acknowledge and agree that it is your responsibility to review this Privacy Policy periodically and become aware of any modifications.
+            \n\n7. Your Acceptance of these Terms
+            \n\nBy using the App, you signify your acceptance of this Privacy Policy. If you do not agree to this policy, please do not use our App. Your continued use of the App following the posting of changes to this policy will be deemed your acceptance of those changes.
+            \n\nIf you have any questions about this Privacy Policy, the practices of the App, or your dealings with the App, please contact us at 09101885471."
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    />
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <CheckBox
+            android:id="@+id/terms_privacy_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:layout_margin="10dp"
+            android:text="I have read the Terms and Privacy"
+            android:fontFamily="@font/eb_garamond_regular"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/terms_privacy_continue_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="@font/eb_garamond_medium"
+            android:text="Continue"
+            android:textSize="15sp"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    tools:context=".Guest.Guest_accountPage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/header"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/guest_menuToolbar"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/btn_back" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/beaurivage_regular"
+            android:gravity="center"
+            android:text="My Account"
+            android:textColor="#F5F5F5"
+            android:textSize="35sp"/>
+
+        <ImageView
+            android:id="@+id/Guest_edit"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center|right"
+            android:src="@drawable/edit" />
+
+        <ImageView
+            android:id="@+id/Guest_save"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center|right"
+            android:src="@drawable/save" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center|top"
+        android:layout_marginTop="80dp"
+        android:background="@drawable/user"/>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="100dp">
+
+    <ImageView
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="20dp"
+        android:layout_gravity="center"
+        android:background="@drawable/user"/>
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:id="@+id/Guest_viewAccount_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="270dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:text="Full Name:"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+            
+            <EditText
+                android:id="@+id/Guest_fullname"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edttxt_bg"
+                android:editable="false"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:text="Contact Number:"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/Guest_contact"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edttxt_bg"
+                android:editable="false"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:text="Email Address:"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/Guest_email"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:background="@drawable/edttxt_bg"
+                android:editable="false"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:paddingStart="10dp"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:text="Password:"
+                android:textColor="@color/black"
+                android:textSize="20sp"/>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:passwordToggleDrawable="@drawable/password_eye"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/Guest_password"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/edttxt_bg"
+                    android:editable="false"
+                    android:fontFamily="@font/eb_garamond_regular"
+                    android:paddingStart="10dp"
+                    android:password="true"
+                    android:textColor="@color/black"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/Guest_editAccount_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="270dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <EditText
+            android:id="@+id/guest_edit_firstname"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/eb_garamond_regular"
+            android:hint="First Name"
+            android:paddingStart="10dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/guest_edit_lastname"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/eb_garamond_regular"
+            android:hint="Last Name"
+            android:paddingStart="10dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/guest_edit_contact"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/eb_garamond_regular"
+            android:hint="Contact Number"
+            android:paddingStart="10dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/guest_edit_email"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/eb_garamond_regular"
+            android:hint="Email Address"
+            android:paddingStart="10dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/guest_edit_password"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/eb_garamond_regular"
+            android:hint="Password"
+            android:paddingStart="10dp"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/guest_edit_confirmPass"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:fontFamily="@font/eb_garamond_regular"
+            android:hint="Confirm Password"
+            android:paddingStart="10dp"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Guest_fullname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eb_garamond_medium"
+            android:text="Full Name"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/Guest_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eb_garamond_medium"
+            android:text="Contact no."
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            tools:ignore="HardcodedText" />
+
+        <TextView
+            android:id="@+id/Guest_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/eb_garamond_medium"
+            android:text="Email Address:"
+            android:textColor="@color/black"
+            android:textSize="26sp"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_medium"
+                android:text="Password: "
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/Guest_password"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="@font/eb_garamond_medium"
+                android:inputType="text|textPassword"
+                android:text="Password"
+                android:textColor="@color/black"
+                android:textSize="26sp"
+                tools:ignore="HardcodedText,TextViewEdits" />
+
+            <ImageView
+                android:id="@+id/Guest_eyeOff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_visibility_off" />
+
+            <ImageView
+                android:id="@+id/Guest_eyeOn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/baseline_visibility_on"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>-->
+
+</FrameLayout>

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:columnCount="5">
+
+    <TextView
+        android:id="@+id/transactionList_email"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_columnWeight="1"
+        android:background="@drawable/border"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:gravity="center"
+        android:text="EMAIL"
+        android:textColor="@color/black"
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/transactionList_date"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_columnWeight="1"
+        android:background="@drawable/border"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:gravity="center"
+        android:text="DATE"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/transactionList_total"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_columnWeight="1"
+        android:background="@drawable/border"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:gravity="center"
+        android:text="TOTAL"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/transactionList_refNum"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_columnWeight="1"
+        android:background="@drawable/border"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:gravity="center"
+        android:text="REFERENCE NUMBER"
+        android:textColor="@color/black"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_columnWeight="1"
+        android:background="@drawable/border"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/transactionList_receipt"
+            android:layout_width="150dp"
+            android:layout_height="30dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="@font/eb_garamond_regular"
+            android:gravity="center"
+            android:text="Print"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="15sp"/>
+    </LinearLayout>
+
+</GridLayout>

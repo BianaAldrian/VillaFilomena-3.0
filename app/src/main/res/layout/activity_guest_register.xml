@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background1">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Register"
+                android:textSize="35sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/eb_garamond_semi_bold"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
+
+                <!--<EditText
+                    android:layout_width="300dp"
+                    android:layout_height="60dp"
+                    android:layout_marginLeft="2dp"
+                    android:background="@drawable/edttxt_bg"
+                    android:text="     Email"
+                    android:textAllCaps="false"
+                    android:textSize="18sp">-->
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Guest_register_email"
+                        android:layout_width="350dp"
+                        android:layout_height="60dp"
+                        android:inputType="textEmailAddress"
+                        android:hint="Email                                                     @gmail.com"
+                        android:textColor="#5C5353"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:background="@drawable/edttxt_bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp">
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!--<EditText
+                        android:layout_width="300dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="2dp"
+                        android:background="@drawable/edttxt_bg"
+                        android:text="     Password"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"/>-->
+
+                    <!-- <androidx.appcompat.widget.AppCompatEditText
+                         android:layout_width="50dp"
+                         android:layout_height="50dp"
+                         android:background="@drawable/password_eye"
+                         android:layout_marginRight="200dp"/>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleDrawable="@drawable/password_eye">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/Guest_register_password1"
+                            android:layout_width="350dp"
+                            android:layout_height="60dp"
+                            android:hint="Password"
+                            android:textColor="#5C5353"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/eb_garamond_regular"
+                            android:password="true"
+                            android:background="@drawable/edttxt_bg"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!--<EditText
+                        android:layout_width="300dp"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="2dp"
+                        android:background="@drawable/edttxt_bg"
+                        android:text="     Password"
+                        android:textAllCaps="false"
+                        android:textSize="18sp"/>-->
+
+                    <!-- <androidx.appcompat.widget.AppCompatEditText
+                         android:layout_width="50dp"
+                         android:layout_height="50dp"
+                         android:background="@drawable/password_eye"
+                         android:layout_marginRight="200dp"/>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:passwordToggleEnabled="true"
+                        app:passwordToggleDrawable="@drawable/password_eye">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/Guest_register_password2"
+                            android:layout_width="350dp"
+                            android:layout_height="60dp"
+                            android:background="@drawable/edttxt_bg"
+                            android:hint="Confirm Password"
+                            android:password="true"
+                            android:textColor="#5C5353"
+                            android:textSize="18sp"
+                            android:fontFamily="@font/eb_garamond_regular" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Guest_register_FName"
+                        android:layout_width="350dp"
+                        android:layout_height="60dp"
+                        android:inputType="textEmailAddress"
+                        android:hint="First Name"
+                        android:textColor="#5C5353"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:background="@drawable/edttxt_bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Guest_register_LName"
+                        android:layout_width="350dp"
+                        android:layout_height="60dp"
+                        android:inputType="textEmailAddress"
+                        android:hint="Last Name"
+                        android:textColor="#5C5353"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:background="@drawable/edttxt_bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="18dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/Guest_register_contact"
+                        android:layout_width="350dp"
+                        android:layout_height="60dp"
+                        android:inputType="textEmailAddress"
+                        android:hint="Contact Number"
+                        android:textColor="#5C5353"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:background="@drawable/edttxt_bg"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/Guest_register_registerBtn"
+                android:layout_width="350dp"
+                android:layout_height="50dp"
+                android:background="@drawable/btn_bg"
+                android:layout_gravity="center"
+                android:layout_marginTop="190dp"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                android:fontFamily="@font/eb_garamond_medium"/>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Already registered?"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/eb_garamond_regular"/>
+
+                <TextView
+                    android:id="@+id/Guest_register_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=" Login"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/eb_garamond_bold"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</FrameLayout>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/header"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="How’s your experience?"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        tools:ignore="HardcodedText,VisualLintBounds" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="We value your feedback"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:gravity="center"
+        android:text="How do you feel about Villa Filomena Natural Spring Resort?"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/guest_rateValue_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/eb_garamond_medium"
+        android:gravity="center"
+        android:text="Satisfied"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatRatingBar
+        android:id="@+id/guest_rating_dialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:numStars="5"
+        android:rating="4"
+        android:stepSize="1"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <EditText
+        android:id="@+id/guest_feedback_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_margin="20dp"
+        android:background="@color/white"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:gravity="top"
+        android:hint="Enter your feedback"
+        android:padding="10dp"
+        android:textColor="@color/black"
+        tools:ignore="Autofill,HardcodedText,TextFields,VisualLintTextFieldSize" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/guest_imageContainer_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/guest_addImage_dialog"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_bg"
+        android:text="Add Image"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:fontFamily="@font/eb_garamond_medium"
+        tools:ignore="HardcodedText" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/guest_submit_dialog"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btn_bg"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:fontFamily="@font/eb_garamond_medium"
+        tools:ignore="HardcodedText,VisualLintBounds" />
+
+</LinearLayout>

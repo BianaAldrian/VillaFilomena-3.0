@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="#B1D6D9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:text="Current Resort's Capa city:"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"/>
+
+            <TextView
+                android:id="@+id/manager_calendarCapacity_info"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:text="Maximum of 50 Guests"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"/>
+
+            <EditText
+                android:id="@+id/manager_calendarCapacity_setInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:hint="Enter Capacity"
+                android:inputType="number"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/manager_calendarCapacity_edit"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:text="Edit"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/manager_calendarCapacity_save"
+                android:layout_width="120dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:text="Save"
+                android:textAllCaps="false"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

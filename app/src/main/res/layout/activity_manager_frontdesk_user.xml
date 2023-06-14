@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background1"
+    tools:context=".Manager.Manager_FrontdeskUser">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:background="@drawable/header"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/btn_back"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fontFamily="@font/beaurivage_regular"
+            android:gravity="center"
+            android:text="Front Desk Clerk"
+            android:textColor="#ffffff"
+            android:textSize="32sp"/>
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/manager_frontdeskClerk_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/manager_addFrontdeskUser_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="@font/eb_garamond_medium"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:text="Add Clerk"/>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/manager_deleteFrontdeskUser_btn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="@font/eb_garamond_medium"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:text="Delete Clerk"/>
+
+        <Space
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/manager_FrontdeskUser_doneBtn"
+            android:layout_width="150dp"
+            android:layout_height="50dp"
+            android:background="@drawable/btn_bg"
+            android:fontFamily="@font/eb_garamond_medium"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:text="Done"/>
+    </LinearLayout>
+
+</LinearLayout>

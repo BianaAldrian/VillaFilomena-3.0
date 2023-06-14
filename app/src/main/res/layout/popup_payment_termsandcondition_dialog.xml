@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#B8C2C0"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/eb_garamond_bold"
+        android:text="Terms and Condition"
+        android:textColor="@color/black"
+        android:textSize="32sp"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:text="These online payment terms and conditions apply to your use
+of the online payment transaction made available by Villa Filomena Resorts Management.
+\n\nThe following terms and conditions are strictly implemented for check-in guests.
+\n\nPAYMENT
+\nOnce you are ready to make a payment, we will create a pencil booking (temporary reservation).
+Pencil bookings are held for 24 hours only. Once 24 hours have passed and no payment is made, the
+date(s) will be opened up again without further notice.
+\n\nReservation is confirmed only when the 50% down payment is received.
+\n\nBalance is payable to the caretaker upon check-in.
+In the course of online payment, only online payment via GCash app will be accepted. Prior
+proof of payment is required for verification processes.
+\n\nPayments shall be made only using GCash app.
+Upon completing a transaction on our website, you will be presented with a confirmation screen
+verifying the transaction details you wish to process. It is your responsibility to verify that all transaction
+information and other details are correct.
+\n\nVilla Filomena has no liability for transactions which are incorrect as a result of inaccurate data
+entry in the course of the use of the service or for loss of data or information caused by factors beyond our control.
+\n\nYou will receive a confirmation email once the payment has been received.
+\n\nOnce a payment has been made it cannot be cancelled unless otherwise stated (please see refunds and cancellations
+section for your reference). We do not accept any responsibility for refusal orr reversal of payments.
+\n\n\nREFUNDS AND CANCELLATIONS
+\n1. The down payment is non-refundable. However, the deposit may be used to rebook to
+a future date if the guests fail to show up on the reserved date due to unforeseen events (e.g. typhoons, floods, sudden change of quarantine
+status/guidelines).
+\n2. Rebooking and/or change of date is only allowed when done at least 14 days prior to
+check-in date.
+\n3. For re-bookings due to COVID-19 or other health-related reasons, the guest will be required
+to provide proof (i.e. doctor's note, medical certificate or a positive COVID-19 test results).
+The proof must be dated after the reservation was made. As soon as you have the proof,
+kindly contact us immediately. You can choose to redact sensitive information (except for name and date) before sending the proof. Rest
+assured that we will treat your disclosure with utmost privacy.
+\n4. Other reasons for re-booking will be treated on a case-to-case basis after the 14-day grace
+period.
+\n5. No shows will be considered a cancellation and no refund will be issued.
+\n\nDATA COLLECTION AND PRIVACY
+\nWe will comply with the Privacy Act 2020 in relation to a ny applicable information you supply to us.
+\n\nVilla Filomena resorts shall keep the information and files received from you or from
+third parties in the strictest confidence. By providing information to Villa Filomena resorts
+for the purpose of availing services, you expressly consent to the processing of your
+supplies user data, as may be applicable for your pertinent transaction using the GCash App.
+Provided that your data may either be personal information or non-personal information.
+\n\nPlease read them carefully, [by clicking the check in the box], you agree to be bound by the
+provisions of these terms."
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="I have read the Terms and Conditions"
+        android:fontFamily="@font/eb_garamond_semi_bold"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/popup_termsCondition_continue"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/btn_bg"
+        android:fontFamily="@font/eb_garamond_semi_bold"
+        android:text="Continue"/>
+
+</LinearLayout>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background1"
+    tools:context=".Manager.Manager_Calendar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+
+        android:background="@drawable/header"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/manager_calendar_exit"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:src="@drawable/btn_back"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/beaurivage_regular"
+            android:gravity="center"
+            android:text="Calendar"
+            android:textColor="#FFFFFF"
+            android:textSize="32sp"/>
+
+        <ImageView
+            android:id="@+id/manager_calendar_menu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="20dp"
+            android:src="@drawable/dot_menu"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center|top"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="400dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20sp"
+            android:layout_marginBottom="20dp"
+            android:orientation="horizontal"
+            tools:ignore="TextSizeCheck,VisualLintBounds">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/cardview_bg">
+                <Spinner
+                    android:id="@+id/manager_monthSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/eb_garamond_semi_bold"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+            </FrameLayout>
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="match_parent"/>
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/cardview_bg">
+
+                <Spinner
+                    android:id="@+id/manager_yearSpinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fontFamily="@font/eb_garamond_semi_bold"
+                    android:textColor="@color/white"
+                    android:textSize="24sp"/>
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <GridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:columnCount="7">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/calendar_border"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="SUNDAY"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/calendar_border"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="MONDAY"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/calendar_border"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="TUESDAY"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/calendar_border"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="WEDNESDAY"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/calendar_border"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="THURSDAY"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/calendar_border"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="FRIDAY"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="35dp"
+                android:layout_columnWeight="1"
+                android:background="@drawable/calendar_border"
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="SATURDAY"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+        </GridLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/manager_calendar_dateContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</FrameLayout>

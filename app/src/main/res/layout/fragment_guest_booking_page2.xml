@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="10dp"
+    android:layout_marginBottom="20dp"
+    tools:context=".Guest.Guest_bookingPage2">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/Guest_booking2_selectedRoomList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_bg"
+                android:gravity="center"
+                android:orientation="vertical"
+                tools:ignore="TextSizeCheck">
+
+                <GridLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:columnCount="4">
+
+                    <TextView
+                        android:layout_width="146dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="Details"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="Quantity"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="Days &amp; Nights"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="Total"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"/>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="Adult/s\nKid/s\nRooms\nCottages"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/Guest_booking2_qty"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="2\n2\n1\n0"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/Guest_booking2_days_nights"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="\n2 Days &amp; \n2 Nights\n"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                    <TextView
+                        android:id="@+id/Guest_booking2_tally"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_columnWeight="1"
+                        android:background="@drawable/border"
+                        android:fontFamily="@font/eb_garamond_regular"
+                        android:gravity="center"
+                        android:text="₱360\n₱500\n₱2,500\n₱0"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"/>
+
+                </GridLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Guest_booking2_total"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:fontFamily="@font/eb_garamond_medium"
+                        android:gravity="center"
+                        android:text="Total Payment: ₱3,190"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/Guest_booking2_back"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg"
+                    android:fontFamily="@font/eb_garamond_medium"
+                    android:text="Back"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+                <Space
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/Guest_booking2_continue"
+                    android:layout_width="150dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/btn_bg"
+                    android:fontFamily="@font/eb_garamond_medium"
+                    android:text="Continue"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText,TouchTargetSizeCheck" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</FrameLayout>

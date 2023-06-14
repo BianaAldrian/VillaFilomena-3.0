@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:background="#B0D6D9"
+    android:orientation="vertical"
+    android:padding="60dp">
+
+    <TextView
+        android:id="@+id/btmDialogDialog_Check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/eb_garamond_medium"
+        android:text="Check-in"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="7:30 AM - 5:00 PM"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+    <CheckBox
+        android:id="@+id/btmDialogDialog_dayTour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="Day Tour"
+        android:textSize="22sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="OR"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="7:30 PM - 5:00 AM"
+        android:textColor="@color/black"
+        android:textSize="16sp" />
+
+    <CheckBox
+        android:id="@+id/btmDialogDialog_nightTour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/eb_garamond_regular"
+        android:text="Night Tour"
+        android:textSize="22sp"/>
+    
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btmDialogDialog_done"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/btn_bg"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:fontFamily="@font/eb_garamond_medium"/>
+
+</LinearLayout>

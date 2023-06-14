@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dateScheduler_day"
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_columnWeight="1"
+    android:layout_gravity="center"
+    android:fontFamily="@font/balsamiqsans_regular"
+    android:gravity="center"
+    android:text="1"
+    android:textColor="@color/black"
+    android:textSize="24sp">
+
+</TextView>
