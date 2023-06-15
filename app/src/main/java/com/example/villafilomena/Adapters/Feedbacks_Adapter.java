@@ -24,6 +24,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.villafilomena.Guest.Guest_fragmentsContainer;
+import com.example.villafilomena.Models.Comments_Model;
 import com.example.villafilomena.Models.Feedbacks_Model;
 import com.example.villafilomena.Models.Image_Model;
 import com.example.villafilomena.R;
@@ -42,6 +43,7 @@ public class Feedbacks_Adapter extends RecyclerView.Adapter<Feedbacks_Adapter.Vi
     boolean isLiked;
     String feedbackId;
     String guestEmail, myEmail;
+    ArrayList<Comments_Model> commentsHolder;
     private Context context;
     private List<Feedbacks_Model> feedbacksList;
     private String ipAddress;
