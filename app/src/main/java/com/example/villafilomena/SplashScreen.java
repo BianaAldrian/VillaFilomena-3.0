@@ -25,20 +25,19 @@ public class SplashScreen extends AppCompatActivity {
         Handler handler = new Handler();
         handler.postDelayed(() -> {
             //startActivity(new Intent(SplashScreen.this, ContinueAs.class));
-            String url = "http://"+IP+"/VillaFilomena/check_connection.php";
+            String url = "http://" + IP + "/VillaFilomena/check_connection.php";
 
             RequestQueue myRequest = Volley.newRequestQueue(getApplicationContext());
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                if(response.equals("success")){
+                if (response.equals("success")) {
                     //Toast.makeText(getApplicationContext(), "IP is correct", Toast.LENGTH_SHORT).show();
                     /*startActivity(new Intent(SplashScreen.this, ContinueAs.class));*/
                     startActivity(new Intent(SplashScreen.this, TermsPrivacy.class));
                     finish();
-                }
-                else if(response.equals("failed")){
+                } else if (response.equals("failed")) {
                     sharedPreferences.edit().clear().apply();
                     startActivity(new Intent(SplashScreen.this, IP_Connect.class));
-                    Toast.makeText(getApplicationContext(),"Can't Connect to Server", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Can't Connect to Server", Toast.LENGTH_LONG).show();
                 }
             },
                     error -> {
@@ -48,6 +47,6 @@ public class SplashScreen extends AppCompatActivity {
                     });
             myRequest.add(stringRequest);
             finish();
-        },3000);
+        }, 3000);
     }
 }

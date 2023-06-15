@@ -47,8 +47,8 @@
                     android:layout_width="300dp"
                     android:layout_height="60dp"
                     android:background="@drawable/edttxt_bg"
-                    android:hint="Email"
                     android:fontFamily="@font/eb_garamond_regular"
+                    android:hint="Email"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/black" />
 
@@ -85,8 +85,8 @@
                         android:layout_width="300dp"
                         android:layout_height="60dp"
                         android:background="@drawable/edttxt_bg"
-                        android:hint="Password"
                         android:fontFamily="@font/eb_garamond_regular"
+                        android:hint="Password"
                         android:password="true"
                         android:textColor="@color/black" />
 
@@ -132,7 +132,7 @@
             android:text="Login"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="22sp"/>
+            android:textSize="22sp" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -147,7 +147,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="Don't have an account?"
                 android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textSize="17sp" />
 
             <TextView
                 android:id="@+id/Guest_login_register"
@@ -156,7 +156,7 @@
                 android:fontFamily="@font/eb_garamond_medium"
                 android:text=" Register"
                 android:textColor="@color/black"
-                android:textSize="17sp"/>
+                android:textSize="17sp" />
 
         </LinearLayout>
 

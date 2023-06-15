@@ -28,7 +28,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onNewToken(@NonNull String token) {
         super.onNewToken(token);
 
-        Log.d(TAG, "TOKEN : "+token);
+        Log.d(TAG, "TOKEN : " + token);
     }
 
     @Override
@@ -70,7 +70,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Pass the intent to switch to the MainActivity
         Intent intent;
 
-        if(title.equals("Villa Filomena")){
+        if (title.equals("Villa Filomena")) {
             intent = new Intent(this, Guest_fragmentsContainer.class);
         } else {
             intent = new Intent(this, Manager_OnlineBooking.class);
@@ -91,7 +91,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .Builder(getApplicationContext(), channel_id)
                 .setSmallIcon(R.drawable.logo)
                 .setAutoCancel(true)
-                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setOnlyAlertOnce(true)
                 .setContentIntent(pendingIntent);
 
@@ -112,7 +112,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         // Create an object of NotificationManager class to
         // notify the
         // user of events that happen in the background.
-        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         // Check if the Android Version is greater than Oreo
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel

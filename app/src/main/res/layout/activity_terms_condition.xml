@@ -15,7 +15,7 @@
         android:fontFamily="@font/eb_garamond_bold"
         android:text="Terms and Condition"
         android:textColor="@color/black"
-        android:textSize="32sp"/>
+        android:textSize="32sp" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -23,24 +23,24 @@
         android:layout_weight="1">
 
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/eb_garamond_regular"
-            android:text="The following terms and conditions are strictly implemented for check-in guests: \n\n
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_regular"
+                android:text="The following terms and conditions are strictly implemented for check-in guests: \n\n
 1. The resort staff is only authorized to accommodate properly registered guests. For this purpose, guests are to present their valid national ID card or passport, or any other valid proof of identity to the relevant resort front desk employee. \n\n
 2. Settlement of bills: Bills must be settled upon arrival either by payment in cash or online payment. \n\n
 3. Guests are to use their rooms for the agreed period. If the guest breaks their stay, money will not be refunded. \n\n
 4. Guests are to use their rooms for the agreed period. If the period of accommodation is not stipulated in advance, guests are to check out by 11:00 AM on the last day of their stay at the latest, and they are obliged to have vacated the room by this time. \n\n
 5.  Be advised to keep valuables in your personal rooms. Keep your door lock closed when not in the room or when you are sleeping. We have a permanent guard in the hotel but he can’t see all the rooms at the same time. The hotel will not in any whatsoever, be responsible for the loss of guests belongings or any other property."
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+                android:textColor="@color/black"
+                android:textSize="18sp" />
 
         </LinearLayout>
 
@@ -50,9 +50,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:textSize="18sp"
+        android:fontFamily="@font/eb_garamond_semi_bold"
         android:text="I have read the Terms and Conditions"
-        android:fontFamily="@font/eb_garamond_semi_bold"/>
+        android:textSize="18sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/popup_termsCondition_continue"
@@ -62,6 +62,6 @@
         android:layout_marginBottom="40dp"
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/eb_garamond_semi_bold"
-        android:text="Continue"/>
+        android:text="Continue" />
 
 </LinearLayout>

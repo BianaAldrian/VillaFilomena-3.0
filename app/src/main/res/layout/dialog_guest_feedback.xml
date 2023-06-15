@@ -76,7 +76,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/guest_imageContainer_dialog"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/guest_addImage_dialog"
@@ -84,10 +84,10 @@
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/btn_bg"
+        android:fontFamily="@font/eb_garamond_medium"
         android:text="Add Image"
         android:textAllCaps="false"
         android:textSize="20sp"
-        android:fontFamily="@font/eb_garamond_medium"
         tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -96,10 +96,10 @@
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
         android:background="@drawable/btn_bg"
+        android:fontFamily="@font/eb_garamond_medium"
         android:text="Submit"
         android:textAllCaps="false"
         android:textSize="20sp"
-        android:fontFamily="@font/eb_garamond_medium"
         tools:ignore="HardcodedText,VisualLintBounds" />
 
 </LinearLayout>

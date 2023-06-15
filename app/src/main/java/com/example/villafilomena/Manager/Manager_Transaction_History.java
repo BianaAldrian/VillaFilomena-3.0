@@ -41,7 +41,7 @@ public class Manager_Transaction_History extends AppCompatActivity {
     public void listBookingRequest() {
         ArrayList<Transaction_Model> transactionHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getTransactionHistory.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getTransactionHistory.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {

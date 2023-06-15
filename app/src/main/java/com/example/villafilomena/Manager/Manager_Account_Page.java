@@ -74,26 +74,24 @@ public class Manager_Account_Page extends AppCompatActivity {
     }
 
     private void editAccount() {
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/update/manager_updateAccount.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/update/manager_updateAccount.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Toast.makeText(this, "Account Edit Successful", Toast.LENGTH_SHORT).show();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(this, "Account Edit Failed", Toast.LENGTH_SHORT).show();
             }
         },
-                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",editEmail.getText().toString().trim());
-                map.put("password",editPassword.getText().toString().trim());
-                map.put("firstname",editFirstname.getText().toString().trim());
-                map.put("lastname",editLastname.getText().toString());
-                map.put("contact",editContact.getText().toString().trim());
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", editEmail.getText().toString().trim());
+                map.put("password", editPassword.getText().toString().trim());
+                map.put("firstname", editFirstname.getText().toString().trim());
+                map.put("lastname", editLastname.getText().toString());
+                map.put("contact", editContact.getText().toString().trim());
 
                 return map;
             }
@@ -103,7 +101,7 @@ public class Manager_Account_Page extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void get_Infos() {
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getAccount.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getAccount.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
@@ -111,7 +109,7 @@ public class Manager_Account_Page extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                            name.setText(jsonObject.getString("firstname") +" "+ jsonObject.getString("lastname"));
+                            name.setText(jsonObject.getString("firstname") + " " + jsonObject.getString("lastname"));
                             contact.setText(jsonObject.getString("contactNum"));
                             email.setText(jsonObject.getString("email"));
                             password.setText(jsonObject.getString("password"));

@@ -8,7 +8,7 @@
         android:id="@+id/notification_logo"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/logo"/>
+        android:src="@drawable/logo" />
 
     <TextView
         android:id="@+id/notification_title"
@@ -18,7 +18,7 @@
         android:layout_toRightOf="@id/notification_logo"
         android:text="Title"
         android:textSize="16sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/notification_description"
@@ -28,6 +28,6 @@
         android:layout_marginLeft="10dp"
         android:layout_toRightOf="@id/notification_logo"
         android:text="This is Description"
-        android:textSize="16sp"/>
+        android:textSize="16sp" />
 
 </RelativeLayout>

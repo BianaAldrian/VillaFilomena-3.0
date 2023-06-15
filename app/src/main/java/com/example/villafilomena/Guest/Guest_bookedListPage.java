@@ -3,6 +3,7 @@ package com.example.villafilomena.Guest;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,7 +45,7 @@ public class Guest_bookedListPage extends AppCompatActivity {
 
         bookedListContainer = findViewById(R.id.guest_bookedList_container);
 
-        if (fromBooking){
+        if (fromBooking) {
             Guest_fragmentsContainer guest = new Guest_fragmentsContainer();
             guest.closeActivity();
         }
@@ -55,7 +56,7 @@ public class Guest_bookedListPage extends AppCompatActivity {
     private void getBookingInfo() {
         bookingHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getBookings.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getBookings.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -80,7 +81,8 @@ public class Guest_bookedListPage extends AppCompatActivity {
                             object.getString("reference_num"),
                             object.getString("proofPay_url"),
                             object.getString("receipt_url"),
-                            object.getString("bookings_status")
+                            object.getString("bookings_status"),
+                            object.optString("reason", "")
                     );
 
                     bookingHolder.add(model);
@@ -94,12 +96,13 @@ public class Guest_bookedListPage extends AppCompatActivity {
             bookedListContainer.setLayoutManager(layoutManager);
             bookedListContainer.setAdapter(adapter);
 
-        }, error -> Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show())
-
-        {
+        }, error -> {
+            Log.d("getBookingInfo", error.getMessage());
+            Toast.makeText(this, "Error retrieving booking information", Toast.LENGTH_LONG).show();
+        }) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("guest_email", email);
                 return map;
             }
@@ -110,7 +113,7 @@ public class Guest_bookedListPage extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (fromBooking){
+        if (fromBooking) {
             Guest_fragmentsContainer.fromBooking = "booking";
             startActivity(new Intent(this, Guest_fragmentsContainer.class));
         }

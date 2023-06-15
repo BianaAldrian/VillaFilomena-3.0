@@ -44,7 +44,7 @@
                     android:layout_width="350dp"
                     android:layout_height="300dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/calendar_bg"/>
+                    android:background="@drawable/calendar_bg" />
 
             </LinearLayout>
 
@@ -66,7 +66,7 @@
 
                 <Space
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
                 <CheckBox
                     android:id="@+id/popup_checkIn_nightTour"
@@ -110,7 +110,7 @@
                     android:layout_width="350dp"
                     android:layout_height="300dp"
                     android:layout_gravity="center"
-                    android:background="@drawable/calendar_bg"/>
+                    android:background="@drawable/calendar_bg" />
 
             </LinearLayout>
 
@@ -132,7 +132,7 @@
 
                 <Space
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
                 <CheckBox
                     android:id="@+id/popup_checkOut_nightTour"
@@ -166,7 +166,7 @@
 
                 <Space
                     android:layout_width="50dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/popup_pickDate_done"

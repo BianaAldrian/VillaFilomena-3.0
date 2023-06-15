@@ -27,27 +27,26 @@ public class IP_Connect extends AppCompatActivity {
         verify = findViewById(R.id.btnVerify);
 
         verify.setOnClickListener(view -> {
-            String url = "http://"+IP.getText().toString()+":8080/VillaFilomena/check_connection.php";
+            String url = "http://" + IP.getText().toString() + ":8080/VillaFilomena/check_connection.php";
 
             RequestQueue myRequest = Volley.newRequestQueue(getApplicationContext());
 
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                if(response.equals("success")){
+                if (response.equals("success")) {
 
                     SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
                     SharedPreferences.Editor editor = sharedPreferences.edit();
-                    editor.putString("IP",IP.getText().toString()+":8080");
+                    editor.putString("IP", IP.getText().toString() + ":8080");
                     editor.apply();
 
                     startActivity(new Intent(IP_Connect.this, ContinueAs.class));
 
                     finish();
-                }
-                else if(response.equals("failed")){
-                    Toast.makeText(getApplicationContext(),"Can't Connect to Server", Toast.LENGTH_LONG).show();
+                } else if (response.equals("failed")) {
+                    Toast.makeText(getApplicationContext(), "Can't Connect to Server", Toast.LENGTH_LONG).show();
                 }
             },
-                    error -> Toast.makeText(getApplicationContext(),error.toString(), Toast.LENGTH_LONG).show());
+                    error -> Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_LONG).show());
             myRequest.add(stringRequest);
         });
 

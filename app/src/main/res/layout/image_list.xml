@@ -25,7 +25,7 @@
             android:id="@+id/image_progress"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_gravity="center"/>
+            android:layout_gravity="center" />
 
         <ImageView
             android:id="@+id/imageList_delete"
@@ -34,7 +34,7 @@
             android:layout_gravity="top|end"
             android:background="#d3d3d3"
             android:src="@drawable/delete_icon"
-            android:visibility="gone"/>
+            android:visibility="gone" />
 
     </androidx.cardview.widget.CardView>
 

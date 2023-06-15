@@ -79,12 +79,12 @@ public class Guest_MonthYearAdapter extends RecyclerView.Adapter<Guest_MonthYear
 
     private void OnItemClick() {
         clickListener = (v, position, dayTxt, month, year) -> {
-            Log.d("Date", dayTxt.getText().toString()+"/"+month+"/"+year);
+            Log.d("Date", dayTxt.getText().toString() + "/" + month + "/" + year);
 
             int displayedDate = Integer.parseInt(dayTxt.getText().toString());
             String selectedDate = String.format(Locale.getDefault(), "%02d/%02d/%04d", displayedDate, month + 1, year);
 
-            if (clickCounter == 0){
+            if (clickCounter == 0) {
                 clickCounter++;
                 dayTxt.setBackgroundResource(R.color.teal_700);
                 firstSelectedDate = selectedDate;
@@ -196,7 +196,7 @@ public class Guest_MonthYearAdapter extends RecyclerView.Adapter<Guest_MonthYear
     }
 
     @SuppressLint("SetTextI18n")
-    public void showDialog(String text){
+    public void showDialog(String text) {
         Dialog dialog = new Dialog(context);
         dialog.setContentView(R.layout.dialog_calendar_time_sched);
 
@@ -209,7 +209,7 @@ public class Guest_MonthYearAdapter extends RecyclerView.Adapter<Guest_MonthYear
 
         CompoundButton.OnCheckedChangeListener listener = (buttonView, isChecked) -> {
             if (isChecked) {
-                if (text.equals("Check-in")){
+                if (text.equals("Check-in")) {
                     if (buttonView.getId() == R.id.btmDialogDialog_dayTour) {
                         nightTour.setChecked(false);
                         firstSelectedTime = "dayTour";
@@ -246,7 +246,7 @@ public class Guest_MonthYearAdapter extends RecyclerView.Adapter<Guest_MonthYear
                 if (secondSelectedDate == null || secondSelectedDate.isEmpty()) {
                     checkOutTxt.setText("Select Check-out date");
                 }
-                if (firstSelectedDate == null || secondSelectedDate == null){
+                if (firstSelectedDate == null || secondSelectedDate == null) {
                     applyDatesBtn.setBackgroundResource(R.color.grey);
                     applyDatesBtn.setClickable(false);
                 } else {

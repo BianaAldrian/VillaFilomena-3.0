@@ -24,7 +24,7 @@
                 android:layout_height="50dp"
                 android:layout_gravity="center"
                 android:layout_marginLeft="20dp"
-                android:background="@drawable/adults_child"/>
+                android:background="@drawable/adults_child" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                 android:gravity="center"
                 android:text=" Adults and Kids"
                 android:textColor="#ffffff"
-                android:textSize="25sp"/>
+                android:textSize="25sp" />
 
         </LinearLayout>
 
@@ -59,7 +59,7 @@
                     android:fontFamily="@font/eb_garamond_regular"
                     android:text="Adult"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="150dp"
@@ -76,17 +76,17 @@
                             android:id="@+id/popup_guestQty_incAdult"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/arrow_up"/>
+                            android:src="@drawable/arrow_up" />
 
                         <Space
                             android:layout_width="10dp"
-                            android:layout_height="20dp"/>
+                            android:layout_height="20dp" />
 
                         <ImageView
                             android:id="@+id/popup_guestQty_decAdult"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/arrow_down"/>
+                            android:src="@drawable/arrow_down" />
 
                     </LinearLayout>
 
@@ -100,7 +100,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="32sp"/>
+                        android:textSize="32sp" />
 
                 </LinearLayout>
 
@@ -120,7 +120,7 @@
                     android:fontFamily="@font/eb_garamond_regular"
                     android:text="Kid"
                     android:textColor="@color/black"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="150dp"
@@ -137,17 +137,17 @@
                             android:id="@+id/popup_guestQty_incKid"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/arrow_up"/>
+                            android:src="@drawable/arrow_up" />
 
                         <Space
                             android:layout_width="10dp"
-                            android:layout_height="20dp"/>
+                            android:layout_height="20dp" />
 
                         <ImageView
                             android:id="@+id/popup_guestQty_decKid"
                             android:layout_width="30dp"
                             android:layout_height="30dp"
-                            android:src="@drawable/arrow_down"/>
+                            android:src="@drawable/arrow_down" />
 
                     </LinearLayout>
 
@@ -161,7 +161,7 @@
                         android:gravity="center"
                         android:text="0"
                         android:textColor="@color/black"
-                        android:textSize="32sp"/>
+                        android:textSize="32sp" />
 
                 </LinearLayout>
 
@@ -176,7 +176,7 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/btn_bg"
             android:fontFamily="@font/eb_garamond_medium"
-            android:text="Done"/>
+            android:text="Done" />
 
     </LinearLayout>
 

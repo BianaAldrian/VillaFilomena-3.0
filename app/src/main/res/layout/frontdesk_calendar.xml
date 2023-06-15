@@ -2,51 +2,51 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/background1">
+    android:background="@drawable/background1"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="30dp">
+        android:layout_marginTop="30dp"
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:orientation="horizontal"
-            android:background="@drawable/cardview_bg">
+            android:background="@drawable/cardview_bg"
+            android:orientation="horizontal">
 
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_gravity="center"
-                android:src="@drawable/btn_back"/>
+                android:src="@drawable/btn_back" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="BOOKING"
                 android:layout_weight="1"
-                android:gravity="center"
                 android:fontFamily="@font/eb_garamond_regular"
-                android:textSize="32sp"
-                android:textColor="#060606"/>
+                android:gravity="center"
+                android:text="BOOKING"
+                android:textColor="#060606"
+                android:textSize="32sp" />
 
             <ImageView
                 android:id="@+id/guestHomepage_edit"
-                android:layout_marginRight="10dp"
-                android:layout_gravity="center"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/edit"/>
+                android:layout_gravity="center"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/edit" />
 
             <ImageView
                 android:id="@+id/guestHomepage_save"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/save"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -55,39 +55,39 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
-        android:gravity="center">
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="180dp"
                 android:layout_height="70dp"
-                android:orientation="vertical"
+                android:background="@drawable/header"
                 android:gravity="center"
-                android:background="@drawable/header">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_regular"
                     android:text="Check-in"
                     android:textColor="#ffffff"
-                    android:fontFamily="@font/eb_garamond_regular"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_regular"
                     android:text=" 6 Nov"
                     android:textColor="#ffffff"
-                    android:fontFamily="@font/eb_garamond_regular"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp" />
 
             </LinearLayout>
 
@@ -96,42 +96,42 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/calendar_bg"/>
+                android:background="@drawable/calendar_bg" />
 
         </LinearLayout>
 
         <Space
             android:layout_width="50dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="180dp"
                 android:layout_height="70dp"
-                android:orientation="vertical"
+                android:background="@drawable/header"
                 android:gravity="center"
-                android:background="@drawable/header">
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_regular"
                     android:text="Check-in"
                     android:textColor="#ffffff"
-                    android:fontFamily="@font/eb_garamond_regular"
-                    android:textSize="20sp"/>
+                    android:textSize="20sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_regular"
                     android:text=" 6 Nov"
                     android:textColor="#ffffff"
-                    android:fontFamily="@font/eb_garamond_regular"
-                    android:textSize="25sp"/>
+                    android:textSize="25sp" />
 
             </LinearLayout>
 
@@ -139,7 +139,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/calendar_bg"/>
+                android:background="@drawable/calendar_bg" />
 
         </LinearLayout>
 
@@ -148,89 +148,89 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <Space
             android:layout_width="150dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:background="@drawable/btn_bg"
-            android:textAllCaps="false"
+            android:fontFamily="@font/eb_garamond_regular"
             android:text="7am - 5pm"
-            android:fontFamily="@font/eb_garamond_regular"/>
+            android:textAllCaps="false" />
 
         <Space
             android:layout_width="50dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:textAllCaps="false"
-            android:text="7pm - 5am"
+            android:background="@drawable/btn_bg"
             android:fontFamily="@font/eb_garamond_regular"
-            android:background="@drawable/btn_bg"/>
+            android:text="7pm - 5am"
+            android:textAllCaps="false" />
 
 
         <Space
             android:layout_width="160dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
             android:layout_height="30dp"
             android:background="@drawable/btn_bg"
-            android:textAllCaps="false"
+            android:fontFamily="@font/eb_garamond_regular"
             android:text="7am - 5pm"
-            android:fontFamily="@font/eb_garamond_regular"/>
+            android:textAllCaps="false" />
 
         <Space
             android:layout_width="50dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:textAllCaps="false"
-            android:text="7pm - 5am"
+            android:background="@drawable/btn_bg"
             android:fontFamily="@font/eb_garamond_regular"
-            android:background="@drawable/btn_bg"/>
+            android:text="7pm - 5am"
+            android:textAllCaps="false" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginTop="50dp"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:textAllCaps="false"
-            android:text="Cancel"
-            android:textSize="20sp"
+            android:background="@drawable/btn_bg"
             android:fontFamily="@font/eb_garamond_bold"
-            android:background="@drawable/btn_bg"/>
+            android:text="Cancel"
+            android:textAllCaps="false"
+            android:textSize="20sp" />
 
         <Space
             android:layout_width="50dp"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="150dp"
             android:layout_height="40dp"
-            android:textAllCaps="false"
-            android:text="Done"
-            android:textSize="20sp"
+            android:background="@drawable/btn_bg"
             android:fontFamily="@font/eb_garamond_bold"
-            android:background="@drawable/btn_bg">
+            android:text="Done"
+            android:textAllCaps="false"
+            android:textSize="20sp">
 
         </androidx.appcompat.widget.AppCompatButton>
     </LinearLayout>
-    </LinearLayout>
+</LinearLayout>

@@ -67,6 +67,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
     ArrayList<RoomCottageDetails_Model> roomHolder;
     ArrayList<RoomCottageDetails_Model> cottageHolder;
     private Guest_MonthYearAdapter calendarAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,7 +95,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
         selectedCottage_id = new ArrayList<>();
 
         continueBtn.setOnClickListener(v -> {
-            if (finalCheckIn_date == null){
+            if (finalCheckIn_date == null) {
                 Toast.makeText(this, "Check-In and Check-Out not set", Toast.LENGTH_SHORT).show();
             } else if (finalAdultQty == 0) {
                 Toast.makeText(this, "Adult Quantity not set", Toast.LENGTH_SHORT).show();
@@ -104,10 +105,10 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
                 double roomTotalPrice = 0;
 
                 int roomChildCount = roomList.getChildCount();
-                for (int i=0; i<roomChildCount; i++){
+                for (int i = 0; i < roomChildCount; i++) {
                     View childView = roomList.getLayoutManager().findViewByPosition(i);
                     ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
-                    if (check.getVisibility() == View.VISIBLE){
+                    if (check.getVisibility() == View.VISIBLE) {
                         final RoomCottageDetails_Model model = roomHolder.get(i);
                         selectedRoom_id.add(model.getId());
 
@@ -118,10 +119,10 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
                 //for getting the checked cottages
                 double cottageTotalPrice = 0;
                 int cottageChildCount = cottageList.getChildCount();
-                for (int i=0; i<cottageChildCount; i++){
+                for (int i = 0; i < cottageChildCount; i++) {
                     View childView = cottageList.getLayoutManager().findViewByPosition(i);
                     ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
-                    if (check.getVisibility() == View.VISIBLE){
+                    if (check.getVisibility() == View.VISIBLE) {
                         final RoomCottageDetails_Model model = cottageHolder.get(i);
                         selectedCottage_id.add(model.getId());
 
@@ -155,13 +156,13 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
             }
         });
 
-       displayRooms();
-       displayCottages();
+        displayRooms();
+        displayCottages();
     }
 
     @SuppressLint("SetTextI18n")
-    private void getEntranceFee_Details(){
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_entrFee_details.php";
+    private void getEntranceFee_Details() {
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_entrFee_details.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -174,13 +175,13 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
                     nightTour_kidFee = Double.parseDouble(object.getString("nightTour_kidFee"));
                     nightTour_adultFee = Double.parseDouble(object.getString("nightTour_adultFee"));
 
-                    dayTourInfo.setText(""+object.getString("dayTour_time") +"\n\n" +
-                            "KID "+ object.getString("dayTour_kidAge") + " - ₱" + object.getString("dayTour_kidFee") +"\n"+
-                            "ADULT "+  object.getString("dayTour_adultAge") + " - ₱" + object.getString("dayTour_adultFee"));
+                    dayTourInfo.setText("" + object.getString("dayTour_time") + "\n\n" +
+                            "KID " + object.getString("dayTour_kidAge") + " - ₱" + object.getString("dayTour_kidFee") + "\n" +
+                            "ADULT " + object.getString("dayTour_adultAge") + " - ₱" + object.getString("dayTour_adultFee"));
 
-                    nightTourInfo.setText(""+object.getString("nightTour_time") +"\n\n" +
-                            "KID "+ object.getString("nightTour_kidAge") + " - ₱" + object.getString("nightTour_kidFee") +"\n"+
-                            "ADULT "+  object.getString("nightTour_adultAge") + " - ₱" + object.getString("nightTour_adultFee"));
+                    nightTourInfo.setText("" + object.getString("nightTour_time") + "\n\n" +
+                            "KID " + object.getString("nightTour_kidAge") + " - ₱" + object.getString("nightTour_kidFee") + "\n" +
+                            "ADULT " + object.getString("nightTour_adultAge") + " - ₱" + object.getString("nightTour_adultFee"));
 
                 }
             } catch (JSONException e) {
@@ -390,7 +391,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
                     String checkOut_formattedDate = checkOut_monthName + " " + checkOut_dayOfMonth + ", " + checkOut_year;
 
                     //Toast.makeText(getContext(), formattedDate, Toast.LENGTH_SHORT).show();
-                    displaySched.setText("Check-In\n"+checkIn_formattedDate+" - "+finalCheckIn_time+"\nCheck-Out\n"+checkOut_formattedDate+" - "+finalCheckOut_time);
+                    displaySched.setText("Check-In\n" + checkIn_formattedDate + " - " + finalCheckIn_time + "\nCheck-Out\n" + checkOut_formattedDate + " - " + finalCheckOut_time);
 
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -489,31 +490,31 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
 
         incAdultCount.setOnClickListener(v -> {
             adultQty[0]++;
-            adultCount.setText(""+ Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
+            adultCount.setText("" + Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
         });
         decAdultCount.setOnClickListener(v -> {
-            if (adultQty[0] != 0){
+            if (adultQty[0] != 0) {
                 adultQty[0]--;
             }
-            adultCount.setText(""+ Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
+            adultCount.setText("" + Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
         });
 
         incKidCount.setOnClickListener(v -> {
             kidQty[0]++;
-            kidCount.setText(""+ Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
+            kidCount.setText("" + Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
         });
         decKidCount.setOnClickListener(v -> {
-            if (kidQty[0] != 0){
+            if (kidQty[0] != 0) {
                 kidQty[0]--;
             }
-            kidCount.setText(""+ Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
+            kidCount.setText("" + Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
         });
 
         done.setOnClickListener(v -> {
             finalAdultQty = adultQty[0];
             finalKidQty = kidQty[0];
 
-            displayQty.setText(finalAdultQty+" Adult/s\n"+finalKidQty+" Kid/s");
+            displayQty.setText(finalAdultQty + " Adult/s\n" + finalKidQty + " Kid/s");
 
             qty.hide();
         });
@@ -525,7 +526,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
         showBox = false;
         roomHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getRoomDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getRoomDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -547,13 +548,13 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Room_Adapter adapter = new Room_Adapter(this,roomHolder, false);
+            Room_Adapter adapter = new Room_Adapter(this, roomHolder, false);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             roomList.setLayoutManager(layoutManager);
             roomList.setAdapter(adapter);
 
         }, error -> {
-            Log.e("displayRooms",  error.getMessage());
+            Log.e("displayRooms", error.getMessage());
         });
         requestQueue.add(stringRequest);
 
@@ -563,7 +564,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
         showBox = false;
         cottageHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getCottageDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getCottageDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -584,7 +585,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Cottage_Adapter adapter = new Cottage_Adapter(this,cottageHolder, false);
+            Cottage_Adapter adapter = new Cottage_Adapter(this, cottageHolder, false);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             cottageList.setLayoutManager(layoutManager);
             cottageList.setAdapter(adapter);
@@ -600,7 +601,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
 
         roomHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getAvailableRoom.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getAvailableRoom.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -627,11 +628,10 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
             roomList.setAdapter(adapter);
 
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("checkIn_date", finalCheckIn_date);
                 map.put("checkIn_time", finalCheckIn_time);
                 map.put("checkOut_date", finalCheckOut_date);
@@ -642,12 +642,12 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void displayAvailableCottage(String finalCheckIn_date, String finalCheckIn_time, String finalCheckOut_date, String finalCheckOut_time){
+    private void displayAvailableCottage(String finalCheckIn_date, String finalCheckIn_time, String finalCheckOut_date, String finalCheckOut_time) {
         showBox = true;
 
         cottageHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getAvailableCottage.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getAvailableCottage.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -669,16 +669,15 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Room_Adapter adapter = new Room_Adapter(this,cottageHolder, true);
+            Room_Adapter adapter = new Room_Adapter(this, cottageHolder, true);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             cottageList.setLayoutManager(layoutManager);
             cottageList.setAdapter(adapter);
         },
-                error -> Log.e("displayAvailableCottage", error.getMessage()))
-        {
+                error -> Log.e("displayAvailableCottage", error.getMessage())) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("checkIn_date", finalCheckIn_date);
                 map.put("checkIn_time", finalCheckIn_time);
                 map.put("checkOut_date", finalCheckOut_date);

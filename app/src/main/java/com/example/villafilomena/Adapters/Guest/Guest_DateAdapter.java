@@ -88,7 +88,7 @@ public class Guest_DateAdapter extends RecyclerView.Adapter<Guest_DateAdapter.Vi
         void onClick(View v, int position, TextView day, int month, int year);
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView day, dayIndicator;
 
         public ViewHolder(@NonNull View itemView) {

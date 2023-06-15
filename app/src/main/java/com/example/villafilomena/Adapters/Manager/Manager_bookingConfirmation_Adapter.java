@@ -8,6 +8,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,6 +49,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 import java.util.StringJoiner;
+
 @SuppressLint("SetTextI18n")
 public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Manager_bookingConfirmation_Adapter.ViewHolder> {
     Activity activity;
@@ -126,7 +128,7 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
 
         getRoomInfo(holder.room, model.getRoom_id());
 
-        holder.total.setText("₱"+model.getTotal_payment());
+        holder.total.setText("₱" + model.getTotal_payment());
         holder.GCashNumber.setText(model.getGCash_number());
         holder.refNum.setText(model.getReference_num());
         Glide.with(activity)
@@ -218,8 +220,8 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
         return bookingHolder.size();
     }
 
-    private void getGuestInfo(String guest_email, TextView name, TextView email, TextView contact){
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getGuestInfo.php";
+    private void getGuestInfo(String guest_email, TextView name, TextView email, TextView contact) {
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getGuestInfo.php";
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -229,36 +231,34 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
 
                     //SendNotifications(object.getString("token"), message);
 
-                    name.setText(""+object.getString("fullname"));
-                    email.setText(""+object.getString("email"));
-                    contact.setText(""+object.getString("contact"));
+                    name.setText("" + object.getString("fullname"));
+                    email.setText("" + object.getString("email"));
+                    contact.setText("" + object.getString("contact"));
 
                 }
             } catch (JSONException e) {
-                Toast.makeText(activity, e.toString(), Toast.LENGTH_LONG).show();
+                Log.e("JSONException", e.toString());
             }
         },
-                error -> Toast.makeText(activity, error.getMessage(), Toast.LENGTH_LONG).show())
-
-        {
+                error -> Log.e("getGuestInfo", error.toString())) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",guest_email);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", guest_email);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void getRoomInfo(TextView room, String roomID){
+    private void getRoomInfo(TextView room, String roomID) {
 
         StringJoiner str = new StringJoiner(", ");
 
         String[] res = roomID.split(",");
-        for(String number: res) {
+        for (String number : res) {
 
-            String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getGuestSelectRoom.php";
+            String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getGuestSelectRoom.php";
             RequestQueue requestQueue = Volley.newRequestQueue(activity);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
                 try {
@@ -267,20 +267,18 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
                         JSONObject object = jsonArray.getJSONObject(i);
 
                         str.add(object.getString("roomName"));
-                        room.setText(""+str);
+                        room.setText("" + str);
 
                     }
                 } catch (JSONException e) {
-                    Toast.makeText(activity, e.toString(), Toast.LENGTH_LONG).show();
+                    Log.e("JSONException", e.toString());
                 }
             },
-                    error -> Toast.makeText(activity, error.getMessage(), Toast.LENGTH_LONG).show())
-
-            {
+                    error -> Log.e("getRoomInfo", error.toString())) {
                 @Override
-                protected HashMap<String,String> getParams() {
-                    HashMap<String,String> map = new HashMap<>();
-                    map.put("id",number.trim());
+                protected HashMap<String, String> getParams() {
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("id", number.trim());
                     return map;
                 }
             };
@@ -289,7 +287,7 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
 
     }
 
-    private void confirmGuestBooking(int position, String id){
+    private void confirmGuestBooking(int position, String id) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
         String currentDate = dateFormat.format(new Date());
 
@@ -316,24 +314,22 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
                 mItemClickListener.onItemClick(position);
             }
 
-            String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/update/manager_confirmGuestBooking.php";
+            String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/update/manager_confirmGuestBooking.php";
             RequestQueue requestQueue = Volley.newRequestQueue(activity);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                if (response.equals("success")){
+                if (response.equals("success")) {
                     Toast.makeText(activity, "Confirmation Successful", Toast.LENGTH_SHORT).show();
                     getGuestToken(model.getGuest_email(), "Your Booking is accepted");
                     loading_dialog.hide();
-                }
-                else if(response.equals("failed")){
+                } else if (response.equals("failed")) {
                     Toast.makeText(activity, "Confirmation Failed", Toast.LENGTH_SHORT).show();
                     loading_dialog.hide();
                 }
             },
-                    error -> Toast.makeText(activity, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-            {
+                    error -> Log.e("confirmGuestBooking", error.toString())) {
                 @Override
-                protected HashMap<String,String> getParams() {
-                    HashMap<String,String> map = new HashMap<>();
+                protected HashMap<String, String> getParams() {
+                    HashMap<String, String> map = new HashMap<>();
                     map.put("id", id);
                     map.put("invoiceUrl", invoiceUrl);
                     map.put("date", currentDate);
@@ -346,27 +342,25 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
         pdfReceipt.generatePDF();
     }
 
-    private void rejectGuestBooking(int position, String id, String reasonText){
+    private void rejectGuestBooking(int position, String id, String reasonText) {
         final BookingInfo_Model model = bookingHolder.get(position);
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/update/manager_rejectGuestBooking.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/update/manager_rejectGuestBooking.php";
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Toast.makeText(activity, "Booking Rejected", Toast.LENGTH_SHORT).show();
                 getGuestToken(model.getGuest_email(), "Your Booking is Rejected");
                 loading_dialog.hide();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(activity, "Rejection Failed", Toast.LENGTH_SHORT).show();
                 loading_dialog.hide();
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("id", id);
                 map.put("reason", reasonText);
                 return map;
@@ -375,24 +369,22 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
         requestQueue.add(stringRequest);
     }
 
-    private void deleteRoomSched(int position){
+    private void deleteRoomSched(int position) {
         final BookingInfo_Model model = bookingHolder.get(position);
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/delete/manager_deleteRoomSched.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/delete/manager_deleteRoomSched.php";
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Toast.makeText(activity, "Room Delete Success", Toast.LENGTH_SHORT).show();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(activity, "Room Delete Failed", Toast.LENGTH_SHORT).show();
             }
         },
-                error -> Toast.makeText(activity, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(activity, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("guest_email", model.getGuest_email());
                 map.put("checkIn_date", model.getCheckIn_date());
                 map.put("checkIn_time", model.getCheckIn_time());
@@ -405,8 +397,8 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
         requestQueue.add(stringRequest);
     }
 
-    private void getGuestToken(String guest_email, String message){
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getGuestToken.php";
+    private void getGuestToken(String guest_email, String message) {
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getGuestToken.php";
         RequestQueue requestQueue = Volley.newRequestQueue(activity);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -422,13 +414,11 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
                 Toast.makeText(activity, e.toString(), Toast.LENGTH_LONG).show();
             }
         },
-                error -> Toast.makeText(activity, error.getMessage(), Toast.LENGTH_LONG).show())
-
-        {
+                error -> Toast.makeText(activity, error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",guest_email);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", guest_email);
                 return map;
             }
         };
@@ -475,7 +465,7 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
         void onItemClick(int position);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public Button accept, reject;
         TextView name, email, contact, checkIn_checkOut, room, cottage, total, balance, GCashNumber, refNum;
         ImageView proofImage;

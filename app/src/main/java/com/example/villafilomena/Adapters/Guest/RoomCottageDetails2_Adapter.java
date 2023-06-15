@@ -48,6 +48,7 @@ public class RoomCottageDetails2_Adapter extends RecyclerView.Adapter<RoomCottag
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView roomImage;
         TextView roomName, roomDescription, roomCapacity, roomRate;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

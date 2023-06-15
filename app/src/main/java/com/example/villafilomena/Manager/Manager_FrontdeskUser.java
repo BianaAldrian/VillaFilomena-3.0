@@ -93,9 +93,9 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
             Manager_FrontdeskUser.deleteFrontdesk.setVisibility(View.GONE);
 
             int childCount = clerkContainer.getChildCount();
-            for (int i=0; i<childCount; i++){
-                View childView =clerkContainer.getLayoutManager().findViewByPosition(i);
-                ImageView delete = (ImageView)childView.findViewById(R.id.manager_clerkList_delete);
+            for (int i = 0; i < childCount; i++) {
+                View childView = clerkContainer.getLayoutManager().findViewByPosition(i);
+                ImageView delete = (ImageView) childView.findViewById(R.id.manager_clerkList_delete);
                 delete.setVisibility(View.VISIBLE);
             }
 
@@ -107,9 +107,9 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
             deleteFrontdesk.setVisibility(View.VISIBLE);
 
             int childCount = clerkContainer.getChildCount();
-            for (int i=0; i<childCount; i++){
-                View childView =clerkContainer.getLayoutManager().findViewByPosition(i);
-                ImageView delete = (ImageView)childView.findViewById(R.id.manager_clerkList_delete);
+            for (int i = 0; i < childCount; i++) {
+                View childView = clerkContainer.getLayoutManager().findViewByPosition(i);
+                ImageView delete = (ImageView) childView.findViewById(R.id.manager_clerkList_delete);
                 delete.setVisibility(View.GONE);
             }
         });
@@ -119,7 +119,7 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
     private void listClerks() {
         ArrayList<Manager_frondeskClerk_Model> clerkHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getFrontdeskClerks.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getFrontdeskClerks.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -142,16 +142,16 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            Manager_frontdeskClerk_Adapter adapter = new Manager_frontdeskClerk_Adapter(this,clerkHolder);
+            Manager_frontdeskClerk_Adapter adapter = new Manager_frontdeskClerk_Adapter(this, clerkHolder);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
             clerkContainer.setLayoutManager(layoutManager);
             clerkContainer.setAdapter(adapter);
 
-        }, error -> Toast.makeText(this,error.getMessage().toString(), Toast.LENGTH_LONG).show());
+        }, error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show());
         requestQueue.add(stringRequest);
     }
 
-    private void chooseImage(){
+    private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -159,7 +159,7 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -170,40 +170,39 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
 
     }
 
-    private String getfileExt(Uri MyUri){
+    private String getfileExt(Uri MyUri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(MyUri));
     }
+
     private void upload_frontdeskClerk(EditText clerksName, EditText clerksContact, EditText clerksUsername, EditText clerksPassword) {
-        if(imageUri != null){
-            String fileName = clerksName.getText().toString()+"."+getfileExt(imageUri);
+        if (imageUri != null) {
+            String fileName = clerksName.getText().toString() + "." + getfileExt(imageUri);
             StorageReference reference = clerkImage.child(fileName);
             reference.putFile(imageUri)
                     .addOnSuccessListener(taskSnapshot -> {
                         reference.getDownloadUrl().addOnSuccessListener(uri -> {
                             String clerkUrl = uri.toString();
-                            String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/insert/manager_uploadFrontdeskClerk.php";
+                            String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/insert/manager_uploadFrontdeskClerk.php";
                             RequestQueue requestQueue = Volley.newRequestQueue(this);
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                                if (response.equals("success")){
+                                if (response.equals("success")) {
                                     Toast.makeText(this, "Upload Successful", Toast.LENGTH_SHORT).show();
                                     addFrontdeskDialog.hide();
-                                }
-                                else if(response.equals("failed")){
+                                } else if (response.equals("failed")) {
                                     Toast.makeText(this, "Upload Failed", Toast.LENGTH_SHORT).show();
                                 }
                             },
-                                    error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-                            {
+                                    error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
                                 @Override
-                                protected HashMap<String,String> getParams() {
-                                    HashMap<String,String> map = new HashMap<>();
-                                    map.put("imageUrl",clerkUrl);
-                                    map.put("clerkName",clerksName.getText().toString());
-                                    map.put("clerkContact",clerksContact.getText().toString());
-                                    map.put("clerkUsername",clerksUsername.getText().toString());
-                                    map.put("clerkPassword",clerksPassword.getText().toString());
+                                protected HashMap<String, String> getParams() {
+                                    HashMap<String, String> map = new HashMap<>();
+                                    map.put("imageUrl", clerkUrl);
+                                    map.put("clerkName", clerksName.getText().toString());
+                                    map.put("clerkContact", clerksContact.getText().toString());
+                                    map.put("clerkUsername", clerksUsername.getText().toString());
+                                    map.put("clerkPassword", clerksPassword.getText().toString());
                                     return map;
                                 }
                             };
@@ -213,7 +212,7 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
                     .addOnFailureListener(e ->
                             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
                     );
-        }else {
+        } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }

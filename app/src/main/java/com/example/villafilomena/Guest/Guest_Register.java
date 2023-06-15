@@ -70,22 +70,20 @@ public class Guest_Register extends AppCompatActivity {
     }
 
     private void check_email() {
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_checkemail.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_checkemail.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("true")){
+            if (response.equals("true")) {
                 Toast.makeText(this, "Email already exist", Toast.LENGTH_LONG).show();
-            }
-            else if(response.equals("false")){
+            } else if (response.equals("false")) {
                 register();
             }
         },
-                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",email.getText().toString().trim());
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", email.getText().toString().trim());
 
                 return map;
             }
@@ -94,29 +92,27 @@ public class Guest_Register extends AppCompatActivity {
     }
 
     private void register() {
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/insert/guest_registration.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/insert/guest_registration.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Toast.makeText(this, "Registration Complete", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, Guest_fragmentsContainer.class));
                 Guest_fragmentsContainer.email = email.getText().toString();
                 finish();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(this, "Registration Failed", Toast.LENGTH_LONG).show();
             }
         },
-                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",email.getText().toString().trim());
-                map.put("password",password1.getText().toString().trim());
-                map.put("fullname",FName.getText().toString().trim() + " " + LName.getText().toString().trim());
-                map.put("contact",contact.getText().toString().trim());
-                map.put("token",token);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", email.getText().toString().trim());
+                map.put("password", password1.getText().toString().trim());
+                map.put("fullname", FName.getText().toString().trim() + " " + LName.getText().toString().trim());
+                map.put("contact", contact.getText().toString().trim());
+                map.put("token", token);
 
                 return map;
             }

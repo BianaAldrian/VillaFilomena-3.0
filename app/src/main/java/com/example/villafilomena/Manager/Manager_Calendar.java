@@ -1,26 +1,19 @@
 package com.example.villafilomena.Manager;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.example.villafilomena.R;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -82,7 +75,7 @@ public class Manager_Calendar extends AppCompatActivity {
         Spinner monthSpinner = findViewById(R.id.manager_monthSpinner);
         Spinner yearSpinner = findViewById(R.id.manager_yearSpinner);
 
-        String[] monthOptions = new String[] {
+        String[] monthOptions = new String[]{
                 "January", "February", "March", "April", "May", "June",
                 "July", "August", "September", "October", "November", "December"
         };
@@ -208,7 +201,7 @@ public class Manager_Calendar extends AppCompatActivity {
         // Your code to retrieve the dates from the server or any other data source
         schedDatesList = new ArrayList<>();
         // Add retrieved dates to the list
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getSched.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getSched.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
@@ -236,7 +229,7 @@ public class Manager_Calendar extends AppCompatActivity {
 
     }
 
-    private void menu(){
+    private void menu() {
         PopupMenu popupMenu = new PopupMenu(this, menu);
         popupMenu.getMenuInflater().inflate(R.menu.manager_dropdown_menu, popupMenu.getMenu());
 
@@ -369,31 +362,29 @@ public class Manager_Calendar extends AppCompatActivity {
         popupMenu.show();
     }
 
-    public void uploadDisableDates(String dates, String reason){
-        if (!TextUtils.isEmpty(reason)){
-            String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/insert/manager_insertCalendarSched.php";
+    public void uploadDisableDates(String dates, String reason) {
+        if (!TextUtils.isEmpty(reason)) {
+            String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/insert/manager_insertCalendarSched.php";
 
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                if (response.equals("success")){
+                if (response.equals("success")) {
                     Log.d("Upload", "Upload Successful");
-                }
-                else if(response.equals("failed")){
+                } else if (response.equals("failed")) {
                     Log.d("Upload", "Upload Failed");
                 }
             },
-                    error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show())
-            {
+                    error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()) {
                 @Override
-                protected HashMap<String,String> getParams() {
-                    HashMap<String,String> map = new HashMap<>();
+                protected HashMap<String, String> getParams() {
+                    HashMap<String, String> map = new HashMap<>();
                     map.put("disable_date", dates);
                     map.put("reason", reason);
                     return map;
                 }
             };
             requestQueue.add(stringRequest);
-        }else {
+        } else {
             Toast.makeText(this, "reason is empty", Toast.LENGTH_LONG).show();
         }
     }

@@ -77,12 +77,12 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
 
         detailsHolder = new ArrayList<>();
 
-        qty.setText(""+ FrontDesk_Booking1.finalAdultQty +"\n"+ FrontDesk_Booking1.finalKidQty +"\n"+ FrontDesk_Booking1.selectedRoom_id.size() +"\n"+ FrontDesk_Booking1.selectedCottage_id.size());
-        day_night.setText(""+ FrontDesk_Booking1.dayDiff +" day/s\n"+ FrontDesk_Booking1.nightDiff+" night/s\n");
-        tally.setText("₱"+ FrontDesk_Booking1.adultFee +"\n₱"+ FrontDesk_Booking1.kidFee +"\n₱"+ FrontDesk_Booking1.roomRate +"\n₱"+ FrontDesk_Booking1.cottageRate);
-        total.setText("Total Payment: ₱"+FrontDesk_Booking1.total);
+        qty.setText("" + FrontDesk_Booking1.finalAdultQty + "\n" + FrontDesk_Booking1.finalKidQty + "\n" + FrontDesk_Booking1.selectedRoom_id.size() + "\n" + FrontDesk_Booking1.selectedCottage_id.size());
+        day_night.setText("" + FrontDesk_Booking1.dayDiff + " day/s\n" + FrontDesk_Booking1.nightDiff + " night/s\n");
+        tally.setText("₱" + FrontDesk_Booking1.adultFee + "\n₱" + FrontDesk_Booking1.kidFee + "\n₱" + FrontDesk_Booking1.roomRate + "\n₱" + FrontDesk_Booking1.cottageRate);
+        total.setText("Total Payment: ₱" + FrontDesk_Booking1.total);
 
-        if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()){
+        if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()) {
             for (String roomId : FrontDesk_Booking1.selectedRoom_id) {
                 displaySelectedRoom(roomId);
             }
@@ -115,7 +115,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
         backBtn.setOnClickListener(v -> new FrontDesk_Booking1());
 
         continueBtn.setOnClickListener(v -> {
-            if (cash.isChecked()){
+            if (cash.isChecked()) {
                 mode_ofPayment = "cash";
                 //Toast.makeText(this, "Cash", Toast.LENGTH_SHORT).show();
 
@@ -128,7 +128,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
                 loading_dialog.show();
                 insertBooking();
 
-            } else if (gCash.isChecked()){
+            } else if (gCash.isChecked()) {
                 mode_ofPayment = "gcash";
                 GCashDialog();
             }
@@ -137,7 +137,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
     }
 
     private void displaySelectedRoom(String roomId) {
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getSelectedRoomDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getSelectedRoomDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -164,19 +164,18 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
                 e.printStackTrace();
             }
         },
-                error -> Log.e("displaySelectedRoom", error.getMessage()))
-        {
+                error -> Log.e("displaySelectedRoom", error.getMessage())) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("id",roomId);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("id", roomId);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void GCashDialog(){
+    private void GCashDialog() {
         Dialog gcash = new Dialog(this);
         gcash.setContentView(R.layout.popup_gcash_payment_dialog);
         Window window = gcash.getWindow();
@@ -197,10 +196,10 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
         image.setVisibility(View.GONE);
         upload.setVisibility(View.GONE);
 
-        totalPayment.setText(""+FrontDesk_Booking1.total);
+        totalPayment.setText("" + FrontDesk_Booking1.total);
 
         confirm.setOnClickListener(v -> {
-            if (gcashNum.getText().length() < 11 || gcashNum.getText().toString().isEmpty()){
+            if (gcashNum.getText().length() < 11 || gcashNum.getText().toString().isEmpty()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Invalid!");
                 builder.setMessage("Incomplete GCash number, please double check");
@@ -211,7 +210,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-            } else if (refNum.getText().length() < 13 || refNum.getText().toString().isEmpty()){
+            } else if (refNum.getText().length() < 13 || refNum.getText().toString().isEmpty()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setTitle("Invalid!");
                 builder.setMessage("Incomplete Reference number, please double check");
@@ -242,14 +241,14 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
         gcash.show();
     }
 
-    private void insertBooking(){
-        String url = "http://"+ipAddress+"/VillaFilomena/frontdesk_dir/insert/frontdesk_insertBooking.php";
+    private void insertBooking() {
+        String url = "http://" + ipAddress + "/VillaFilomena/frontdesk_dir/insert/frontdesk_insertBooking.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 loading_dialog.dismiss();
 
-                if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()){
+                if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()) {
                     for (String roomId : FrontDesk_Booking1.selectedRoom_id) {
                         bookRoom(roomId);
                     }
@@ -270,60 +269,56 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
                 finish();
                 FrontDesk_Booking1 booking1 = new FrontDesk_Booking1();
                 booking1.finish();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(this, "Booking Request Failed", Toast.LENGTH_SHORT).show();
                 loading_dialog.hide();
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("guest_email",email);
-                map.put("checkIn_date",FrontDesk_Booking1.finalCheckIn_date);
-                map.put("checkIn_time",FrontDesk_Booking1.finalCheckIn_time);
-                map.put("checkOut_date",FrontDesk_Booking1.finalCheckOut_date);
-                map.put("checkOut_time",FrontDesk_Booking1.finalCheckOut_time);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("guest_email", email);
+                map.put("checkIn_date", FrontDesk_Booking1.finalCheckIn_date);
+                map.put("checkIn_time", FrontDesk_Booking1.finalCheckIn_time);
+                map.put("checkOut_date", FrontDesk_Booking1.finalCheckOut_date);
+                map.put("checkOut_time", FrontDesk_Booking1.finalCheckOut_time);
                 map.put("adult_qty", String.valueOf(FrontDesk_Booking1.finalAdultQty));
                 map.put("kid_qty", String.valueOf(FrontDesk_Booking1.finalKidQty));
                 map.put("room_id", String.valueOf(FrontDesk_Booking1.selectedRoom_id).replace("[", "").replace("]", "").trim());
-                map.put("cottage_id","cottage_id");
+                map.put("cottage_id", "cottage_id");
                 map.put("total_payment", String.valueOf(FrontDesk_Booking1.total));
                 map.put("mode_ofPayment", mode_ofPayment);
-                map.put("payment_status","full");
-                map.put("GCash_number",GCashNum);
-                map.put("reference_num",RefNum);
+                map.put("payment_status", "full");
+                map.put("GCash_number", GCashNum);
+                map.put("reference_num", RefNum);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void bookRoom(String roomId){
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/insert/guest_roomReservation.php";
+    private void bookRoom(String roomId) {
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/insert/guest_roomReservation.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Toast.makeText(this, "Room Booking Successful", Toast.LENGTH_SHORT).show();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(this, "Room Booking Failed", Toast.LENGTH_SHORT).show();
             }
         },
-                error -> Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("room_id",roomId);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("room_id", roomId);
                 map.put("bookBy_guest_email", "FrontDesk_Booking1.email");
                 //map.put("bookBy_guest_email", "aldrian.scarlan@gmail.com");
-                map.put("checkIn_date",FrontDesk_Booking1.finalCheckIn_date);
-                map.put("checkIn_time",FrontDesk_Booking1.finalCheckIn_time);
-                map.put("checkOut_date",FrontDesk_Booking1.finalCheckOut_date);
-                map.put("checkOut_time",FrontDesk_Booking1.finalCheckOut_time);
+                map.put("checkIn_date", FrontDesk_Booking1.finalCheckIn_date);
+                map.put("checkIn_time", FrontDesk_Booking1.finalCheckIn_time);
+                map.put("checkOut_date", FrontDesk_Booking1.finalCheckOut_date);
+                map.put("checkOut_time", FrontDesk_Booking1.finalCheckOut_time);
                 return map;
             }
         };

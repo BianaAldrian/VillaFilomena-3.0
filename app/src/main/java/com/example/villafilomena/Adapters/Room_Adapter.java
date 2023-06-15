@@ -53,12 +53,12 @@ public class Room_Adapter extends RecyclerView.Adapter<Room_Adapter.ViewHolder> 
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public void setAvailability(ArrayList<RoomCottageDetails_Model> detailsHolder){
+    public void setAvailability(ArrayList<RoomCottageDetails_Model> detailsHolder) {
         this.detailsHolder = detailsHolder;
         notifyDataSetChanged();
     }
 
-    public void setNewData(boolean showDelete,  ArrayList<RoomCottageDetails_Model> detailsHolder) {
+    public void setNewData(boolean showDelete, ArrayList<RoomCottageDetails_Model> detailsHolder) {
         this.showDelete = showDelete;
         this.detailsHolder = detailsHolder;
         notifyDataSetChanged();
@@ -93,9 +93,9 @@ public class Room_Adapter extends RecyclerView.Adapter<Room_Adapter.ViewHolder> 
 
         /*Picasso.get().load(model.getImageUrl()).into(holder.image);*/
         holder.infos.setText(
-                ""+model.getName()+"\n"+
-                model.getCapacity()+" People\n"+
-                "₱"+model.getRate());
+                "" + model.getName() + "\n" +
+                        model.getCapacity() + " People\n" +
+                        "₱" + model.getRate());
 
         holder.seeMore.setOnClickListener(v -> {
             Dialog DetailedInfo = new Dialog(context);
@@ -113,14 +113,14 @@ public class Room_Adapter extends RecyclerView.Adapter<Room_Adapter.ViewHolder> 
                     .apply(requestOptions)
                     .into(infoImage);
 
-            title.setText(""+model.getName() +"\n"+ model.getCapacity() +"\n"+ model.getRate());
-            details.setText(""+model.getDescription());
+            title.setText("" + model.getName() + "\n" + model.getCapacity() + "\n" + model.getRate());
+            details.setText("" + model.getDescription());
 
             DetailedInfo.show();
         });
 
         holder.box.setOnClickListener(v -> {
-            if (holder.check.getVisibility() == View.VISIBLE){
+            if (holder.check.getVisibility() == View.VISIBLE) {
                 holder.check.setVisibility(View.GONE);
             } else if (holder.check.getVisibility() == View.GONE) {
                 holder.check.setVisibility(View.VISIBLE);
@@ -139,6 +139,7 @@ public class Room_Adapter extends RecyclerView.Adapter<Room_Adapter.ViewHolder> 
             notifyItemRemoved(position);
         });
     }
+
     @Override
     public int getItemCount() {
         return detailsHolder.size();

@@ -104,7 +104,7 @@ public class Guest_bookingPage1 extends Fragment {
         selectedCottage_id = new ArrayList<>();
 
         continueBtn.setOnClickListener(v -> {
-            if (Guest_fragmentsContainer.email.equals("")){
+            if (Guest_fragmentsContainer.email.equals("")) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Log In?");
                 builder.setMessage("Please Log In first");
@@ -123,7 +123,7 @@ public class Guest_bookingPage1 extends Fragment {
                 AlertDialog dialog = builder.create();
                 dialog.show();
             } else {
-                if (finalCheckIn_date == null){
+                if (finalCheckIn_date == null) {
                     Toast.makeText(getContext(), "Check-In and Check-Out not set", Toast.LENGTH_SHORT).show();
                 } else if (finalAdultQty == 0) {
                     Toast.makeText(getContext(), "Adult Quantity not set", Toast.LENGTH_SHORT).show();
@@ -133,10 +133,10 @@ public class Guest_bookingPage1 extends Fragment {
                     double roomTotalPrice = 0;
 
                     int roomChildCount = roomList.getChildCount();
-                    for (int i=0; i<roomChildCount; i++){
+                    for (int i = 0; i < roomChildCount; i++) {
                         View childView = roomList.getLayoutManager().findViewByPosition(i);
                         ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
-                        if (check.getVisibility() == View.VISIBLE){
+                        if (check.getVisibility() == View.VISIBLE) {
                             final RoomCottageDetails_Model model = roomHolder.get(i);
                             selectedRoom_id.add(model.getId());
 
@@ -147,10 +147,10 @@ public class Guest_bookingPage1 extends Fragment {
                     //for getting the checked cottages
                     double cottageTotalPrice = 0;
                     int cottageChildCount = cottageList.getChildCount();
-                    for (int i=0; i<cottageChildCount; i++){
+                    for (int i = 0; i < cottageChildCount; i++) {
                         View childView = cottageList.getLayoutManager().findViewByPosition(i);
                         ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
-                        if (check.getVisibility() == View.VISIBLE){
+                        if (check.getVisibility() == View.VISIBLE) {
                             final RoomCottageDetails_Model model = cottageHolder.get(i);
                             selectedCottage_id.add(model.getId());
 
@@ -262,7 +262,7 @@ public class Guest_bookingPage1 extends Fragment {
                     String checkOut_formattedDate = checkOut_monthName + " " + checkOut_dayOfMonth + ", " + checkOut_year;
 
                     //Toast.makeText(getContext(), formattedDate, Toast.LENGTH_SHORT).show();
-                    displaySched.setText("Check-In\n"+checkIn_formattedDate+" - "+finalCheckIn_time+"\nCheck-Out\n"+checkOut_formattedDate+" - "+finalCheckOut_time);
+                    displaySched.setText("Check-In\n" + checkIn_formattedDate + " - " + finalCheckIn_time + "\nCheck-Out\n" + checkOut_formattedDate + " - " + finalCheckOut_time);
 
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -314,8 +314,8 @@ public class Guest_bookingPage1 extends Fragment {
 
 
     @SuppressLint("SetTextI18n")
-    private void getEntranceFee_Details(){
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_entrFee_details.php";
+    private void getEntranceFee_Details() {
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_entrFee_details.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -328,13 +328,13 @@ public class Guest_bookingPage1 extends Fragment {
                     nightTour_kidFee = Double.parseDouble(object.getString("nightTour_kidFee"));
                     nightTour_adultFee = Double.parseDouble(object.getString("nightTour_adultFee"));
 
-                    dayTourInfo.setText(""+object.getString("dayTour_time") +"\n\n" +
-                            "KID "+ object.getString("dayTour_kidAge") + " - ₱" + object.getString("dayTour_kidFee") +"\n"+
-                            "ADULT "+  object.getString("dayTour_adultAge") + " - ₱" + object.getString("dayTour_adultFee"));
+                    dayTourInfo.setText("" + object.getString("dayTour_time") + "\n\n" +
+                            "KID " + object.getString("dayTour_kidAge") + " - ₱" + object.getString("dayTour_kidFee") + "\n" +
+                            "ADULT " + object.getString("dayTour_adultAge") + " - ₱" + object.getString("dayTour_adultFee"));
 
-                    nightTourInfo.setText(""+object.getString("nightTour_time") +"\n\n" +
-                            "KID "+ object.getString("nightTour_kidAge") + " - ₱" + object.getString("nightTour_kidFee") +"\n"+
-                            "ADULT "+  object.getString("nightTour_adultAge") + " - ₱" + object.getString("nightTour_adultFee"));
+                    nightTourInfo.setText("" + object.getString("nightTour_time") + "\n\n" +
+                            "KID " + object.getString("nightTour_kidAge") + " - ₱" + object.getString("nightTour_kidFee") + "\n" +
+                            "ADULT " + object.getString("nightTour_adultAge") + " - ₱" + object.getString("nightTour_adultFee"));
 
                 }
             } catch (JSONException e) {
@@ -345,11 +345,11 @@ public class Guest_bookingPage1 extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    private void replace_bookingPage1(Fragment fragment){
+    private void replace_bookingPage1(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-        transaction.replace(R.id.guestFragmentContainer,fragment).commit();
+        transaction.replace(R.id.guestFragmentContainer, fragment).commit();
     }
 
    /* @SuppressLint({"SimpleDateFormat", "SetTextI18n"})
@@ -533,31 +533,31 @@ public class Guest_bookingPage1 extends Fragment {
 
         incAdultCount.setOnClickListener(v -> {
             adultQty[0]++;
-            adultCount.setText(""+ Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
+            adultCount.setText("" + Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
         });
         decAdultCount.setOnClickListener(v -> {
-            if (adultQty[0] != 0){
+            if (adultQty[0] != 0) {
                 adultQty[0]--;
             }
-            adultCount.setText(""+ Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
+            adultCount.setText("" + Arrays.toString(adultQty).replace("[", "").replace("]", "").trim());
         });
 
         incKidCount.setOnClickListener(v -> {
             kidQty[0]++;
-            kidCount.setText(""+ Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
+            kidCount.setText("" + Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
         });
         decKidCount.setOnClickListener(v -> {
-            if (kidQty[0] != 0){
+            if (kidQty[0] != 0) {
                 kidQty[0]--;
             }
-            kidCount.setText(""+ Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
+            kidCount.setText("" + Arrays.toString(kidQty).replace("[", "").replace("]", "").trim());
         });
 
         done.setOnClickListener(v -> {
             finalAdultQty = adultQty[0];
             finalKidQty = kidQty[0];
 
-            displayQty.setText(finalAdultQty+" Adult/s\n"+finalKidQty+" Kid/s");
+            displayQty.setText(finalAdultQty + " Adult/s\n" + finalKidQty + " Kid/s");
 
             qty.hide();
         });
@@ -569,7 +569,7 @@ public class Guest_bookingPage1 extends Fragment {
         showBox = false;
         roomHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getRoomDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getRoomDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -605,7 +605,7 @@ public class Guest_bookingPage1 extends Fragment {
         showBox = false;
         cottageHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getCottageDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getCottageDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -626,7 +626,7 @@ public class Guest_bookingPage1 extends Fragment {
                 e.printStackTrace();
             }
 
-            Cottage_Adapter adapter = new Cottage_Adapter(getContext(),cottageHolder, false);
+            Cottage_Adapter adapter = new Cottage_Adapter(getContext(), cottageHolder, false);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
             cottageList.setLayoutManager(layoutManager);
             cottageList.setAdapter(adapter);
@@ -640,7 +640,7 @@ public class Guest_bookingPage1 extends Fragment {
 
         roomHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getAvailableRoom.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getAvailableRoom.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -663,15 +663,14 @@ public class Guest_bookingPage1 extends Fragment {
             }
 
             roomList.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
-            Room_Adapter adapter = new Room_Adapter(getActivity(),roomHolder, true);
+            Room_Adapter adapter = new Room_Adapter(getActivity(), roomHolder, true);
             roomList.setAdapter(adapter);
 
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("checkIn_date", firstSelectedDate);
                 map.put("checkIn_time", firstSelectedTime);
                 map.put("checkOut_date", secondSelectedDate);

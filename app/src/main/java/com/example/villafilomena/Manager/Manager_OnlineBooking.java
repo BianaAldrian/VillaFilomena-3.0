@@ -33,7 +33,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Manager_OnlineBooking extends AppCompatActivity implements Manager_bookingConfirmation_Adapter.ItemClickListener{
+public class Manager_OnlineBooking extends AppCompatActivity implements Manager_bookingConfirmation_Adapter.ItemClickListener {
     Manager_bookingConfirmation_Adapter adapter;
     String ipAddress;
     RecyclerView bookingList_container;
@@ -75,8 +75,8 @@ public class Manager_OnlineBooking extends AppCompatActivity implements Manager_
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 100 && (grantResults.length>0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)){
-            Generate_PDFReceipt pdfReceipt = new Generate_PDFReceipt(this, "", "", "", "", "", "", "", "", "", "", "", "","");
+        if (requestCode == 100 && (grantResults.length > 0) && (grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+            Generate_PDFReceipt pdfReceipt = new Generate_PDFReceipt(this, "", "", "", "", "", "", "", "", "", "", "", "", "");
             pdfReceipt.createFolder();
         } else {
             Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
@@ -93,7 +93,7 @@ public class Manager_OnlineBooking extends AppCompatActivity implements Manager_
     public void listBookingRequest() {
         ArrayList<BookingInfo_Model> bookingHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getPendingBookings.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getPendingBookings.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -118,7 +118,8 @@ public class Manager_OnlineBooking extends AppCompatActivity implements Manager_
                             object.getString("reference_num"),
                             object.getString("proofPay_url"),
                             object.getString("receipt_url"),
-                            object.getString("bookings_status")
+                            object.getString("bookings_status"),
+                            ""
                     );
                     bookingHolder.add(model);
                 }

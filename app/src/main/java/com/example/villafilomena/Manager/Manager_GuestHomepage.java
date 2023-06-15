@@ -233,7 +233,7 @@ public class Manager_GuestHomepage extends AppCompatActivity {
 
     //method for retrieving the image for banner in database and set it to image banner view
     public void setBanner() {
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getBanner.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getBanner.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -251,12 +251,11 @@ public class Manager_GuestHomepage extends AppCompatActivity {
                 e.printStackTrace();
             }
         },
-                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("bannerStat","set");
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("bannerStat", "set");
                 return map;
             }
         };
@@ -265,8 +264,8 @@ public class Manager_GuestHomepage extends AppCompatActivity {
 
     //method for retrieving the introduction in database and set it to the introduction view
     @SuppressLint("SetTextI18n")
-    public void setIntro(){
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getIntro.php";
+    public void setIntro() {
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getIntro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -277,7 +276,7 @@ public class Manager_GuestHomepage extends AppCompatActivity {
                     currentIntro = jsonObject.getString("id");
                     String intro = jsonObject.getString("intro");
 
-                    introView.setText(""+intro);
+                    introView.setText("" + intro);
 
                 }
 
@@ -285,12 +284,11 @@ public class Manager_GuestHomepage extends AppCompatActivity {
                 e.printStackTrace();
             }
         },
-                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("intro_status","set");
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("intro_status", "set");
                 return map;
             }
         };
@@ -300,7 +298,7 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     private void displayImages() {
         imageHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getImages.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getImages.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -328,14 +326,14 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     }
 
     //method for picking the image
-    private void chooseImage(){
+    private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(intent, PICK_IMAGE_REQUEST);
     }
 
-    private void chooseMultiImage(){
+    private void chooseMultiImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -368,8 +366,7 @@ public class Manager_GuestHomepage extends AppCompatActivity {
             });
 
             upload_banner.show();
-        }
-        else if (requestCode == PICK_MULTI_IMAGE_REQUEST && resultCode == RESULT_OK) {
+        } else if (requestCode == PICK_MULTI_IMAGE_REQUEST && resultCode == RESULT_OK) {
             if (data != null) {
                 if (data.getClipData() != null) {
                     // Multiple images were selected
@@ -392,39 +389,37 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     }
 
     //method for getting the file extension type of the image or video
-    private String getFileExt(Uri MyUri){
+    private String getFileExt(Uri MyUri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(MyUri));
     }
 
     //method for inserting banner image in database
-    public void uploadBannerImage(){
+    public void uploadBannerImage() {
         String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(new Date());
-        if(imageUri != null){
-            String fileName = timestamp+"."+getFileExt(imageUri);
+        if (imageUri != null) {
+            String fileName = timestamp + "." + getFileExt(imageUri);
             StorageReference reference = BannerImageReference.child(fileName);
             reference.putFile(imageUri)
                     .addOnSuccessListener(taskSnapshot ->
                             reference.getDownloadUrl().addOnSuccessListener(uri -> {
                                 String bannerUrl = uri.toString();
-                                String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/insert/manager_uploadBanner.php";
+                                String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/insert/manager_uploadBanner.php";
                                 RequestQueue requestQueue = Volley.newRequestQueue(this);
                                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                                    if (response.equals("success")){
+                                    if (response.equals("success")) {
                                         Toast.makeText(getApplicationContext(), "Upload Successful", Toast.LENGTH_SHORT).show();
                                         updateBannerStat();
-                                    }
-                                    else if(response.equals("failed")){
+                                    } else if (response.equals("failed")) {
                                         Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
                                     }
                                 },
-                                        error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show())
-                                {
+                                        error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()) {
                                     @Override
-                                    protected HashMap<String,String> getParams() {
-                                        HashMap<String,String> map = new HashMap<>();
-                                        map.put("banner_url",bannerUrl);
+                                    protected HashMap<String, String> getParams() {
+                                        HashMap<String, String> map = new HashMap<>();
+                                        map.put("banner_url", bannerUrl);
                                         return map;
                                     }
                                 };
@@ -432,36 +427,34 @@ public class Manager_GuestHomepage extends AppCompatActivity {
                             }))
                     .addOnFailureListener(e ->
                             Toast.makeText(Manager_GuestHomepage.this, "Failed", Toast.LENGTH_SHORT).show());
-        }else {
+        } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
 
     //method for inserting the introduction in database
-    public void uploadIntroduction(EditText introduction){
-        if (!TextUtils.isEmpty(introduction.getText().toString())){
-            String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/insert/manager_uploadIntro.php";
+    public void uploadIntroduction(EditText introduction) {
+        if (!TextUtils.isEmpty(introduction.getText().toString())) {
+            String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/insert/manager_uploadIntro.php";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                if (response.equals("success")){
+                if (response.equals("success")) {
                     Toast.makeText(getApplicationContext(), "Upload Successful", Toast.LENGTH_SHORT).show();
                     updateIntroStat();
-                }
-                else if(response.equals("failed")){
+                } else if (response.equals("failed")) {
                     Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
                 }
             },
-                    error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show())
-            {
+                    error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()) {
                 @Override
-                protected HashMap<String,String> getParams() {
-                    HashMap<String,String> map = new HashMap<>();
-                    map.put("introText",introduction.getText().toString());
+                protected HashMap<String, String> getParams() {
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("introText", introduction.getText().toString());
                     return map;
                 }
             };
             requestQueue.add(stringRequest);
-        }else {
+        } else {
             Toast.makeText(this, "Introduction is empty", Toast.LENGTH_LONG).show();
         }
     }
@@ -500,9 +493,10 @@ public class Manager_GuestHomepage extends AppCompatActivity {
             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
                 if (response.equals("success")) {
                     count++;
-                    if (count == downloadUrls.size()){
+                    if (count == downloadUrls.size()) {
                         displayImages();
                         Toast.makeText(getApplicationContext(), "Upload Successful", Toast.LENGTH_SHORT).show();
+                        edit_Image.dismiss();
                     }
                 } else if (response.equals("failed")) {
                     Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
@@ -524,7 +518,7 @@ public class Manager_GuestHomepage extends AppCompatActivity {
 
 
     //method for inserting videos in database
-    public void uploadVideos(){
+    public void uploadVideos() {
 
     }
 
@@ -571,24 +565,22 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     }*/
 
     //method for updating the status of banner when a new banner is inserted
-    public void updateBannerStat(){
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/update/manager_updateBannerStat.php";
+    public void updateBannerStat() {
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/update/manager_updateBannerStat.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Toast.makeText(getApplicationContext(), "Update Successful", Toast.LENGTH_SHORT).show();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(getApplicationContext(), "Update Failed", Toast.LENGTH_SHORT).show();
             }
         },
-                error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("id",currentBanner);
-                map.put("set_banner","unset");
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("id", currentBanner);
+                map.put("set_banner", "unset");
                 return map;
             }
         };
@@ -596,24 +588,22 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     }
 
     //method for updating the status of introduction when a new intro is inserted
-    public void updateIntroStat(){
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/update/manager_updateIntro.php";
+    public void updateIntroStat() {
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/update/manager_updateIntro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Toast.makeText(getApplicationContext(), "Update Successful", Toast.LENGTH_SHORT).show();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(getApplicationContext(), "Update Failed", Toast.LENGTH_SHORT).show();
             }
         },
-                error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("id",currentIntro);
-                map.put("intro_status","unset");
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("id", currentIntro);
+                map.put("intro_status", "unset");
                 return map;
             }
         };
@@ -621,10 +611,10 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     }
 
     //method for listing the uploaded images of banner in the dialog when uploading
-    public void bannerList(RecyclerView bannerList){
+    public void bannerList(RecyclerView bannerList) {
         ArrayList<Manager_GuestHomepageViews_Model> GuestView_holder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getBanner.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getBanner.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -645,12 +635,11 @@ public class Manager_GuestHomepage extends AppCompatActivity {
             bannerList.setLayoutManager(layoutManager);
             bannerList.setAdapter(adapter);
         },
-                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("bannerStat","unset");
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("bannerStat", "unset");
                 return map;
             }
         };
@@ -658,10 +647,10 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     }
 
     //method for listing the uploaded introduction in the dialog when uploading
-    public void introList(RecyclerView introList){
+    public void introList(RecyclerView introList) {
         ArrayList<Manager_GuestHomepageViews_Model> GuestView_holder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getIntro.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getIntro.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -682,12 +671,11 @@ public class Manager_GuestHomepage extends AppCompatActivity {
             introList.setLayoutManager(layoutManager);
             introList.setAdapter(adapter);
         },
-                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(Manager_GuestHomepage.this, error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("intro_status","unset");
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("intro_status", "unset");
                 return map;
             }
         };
@@ -695,10 +683,10 @@ public class Manager_GuestHomepage extends AppCompatActivity {
     }
 
     //method for listing the uploaded images in the dialog when uploading
-    public void imageList(RecyclerView imageList){
+    public void imageList(RecyclerView imageList) {
         ArrayList<Manager_GuestHomepageViews_Model> GuestView_holder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getImages.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getImages.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {

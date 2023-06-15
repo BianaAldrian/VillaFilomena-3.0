@@ -20,7 +20,7 @@
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/btn_back"/>
+                android:src="@drawable/btn_back" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -30,21 +30,21 @@
                 android:gravity="center"
                 android:text="Organization Chart"
                 android:textColor="#ffffff"
-                android:textSize="26sp"/>
+                android:textSize="26sp" />
 
             <ImageView
                 android:id="@+id/manager_RoomCottageDetail_Edit"
-                android:layout_gravity="center"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:src="@drawable/edit"/>
+                android:layout_gravity="center"
+                android:src="@drawable/edit" />
 
             <ImageView
                 android:id="@+id/manager_RoomCottageDetail_Save"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/save"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
         </LinearLayout>
 
@@ -57,13 +57,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"/>
+                android:orientation="vertical" />
 
             <ImageView
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center|top"
-                android:background="@drawable/resort_owner_pic"/>
+                android:background="@drawable/resort_owner_pic" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
@@ -74,7 +74,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/btn_bg"/>
+                    android:background="@drawable/btn_bg" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,7 +97,7 @@
                         android:gravity="center"
                         android:text="Resort Owner"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -126,7 +126,7 @@
                     android:layout_width="120dp"
                     android:layout_height="120dp"
                     android:layout_gravity="center|top"
-                    android:background="@drawable/resort_manager_pic"/>
+                    android:background="@drawable/resort_manager_pic" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="150dp"
@@ -137,7 +137,7 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/btn_bg"/>
+                        android:background="@drawable/btn_bg" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -160,7 +160,7 @@
                             android:gravity="center"
                             android:text="Resort Manager"
                             android:textColor="@color/black"
-                            android:textSize="15sp"/>
+                            android:textSize="15sp" />
 
                     </LinearLayout>
 
@@ -213,7 +213,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -223,7 +223,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -237,7 +237,7 @@
                                 android:gravity="center"
                                 android:text="Front Desk 1"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -261,7 +261,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -271,7 +271,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -285,7 +285,7 @@
                                 android:gravity="center"
                                 android:text="Front Desk 2"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -309,7 +309,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -319,7 +319,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -333,7 +333,7 @@
                                 android:gravity="center"
                                 android:text="Front Desk 3"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -357,7 +357,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -367,7 +367,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -381,7 +381,7 @@
                                 android:gravity="center"
                                 android:text="Employee 1"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -405,7 +405,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -415,7 +415,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -453,7 +453,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -463,7 +463,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -477,7 +477,7 @@
                                 android:gravity="center"
                                 android:text="Employee 3"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -501,7 +501,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -511,7 +511,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -525,7 +525,7 @@
                                 android:gravity="center"
                                 android:text="Employee 4"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -549,7 +549,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -559,7 +559,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -573,7 +573,7 @@
                                 android:gravity="center"
                                 android:text="Employee 5"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 
@@ -597,7 +597,7 @@
                         android:layout_width="100dp"
                         android:layout_height="80dp"
                         android:layout_gravity="center|top"
-                        android:background="@drawable/fd_icon"/>
+                        android:background="@drawable/fd_icon" />
 
                     <androidx.cardview.widget.CardView
                         android:layout_width="120dp"
@@ -607,7 +607,7 @@
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/btn_bg"/>
+                            android:background="@drawable/btn_bg" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -621,7 +621,7 @@
                                 android:gravity="center"
                                 android:text="Employee 6"
                                 android:textColor="@color/black"
-                                android:textSize="18sp"/>
+                                android:textSize="18sp" />
 
                         </LinearLayout>
 

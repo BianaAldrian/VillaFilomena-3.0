@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background1"
     android:orientation="vertical">
 
@@ -10,8 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@drawable/header"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
 
         <ImageView
@@ -25,12 +25,12 @@
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:fontFamily="@font/beaurivage_regular"
             android:gravity="center"
             android:text="My Account"
-            android:layout_weight="1"
             android:textColor="#FFFFFF"
-            android:textSize="40sp"/>
+            android:textSize="40sp" />
 
         <ImageView
             android:layout_width="50dp"
@@ -50,31 +50,31 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="50dp"
+        android:orientation="vertical">
 
         <ImageView
             android:layout_width="220dp"
             android:layout_height="220dp"
-            android:layout_marginStart="20dp"
             android:layout_gravity="center"
-            android:background="@drawable/user"/>
+            android:layout_marginStart="20dp"
+            android:background="@drawable/user" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="170dp"
+                android:fontFamily="@font/eb_garamond_regular"
                 android:text="Full Name:"
-                android:textSize="20sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/eb_garamond_regular"/>
+                android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -85,7 +85,7 @@
                 <ImageView
                     android:layout_width="250dp"
                     android:layout_height="40dp"
-                    android:background="@drawable/cardview_bg"/>
+                    android:background="@drawable/cardview_bg" />
 
             </LinearLayout>
 
@@ -93,16 +93,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="170dp"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_regular"
                     android:text="Contact Number:"
-                    android:textSize="20sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/eb_garamond_regular"/>
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -112,7 +112,7 @@
                     <ImageView
                         android:layout_width="250dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/cardview_bg"/>
+                        android:background="@drawable/cardview_bg" />
 
                 </LinearLayout>
 
@@ -122,16 +122,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="170dp"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_regular"
                     android:text="Email Address:"
-                    android:textSize="20sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/eb_garamond_regular"/>
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -141,7 +141,7 @@
                     <ImageView
                         android:layout_width="250dp"
                         android:layout_height="40dp"
-                        android:background="@drawable/cardview_bg"/>
+                        android:background="@drawable/cardview_bg" />
 
                 </LinearLayout>
 
@@ -151,16 +151,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="170dp"
-                android:orientation="vertical"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_regular"
                     android:text="Password:"
-                    android:textSize="20sp"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/eb_garamond_regular"/>
+                    android:textSize="20sp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -179,7 +179,7 @@
                             android:layout_height="40dp"
                             android:background="@drawable/cardview_bg"
                             android:password="true"
-                            android:textColor="@color/black"/>
+                            android:textColor="@color/black" />
 
                     </com.google.android.material.textfield.TextInputLayout>
 

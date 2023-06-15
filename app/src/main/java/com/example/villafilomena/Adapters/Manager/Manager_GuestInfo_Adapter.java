@@ -45,6 +45,7 @@ public class Manager_GuestInfo_Adapter extends RecyclerView.Adapter<Manager_Gues
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView guestDetails;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

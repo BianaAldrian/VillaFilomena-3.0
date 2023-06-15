@@ -12,7 +12,7 @@
         android:fontFamily="@font/eb_garamond_regular"
         android:text="Reason Of Rejection: "
         android:textColor="@color/black"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <EditText
         android:id="@+id/manager_reject_reason"
@@ -22,7 +22,7 @@
         android:fontFamily="@font/eb_garamond_regular"
         android:hint="Reason"
         android:textColor="@color/black"
-        android:textSize="24sp"/>
+        android:textSize="24sp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/manager_reject_confirm"
@@ -36,6 +36,6 @@
         android:text="Confirm"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="20dp"/>
+        android:textSize="20dp" />
 
 </LinearLayout>

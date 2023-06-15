@@ -65,22 +65,22 @@ public class Guest_Login extends AppCompatActivity {
     }
 
     private void login() {
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_login.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_login.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("not_exist")){
+            if (response.equals("not_exist")) {
                 Toast toast = Toast.makeText(this, "Email doesn't exist", Toast.LENGTH_LONG);
                 toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0); // Set the gravity and offset
                 toast.show();
 
-            } else if(response.equals("true")){
+            } else if (response.equals("true")) {
                 updateToken();
                 startActivity(new Intent(this, Guest_fragmentsContainer.class));
                 //Guest_fragmentsContainer.email = email.getText().toString();
 
                 SharedPreferences sharedPreferences = getSharedPreferences("guestEmail_Pref", MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString("guestEmail",email.getText().toString());
+                editor.putString("guestEmail", email.getText().toString());
                 editor.apply();
 
                 finish();
@@ -91,13 +91,12 @@ public class Guest_Login extends AppCompatActivity {
                 toast.show();
             }
         },
-                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-        {
+                error -> Log.e("login", error.getMessage())) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",email.getText().toString().trim());
-                map.put("password",password.getText().toString().trim());
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", email.getText().toString().trim());
+                map.put("password", password.getText().toString().trim());
 
                 return map;
             }
@@ -106,22 +105,21 @@ public class Guest_Login extends AppCompatActivity {
     }
 
     private void updateToken() {
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/update/guest_updatetoken.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/update/guest_updatetoken.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Log.d("Token Update", "Token Updated");
-            } else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Log.d("Token Update", "Token Update Failed");
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",email.getText().toString().trim());
-                map.put("token",token);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", email.getText().toString().trim());
+                map.put("token", token);
 
                 return map;
             }
@@ -131,13 +129,13 @@ public class Guest_Login extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (originateFrom.equals("fragmentContainer")){
+        if (originateFrom.equals("fragmentContainer")) {
             startActivity(new Intent(this, Guest_fragmentsContainer.class));
             finish();
-        } else if (originateFrom.equals("registration")){
+        } else if (originateFrom.equals("registration")) {
             startActivity(new Intent(this, Guest_Register.class));
             finish();
-        } else if (originateFrom.equals("booking")){
+        } else if (originateFrom.equals("booking")) {
             startActivity(new Intent(this, Guest_fragmentsContainer.class));
             finish();
         }

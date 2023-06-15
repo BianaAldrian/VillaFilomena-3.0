@@ -21,7 +21,7 @@
                 android:layout_width="60dp"
                 android:layout_height="match_parent"
                 android:layout_marginStart="20dp"
-                android:src="@drawable/btn_back"/>
+                android:src="@drawable/btn_back" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -30,7 +30,7 @@
                 android:fontFamily="@font/beaurivage_regular"
                 android:text="Expected Arrival and Departure"
                 android:textColor="@color/white"
-                android:textSize="32sp"/>
+                android:textSize="32sp" />
 
         </FrameLayout>
 
@@ -45,7 +45,7 @@
                 android:id="@+id/frontdesk_back"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/arrow_back_ios_24"/>
+                android:src="@drawable/arrow_back_ios_24" />
 
             <TextView
                 android:id="@+id/frontdesk_Txt"
@@ -63,7 +63,7 @@
                 android:id="@+id/frontdesk_next"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/arrow_forward_ios_24"/>
+                android:src="@drawable/arrow_forward_ios_24" />
 
         </LinearLayout>
 
@@ -88,7 +88,7 @@
                     android:gravity="center"
                     android:text="No."
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -98,7 +98,7 @@
                     android:gravity="center"
                     android:text="Guest Name"
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -108,7 +108,7 @@
                     android:gravity="center"
                     android:text="No. Of People"
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -118,7 +118,7 @@
                     android:gravity="center"
                     android:text="Rooms &amp; Cottages"
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -128,7 +128,7 @@
                     android:gravity="center"
                     android:text="Total"
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -138,7 +138,7 @@
                     android:gravity="center"
                     android:text="Balance"
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -148,7 +148,7 @@
                     android:gravity="center"
                     android:text="Date"
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="0dp"
@@ -158,7 +158,7 @@
                     android:gravity="center"
                     android:text="Status"
                     android:textColor="@color/black"
-                    android:textSize="16sp"/>
+                    android:textSize="16sp" />
 
             </LinearLayout>
         </FrameLayout>
@@ -169,7 +169,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="20dp"
-            android:layout_marginBottom="20dp"/>
+            android:layout_marginBottom="20dp" />
     </LinearLayout>
 
 </LinearLayout>

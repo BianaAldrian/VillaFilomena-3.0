@@ -100,7 +100,7 @@ public class Manager_Dashboard extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void get_Infos() {
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getAccount.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getAccount.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
@@ -108,7 +108,7 @@ public class Manager_Dashboard extends AppCompatActivity {
                         for (int i = 0; i < jsonArray.length(); i++) {
                             JSONObject jsonObject = jsonArray.getJSONObject(i);
 
-                            fullname.setText(jsonObject.getString("firstname")+" "+ jsonObject.getString("lastname"));
+                            fullname.setText(jsonObject.getString("firstname") + " " + jsonObject.getString("lastname"));
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();

@@ -146,8 +146,8 @@
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/eb_garamond_medium"
         android:text="Log In"
-        android:textSize="20sp"
         android:textAllCaps="false"
-        tools:ignore="HardcodedText"/>
+        android:textSize="20sp"
+        tools:ignore="HardcodedText" />
 
 </FrameLayout>

@@ -8,12 +8,12 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -58,7 +58,7 @@
                         android:gravity="center"
                         android:text="Quantity"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -69,7 +69,7 @@
                         android:gravity="center"
                         android:text="Days &amp; Nights"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -80,7 +80,7 @@
                         android:gravity="center"
                         android:text="Total"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -91,7 +91,7 @@
                         android:gravity="center"
                         android:text="Adult/s\nKid/s\nRooms\nCottages"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/frontdesk_booking2_qty"
@@ -103,7 +103,7 @@
                         android:gravity="center"
                         android:text="2\n2\n1\n0"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/frontdesk_booking2_days_nights"
@@ -115,7 +115,7 @@
                         android:gravity="center"
                         android:text="\n2 Days &amp; \n2 Nights\n"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/frontdesk_booking2_tally"
@@ -127,7 +127,7 @@
                         android:gravity="center"
                         android:text="₱360\n₱500\n₱2,500\n₱0"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </GridLayout>
 
@@ -146,39 +146,39 @@
                         android:gravity="center"
                         android:text="Total Payment: ₱3,190"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
             </LinearLayout>
 
-          <!--  <LinearLayout
-                android:layout_width="350dp"
-                android:layout_height="60dp"
-                android:background="@drawable/btn_bg"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:padding="10dp">
+            <!--  <LinearLayout
+                  android:layout_width="350dp"
+                  android:layout_height="60dp"
+                  android:background="@drawable/btn_bg"
+                  android:gravity="center"
+                  android:orientation="horizontal"
+                  android:padding="10dp">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:fontFamily="@font/eb_garamond_bold"
-                    android:text="Payment"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                  <TextView
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_weight="1"
+                      android:fontFamily="@font/eb_garamond_bold"
+                      android:text="Payment"
+                      android:textColor="@color/black"
+                      android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/frontDesk_booking2_total"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/eb_garamond_bold"
-                    android:text="Total"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
+                  <TextView
+                      android:id="@+id/frontDesk_booking2_total"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:fontFamily="@font/eb_garamond_bold"
+                      android:text="Total"
+                      android:textColor="@color/black"
+                      android:textSize="20sp" />
 
-            </LinearLayout>-->
+              </LinearLayout>-->
 
             <TextView
                 android:layout_width="wrap_content"
@@ -187,7 +187,7 @@
                 android:fontFamily="@font/eb_garamond_bold"
                 android:text="Mode of Payment"
                 android:textColor="@color/black"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -236,7 +236,7 @@
                     android:background="@drawable/btn_bg"
                     android:text="back"
                     android:textSize="20sp" />
-
+a
                 <Space
                     android:layout_width="40dp"
                     android:layout_height="match_parent" />

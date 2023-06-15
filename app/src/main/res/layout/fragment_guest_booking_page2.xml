@@ -59,7 +59,7 @@
                         android:gravity="center"
                         android:text="Quantity"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -70,7 +70,7 @@
                         android:gravity="center"
                         android:text="Days &amp; Nights"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -81,7 +81,7 @@
                         android:gravity="center"
                         android:text="Total"
                         android:textColor="@color/black"
-                        android:textSize="15sp"/>
+                        android:textSize="15sp" />
 
                     <TextView
                         android:layout_width="0dp"
@@ -92,7 +92,7 @@
                         android:gravity="center"
                         android:text="Adult/s\nKid/s\nRooms\nCottages"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/Guest_booking2_qty"
@@ -104,7 +104,7 @@
                         android:gravity="center"
                         android:text="2\n2\n1\n0"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/Guest_booking2_days_nights"
@@ -116,7 +116,7 @@
                         android:gravity="center"
                         android:text="\n2 Days &amp; \n2 Nights\n"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/Guest_booking2_tally"
@@ -128,7 +128,7 @@
                         android:gravity="center"
                         android:text="₱360\n₱500\n₱2,500\n₱0"
                         android:textColor="@color/black"
-                        android:textSize="16sp"/>
+                        android:textSize="16sp" />
 
                 </GridLayout>
 
@@ -147,7 +147,7 @@
                         android:gravity="center"
                         android:text="Total Payment: ₱3,190"
                         android:textColor="@color/black"
-                        android:textSize="18sp"/>
+                        android:textSize="18sp" />
 
                 </LinearLayout>
 
@@ -174,7 +174,7 @@
 
                 <Space
                     android:layout_width="40dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
                 <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/Guest_booking2_continue"

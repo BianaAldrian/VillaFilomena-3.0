@@ -37,13 +37,13 @@
             android:gravity="center"
             android:text="Online Booking"
             android:textColor="#F5F5F5"
-            android:textSize="38sp"/>
+            android:textSize="38sp" />
 
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:background="@drawable/save"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
 
     </LinearLayout>
@@ -52,6 +52,6 @@
         android:id="@+id/Manager_bookingList_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"/>
+        android:layout_margin="10dp" />
 
 </LinearLayout>

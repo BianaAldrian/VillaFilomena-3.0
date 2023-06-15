@@ -54,7 +54,7 @@ public class Guest_homePage extends Fragment {
     private void displayImages() {
         imageHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getImages.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getImages.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -81,10 +81,10 @@ public class Guest_homePage extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    private void displayVideos(){
+    private void displayVideos() {
         videoHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getVideos.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getVideos.php";
         RequestQueue requestQueue = Volley.newRequestQueue(requireContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {

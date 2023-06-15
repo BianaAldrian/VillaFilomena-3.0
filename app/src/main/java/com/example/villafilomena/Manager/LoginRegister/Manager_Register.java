@@ -35,8 +35,8 @@ public class Manager_Register extends AppCompatActivity {
     EditText email, password, reEnterPass, firstname, lastname, contact;
     Button signUp;
 
-    public static String generateCode(){
-       /* int min = 1; // Minimum value
+   /* public static String generateCode() {
+       *//* int min = 1; // Minimum value
         int max = 100; // Maximum value
         int count = 6; // Number of random numbers to generate
 
@@ -46,19 +46,19 @@ public class Manager_Register extends AppCompatActivity {
         for (int i = 0; i < count; i++) {
             int randomNumber = random.nextInt(max - min + 1) + min;
             code.add(Integer.toString(randomNumber));
-        }*/
+        }*//*
 
         Random random = new Random();
         int pin = random.nextInt(900000) + 100000; // Generate a random 6-digit number
         return String.valueOf(pin);
-    }
+    }*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manager_register);
 
-        SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        /*SharedPreferences sharedPreferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
         ipAddress = sharedPreferences.getString("IP", "");
 
         FirebaseMessaging.getInstance().getToken()
@@ -88,45 +88,43 @@ public class Manager_Register extends AppCompatActivity {
 
         signUp.setOnClickListener(v -> {
             verify();
-        });
+        });*/
 
     }
 
-    private void register(){
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/insert/manager_register.php";
+   /* private void register() {
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/insert/manager_register.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 startActivity(new Intent(this, Manager_Dashboard.class));
                 Toast.makeText(this, "Registration Complete", Toast.LENGTH_SHORT).show();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(this, "Registration Failed", Toast.LENGTH_SHORT).show();
             }
         },
-                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("email",email.getText().toString());
-                map.put("password",password.getText().toString());
-                map.put("firstname",firstname.getText().toString());
-                map.put("lastname",lastname.getText().toString());
-                map.put("contactNum",contact.getText().toString());
-                map.put("token",token);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("email", email.getText().toString());
+                map.put("password", password.getText().toString());
+                map.put("firstname", firstname.getText().toString());
+                map.put("lastname", lastname.getText().toString());
+                map.put("contactNum", contact.getText().toString());
+                map.put("token", token);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void verify(){
+    private void verify() {
         String code = generateCode();
 
         String subject = "Verification Code";
 
-        JavaMailAPI javaMailAPI = new JavaMailAPI(this,email.getText().toString().trim(),subject,code);
+        JavaMailAPI javaMailAPI = new JavaMailAPI(this, email.getText().toString().trim(), subject, code);
 
         javaMailAPI.execute();
 
@@ -139,7 +137,7 @@ public class Manager_Register extends AppCompatActivity {
         Button verify = dialog.findViewById(R.id.popup_verifyRegister_verify);
 
         verify.setOnClickListener(v -> {
-            if (verificationCode.getText().toString().equals(code)){
+            if (verificationCode.getText().toString().equals(code)) {
                 //Toast.makeText(this, "same code", Toast.LENGTH_SHORT).show();
                 register();
             } else {
@@ -148,5 +146,5 @@ public class Manager_Register extends AppCompatActivity {
         });
 
         dialog.show();
-    }
+    }*/
 }

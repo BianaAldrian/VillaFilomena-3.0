@@ -91,10 +91,10 @@ public class Guest_bookingPage2 extends Fragment {
 
         detailsHolder = new ArrayList<>();
 
-        qty.setText(""+ Guest_bookingPage1.finalAdultQty +"\n"+ Guest_bookingPage1.finalKidQty +"\n"+ Guest_bookingPage1.selectedRoom_id.size() +"\n"+ Guest_bookingPage1.selectedCottage_id.size());
-        day_night.setText(""+ Guest_bookingPage1.dayDiff +" day/s\n"+ Guest_bookingPage1.nightDiff+" night/s\n");
-        tally.setText("₱"+ Guest_bookingPage1.adultFee +"\n₱"+ Guest_bookingPage1.kidFee +"\n₱"+ Guest_bookingPage1.roomRate +"\n₱"+ Guest_bookingPage1.cottageRate);
-        total.setText("Total Payment: ₱"+Guest_bookingPage1.total);
+        qty.setText("" + Guest_bookingPage1.finalAdultQty + "\n" + Guest_bookingPage1.finalKidQty + "\n" + Guest_bookingPage1.selectedRoom_id.size() + "\n" + Guest_bookingPage1.selectedCottage_id.size());
+        day_night.setText("" + Guest_bookingPage1.dayDiff + " day/s\n" + Guest_bookingPage1.nightDiff + " night/s\n");
+        tally.setText("₱" + Guest_bookingPage1.adultFee + "\n₱" + Guest_bookingPage1.kidFee + "\n₱" + Guest_bookingPage1.roomRate + "\n₱" + Guest_bookingPage1.cottageRate);
+        total.setText("Total Payment: ₱" + Guest_bookingPage1.total);
 
         for (String roomId : Guest_bookingPage1.selectedRoom_id) {
             displaySelectedRoom(roomId);
@@ -117,11 +117,11 @@ public class Guest_bookingPage2 extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
-        transaction.replace(R.id.guestFragmentContainer,fragment).commit();
+        transaction.replace(R.id.guestFragmentContainer, fragment).commit();
     }
 
     private void displaySelectedRoom(String roomId) {
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getSelectedRoomDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getSelectedRoomDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -150,19 +150,18 @@ public class Guest_bookingPage2 extends Fragment {
             }
 
         },
-                error -> Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show())
-        {
+                error -> Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("id",roomId);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("id", roomId);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void termsConditionDialog(){
+    private void termsConditionDialog() {
         Dialog termsCondition = new Dialog(getContext());
         termsCondition.setContentView(R.layout.popup_payment_termsandcondition_dialog);
         Window window = termsCondition.getWindow();
@@ -179,7 +178,7 @@ public class Guest_bookingPage2 extends Fragment {
     }
 
     @SuppressLint("SetTextI18n")
-    private void GCashDialog(){
+    private void GCashDialog() {
         Dialog gcash = new Dialog(getContext());
         gcash.setContentView(R.layout.popup_gcash_payment_dialog);
         Window window = gcash.getWindow();
@@ -193,9 +192,9 @@ public class Guest_bookingPage2 extends Fragment {
         Button upload = gcash.findViewById(R.id.popup_GCash_upload);
         receipt = gcash.findViewById(R.id.popup_GCash_image);
 
-        String[] paymentOptions = new String[] {"Full", "Partial"};
+        String[] paymentOptions = new String[]{"Full", "Partial"};
 
-        totalPayment.setText(""+Guest_bookingPage1.total);
+        totalPayment.setText("" + Guest_bookingPage1.total);
 
         ArrayAdapter<String> paymentSpinnerAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_spinner_item, paymentOptions);
         paymentOptionSpn.setAdapter(paymentSpinnerAdapter);
@@ -205,10 +204,10 @@ public class Guest_bookingPage2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 selectedPaymentOption = parent.getItemAtPosition(position).toString();
 
-                if (selectedPaymentOption.equals("Full")){
-                    totalPayment.setText(""+Guest_bookingPage1.total);
+                if (selectedPaymentOption.equals("Full")) {
+                    totalPayment.setText("" + Guest_bookingPage1.total);
                 } else if (selectedPaymentOption.equals("Partial")) {
-                    totalPayment.setText(""+(Guest_bookingPage1.total / 2));
+                    totalPayment.setText("" + (Guest_bookingPage1.total / 2));
                 }
                 //Toast.makeText(getContext(), selectedPaymentOption, Toast.LENGTH_SHORT).show();
             }
@@ -223,7 +222,7 @@ public class Guest_bookingPage2 extends Fragment {
             chooseImage();
         });
         confirm.setOnClickListener(v -> {
-            if (gcashNum.getText().length() < 11 || gcashNum.getText().toString().isEmpty()){
+            if (gcashNum.getText().length() < 11 || gcashNum.getText().toString().isEmpty()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Invalid!");
                 builder.setMessage("Incomplete GCash number, please double check");
@@ -234,7 +233,7 @@ public class Guest_bookingPage2 extends Fragment {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
-            } else if (refNum.getText().length() < 13 || refNum.getText().toString().isEmpty()){
+            } else if (refNum.getText().length() < 13 || refNum.getText().toString().isEmpty()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Invalid!");
                 builder.setMessage("Incomplete Reference number, please double check");
@@ -320,20 +319,20 @@ public class Guest_bookingPage2 extends Fragment {
         }
     }
 
-    private void requestBooking(String imageUrl){
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/insert/guest_requestBooking.php";
+    private void requestBooking(String imageUrl) {
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/insert/guest_requestBooking.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 getManagerToken();
                 loading_dialog.dismiss();
 
-                if (!Guest_bookingPage1.selectedRoom_id.isEmpty()){
+                if (!Guest_bookingPage1.selectedRoom_id.isEmpty()) {
                     for (String roomId : Guest_bookingPage1.selectedRoom_id) {
                         reserveRoom(roomId);
                     }
                 }
-                if (!Guest_bookingPage1.selectedCottage_id.isEmpty()){
+                if (!Guest_bookingPage1.selectedCottage_id.isEmpty()) {
                     for (String cottageId : Guest_bookingPage1.selectedCottage_id) {
                         reserveCottage(cottageId);
                     }
@@ -348,96 +347,90 @@ public class Guest_bookingPage2 extends Fragment {
                 Toast toast = Toast.makeText(getContext(), "Booking Request Successful", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0); // Set the gravity and offset
                 toast.show();
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Toast.makeText(getContext(), "Booking Request Failed", Toast.LENGTH_SHORT).show();
                 loading_dialog.hide();
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("guest_email",Guest_fragmentsContainer.email);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("guest_email", Guest_fragmentsContainer.email);
                 //map.put("guest_email","aldrian.scarlan@gmail.com");
-                map.put("checkIn_date",Guest_bookingPage1.finalCheckIn_date);
-                map.put("checkIn_time",Guest_bookingPage1.finalCheckIn_time);
-                map.put("checkOut_date",Guest_bookingPage1.finalCheckOut_date);
-                map.put("checkOut_time",Guest_bookingPage1.finalCheckOut_time);
+                map.put("checkIn_date", Guest_bookingPage1.finalCheckIn_date);
+                map.put("checkIn_time", Guest_bookingPage1.finalCheckIn_time);
+                map.put("checkOut_date", Guest_bookingPage1.finalCheckOut_date);
+                map.put("checkOut_time", Guest_bookingPage1.finalCheckOut_time);
                 map.put("adult_qty", String.valueOf(Guest_bookingPage1.finalAdultQty));
                 map.put("kid_qty", String.valueOf(Guest_bookingPage1.finalKidQty));
                 map.put("room_id", String.valueOf(Guest_bookingPage1.selectedRoom_id).replace("[", "").replace("]", "").trim());
                 map.put("cottage_id", String.valueOf(Guest_bookingPage1.selectedCottage_id).replace("[", "").replace("]", "").trim());
                 map.put("total_payment", String.valueOf(Guest_bookingPage1.total));
-                map.put("payment_status",selectedPaymentOption);
-                map.put("GCash_number",GCashNum);
-                map.put("reference_num",RefNum);
-                map.put("proofPay_url",imageUrl);
+                map.put("payment_status", selectedPaymentOption);
+                map.put("GCash_number", GCashNum);
+                map.put("reference_num", RefNum);
+                map.put("proofPay_url", imageUrl);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void reserveRoom(String roomId){
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/insert/guest_roomReservation.php";
+    private void reserveRoom(String roomId) {
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/insert/guest_roomReservation.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Log.d("Room", "Room Reservation Successful");
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Log.d("Room", "Room Reservation Failed");
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("room_id",roomId);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("room_id", roomId);
                 map.put("bookBy_guest_email", Guest_fragmentsContainer.email);
-                map.put("checkIn_date",Guest_bookingPage1.finalCheckIn_date);
-                map.put("checkIn_time",Guest_bookingPage1.finalCheckIn_time);
-                map.put("checkOut_date",Guest_bookingPage1.finalCheckOut_date);
-                map.put("checkOut_time",Guest_bookingPage1.finalCheckOut_time);
+                map.put("checkIn_date", Guest_bookingPage1.finalCheckIn_date);
+                map.put("checkIn_time", Guest_bookingPage1.finalCheckIn_time);
+                map.put("checkOut_date", Guest_bookingPage1.finalCheckOut_date);
+                map.put("checkOut_time", Guest_bookingPage1.finalCheckOut_time);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void reserveCottage(String cottageId){
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/insert/guest_cottageReservation.php";
+    private void reserveCottage(String cottageId) {
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/insert/guest_cottageReservation.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Log.d("Cottage", "Cottage Reservation Successful");
-            }
-            else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Log.d("Cottage", "Cottage Reservation Failed");
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
-                map.put("room_id",cottageId);
-                map.put("bookBy_guest_email",Guest_fragmentsContainer.email);
-                map.put("checkIn_date",Guest_bookingPage1.finalCheckIn_date);
-                map.put("checkIn_time",Guest_bookingPage1.finalCheckIn_time);
-                map.put("checkOut_date",Guest_bookingPage1.finalCheckOut_date);
-                map.put("checkOut_time",Guest_bookingPage1.finalCheckOut_time);
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("room_id", cottageId);
+                map.put("bookBy_guest_email", Guest_fragmentsContainer.email);
+                map.put("checkIn_date", Guest_bookingPage1.finalCheckIn_date);
+                map.put("checkIn_time", Guest_bookingPage1.finalCheckIn_time);
+                map.put("checkOut_date", Guest_bookingPage1.finalCheckOut_date);
+                map.put("checkOut_time", Guest_bookingPage1.finalCheckOut_time);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
     }
 
-    private void getManagerToken(){
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getManagerToken.php";
+    private void getManagerToken() {
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getManagerToken.php";
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {

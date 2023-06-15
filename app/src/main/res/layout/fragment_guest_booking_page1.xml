@@ -66,7 +66,7 @@
 
                 <Space
                     android:layout_width="20dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -143,7 +143,7 @@
 
                 <Space
                     android:layout_width="20dp"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/guest_pickQty"
@@ -186,13 +186,13 @@
                 android:fontFamily="@font/eb_garamond_medium"
                 android:text="Rooms"
                 android:textColor="#000000"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Guest_roomList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:scrollbars="horizontal"/>
+                android:scrollbars="horizontal" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -201,13 +201,13 @@
                 android:fontFamily="@font/eb_garamond_medium"
                 android:text="Cottages"
                 android:textColor="#000000"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/Guest_cottageList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"/>
+                android:orientation="horizontal" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/Guest_booking_continue"
@@ -217,7 +217,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn_bg"
                 android:fontFamily="@font/eb_garamond_medium"
-                android:text="Continue"/>
+                android:text="Continue" />
         </LinearLayout>
 
     </ScrollView>

@@ -165,9 +165,9 @@ public class Manager_room_cottage_details extends AppCompatActivity {
         });
     }
 
-    public void displayRoomDetails(){
+    public void displayRoomDetails() {
         room_detailsHolder = new ArrayList<>();
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getRoomDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getRoomDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -188,7 +188,7 @@ public class Manager_room_cottage_details extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            roomAdapter = new Room_Adapter(this,room_detailsHolder, false);
+            roomAdapter = new Room_Adapter(this, room_detailsHolder, false);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             roomDetails_Container.setLayoutManager(layoutManager);
             roomDetails_Container.setAdapter(roomAdapter);
@@ -196,10 +196,10 @@ public class Manager_room_cottage_details extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    public void displayCottageDetails(){
+    public void displayCottageDetails() {
         cottage_detailsHolder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_getCottageDetails.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getCottageDetails.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -220,7 +220,7 @@ public class Manager_room_cottage_details extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            cottageAdapter = new Cottage_Adapter(this,room_detailsHolder, false);
+            cottageAdapter = new Cottage_Adapter(this, room_detailsHolder, false);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
             roomDetails_Container.setLayoutManager(layoutManager);
             roomDetails_Container.setAdapter(cottageAdapter);
@@ -230,7 +230,7 @@ public class Manager_room_cottage_details extends AppCompatActivity {
     }
 
 
-    private void chooseImage(){
+    private void chooseImage() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
@@ -238,7 +238,7 @@ public class Manager_room_cottage_details extends AppCompatActivity {
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode,Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK && data != null && data.getData() != null) {
@@ -249,41 +249,39 @@ public class Manager_room_cottage_details extends AppCompatActivity {
 
     }
 
-    private String getfileExt(Uri MyUri){
+    private String getfileExt(Uri MyUri) {
         ContentResolver contentResolver = getContentResolver();
         MimeTypeMap mimeTypeMap = MimeTypeMap.getSingleton();
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(MyUri));
     }
 
     private void insertRoomDetails(EditText roomName, EditText roomCapacity, EditText roomRate, EditText roomDescription) {
-        if(imageUri != null){
-            String fileName = roomName.getText().toString()+"."+getfileExt(imageUri);
+        if (imageUri != null) {
+            String fileName = roomName.getText().toString() + "." + getfileExt(imageUri);
             StorageReference reference = roomImages.child(fileName);
             reference.putFile(imageUri)
                     .addOnSuccessListener(taskSnapshot -> {
                         reference.getDownloadUrl().addOnSuccessListener(uri -> {
                             String roomUrl = uri.toString();
-                            String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/insert/manager_uploadRoomDtls.php";
+                            String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/insert/manager_uploadRoomDtls.php";
                             RequestQueue requestQueue = Volley.newRequestQueue(this);
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                                if (response.equals("success")){
+                                if (response.equals("success")) {
                                     Toast.makeText(this, "Upload Successful", Toast.LENGTH_SHORT).show();
                                     addRoom_details.hide();
-                                }
-                                else if(response.equals("failed")){
+                                } else if (response.equals("failed")) {
                                     Toast.makeText(this, "Upload Failed", Toast.LENGTH_SHORT).show();
                                 }
                             },
-                                    error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show())
-                            {
+                                    error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
                                 @Override
-                                protected HashMap<String,String> getParams() {
-                                    HashMap<String,String> map = new HashMap<>();
-                                    map.put("imageUrl",roomUrl);
-                                    map.put("roomName",roomName.getText().toString());
-                                    map.put("roomCapacity",roomCapacity.getText().toString());
-                                    map.put("roomRate",roomRate.getText().toString());
-                                    map.put("roomDescription",roomDescription.getText().toString());
+                                protected HashMap<String, String> getParams() {
+                                    HashMap<String, String> map = new HashMap<>();
+                                    map.put("imageUrl", roomUrl);
+                                    map.put("roomName", roomName.getText().toString());
+                                    map.put("roomCapacity", roomCapacity.getText().toString());
+                                    map.put("roomRate", roomRate.getText().toString());
+                                    map.put("roomDescription", roomDescription.getText().toString());
                                     return map;
                                 }
                             };
@@ -293,40 +291,38 @@ public class Manager_room_cottage_details extends AppCompatActivity {
                     .addOnFailureListener(e ->
                             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
                     );
-        }else {
+        } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void insertCottageDetails(EditText cottageName, EditText cottageCapacity, EditText cottageRate, EditText cottageDescription){
-        if(imageUri != null){
-            String fileName = cottageName.getText().toString()+"."+getfileExt(imageUri);
+    private void insertCottageDetails(EditText cottageName, EditText cottageCapacity, EditText cottageRate, EditText cottageDescription) {
+        if (imageUri != null) {
+            String fileName = cottageName.getText().toString() + "." + getfileExt(imageUri);
             StorageReference reference = cottageImages.child(fileName);
             reference.putFile(imageUri)
                     .addOnSuccessListener(taskSnapshot -> {
                         reference.getDownloadUrl().addOnSuccessListener(uri -> {
                             String cottageUrl = uri.toString();
-                            String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/insert/manager_uploadCottageDtls.php";
+                            String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/insert/manager_uploadCottageDtls.php";
                             RequestQueue requestQueue = Volley.newRequestQueue(this);
                             StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-                                if (response.equals("success")){
+                                if (response.equals("success")) {
                                     Toast.makeText(getApplicationContext(), "Upload Successful", Toast.LENGTH_SHORT).show();
                                     addCottage_details.hide();
-                                }
-                                else if(response.equals("failed")){
+                                } else if (response.equals("failed")) {
                                     Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
                                 }
                             },
-                                    error -> Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_LONG).show())
-                            {
+                                    error -> Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
                                 @Override
-                                protected HashMap<String,String> getParams() {
-                                    HashMap<String,String> map = new HashMap<String,String>();
-                                    map.put("imageUrl",cottageUrl);
-                                    map.put("cottageName",cottageName.getText().toString());
-                                    map.put("cottageCapacity",cottageCapacity.getText().toString());
-                                    map.put("cottageRate",cottageRate.getText().toString());
-                                    map.put("cottageDescription",cottageDescription.getText().toString());
+                                protected HashMap<String, String> getParams() {
+                                    HashMap<String, String> map = new HashMap<String, String>();
+                                    map.put("imageUrl", cottageUrl);
+                                    map.put("cottageName", cottageName.getText().toString());
+                                    map.put("cottageCapacity", cottageCapacity.getText().toString());
+                                    map.put("cottageRate", cottageRate.getText().toString());
+                                    map.put("cottageDescription", cottageDescription.getText().toString());
                                     return map;
                                 }
                             };
@@ -336,7 +332,7 @@ public class Manager_room_cottage_details extends AppCompatActivity {
                     .addOnFailureListener(e ->
                             Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
                     );
-        }else {
+        } else {
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }

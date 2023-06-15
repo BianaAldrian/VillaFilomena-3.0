@@ -55,7 +55,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="This room is equipped 1 loft type bed, bathroom, and cooking area."
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -65,7 +65,7 @@
                 android:gravity="center"
                 android:text="Room Type:"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/RoomCottageDetail2_roomName"
@@ -75,7 +75,7 @@
                 android:gravity="center"
                 android:text="Modern"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <!--<TextView
                 android:layout_width="match_parent"
@@ -106,7 +106,7 @@ NIGHT TOUR \n
                 android:gravity="center"
                 android:text="Guest Capacity:"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/RoomCottageDetail2_roomCapacity"
@@ -116,7 +116,7 @@ NIGHT TOUR \n
                 android:gravity="center"
                 android:text="4"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -125,7 +125,7 @@ NIGHT TOUR \n
                 android:gravity="center"
                 android:text="Cost:"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
             <TextView
                 android:id="@+id/RoomCottageDetail2_roomRate"
@@ -135,7 +135,7 @@ NIGHT TOUR \n
                 android:gravity="center"
                 android:text="₱2,500"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
 
         </LinearLayout>

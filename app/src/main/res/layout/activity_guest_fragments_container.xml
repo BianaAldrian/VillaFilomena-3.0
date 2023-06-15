@@ -14,8 +14,8 @@
         android:id="@+id/mainframe_content_layout"
         layout="@layout/guest_fragment_container_content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    
+        android:layout_height="match_parent" />
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/guest_navView"
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
             android:id="@+id/layout_side_menu"
             layout="@layout/navigation_view_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
     </com.google.android.material.navigation.NavigationView>
 

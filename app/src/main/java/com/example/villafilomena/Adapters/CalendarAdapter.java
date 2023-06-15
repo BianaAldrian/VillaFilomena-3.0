@@ -43,7 +43,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
 
-public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder>{
+public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHolder> {
     String ipAddress;
     Context context;
     private List<Date> datesList;
@@ -77,13 +77,12 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Date date = datesList.get(position);
 
-        if (date == null){
+        if (date == null) {
             //Handle empty cells or other scenarios
             holder.day.setText("");
             holder.schedule.setText("");
             //holder.dayView.setVisibility(View.GONE);
-        }
-        else {
+        } else {
             // Format the date as desired
             SimpleDateFormat dayFormat = new SimpleDateFormat("dd", Locale.getDefault());
             String formattedDay = dayFormat.format(date);
@@ -124,6 +123,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     public int getItemCount() {
         return datesList.size();
     }
+
     @SuppressLint("SetTextI18n")
     private void fetchScheduleData(String formattedDate, TextView schedule) {
         String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_getCalendarSchedules.php";
@@ -170,9 +170,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
                 e.printStackTrace();
             }
         },
-                Throwable::printStackTrace)
-
-        {
+                Throwable::printStackTrace) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> map = new HashMap<>();
@@ -234,6 +232,7 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
         requestQueue.add(stringRequest);
 
     }
+
     @SuppressLint("NotifyDataSetChanged")
     private void listScheduledGuest(String[] checkIn_array, String[] checkOut_array) {
         Dialog scheduledUser = new Dialog(context);
@@ -343,10 +342,10 @@ public class CalendarAdapter extends RecyclerView.Adapter<CalendarAdapter.ViewHo
     }
 
 
-
     public class ViewHolder extends RecyclerView.ViewHolder {
         CardView dayView;
         TextView day, schedule;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

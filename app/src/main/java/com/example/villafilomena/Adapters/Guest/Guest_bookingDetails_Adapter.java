@@ -46,15 +46,15 @@ public class Guest_bookingDetails_Adapter extends RecyclerView.Adapter<Guest_boo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         BookingInfo_Model model = bookingHolder.get(position);
 
-        holder.checkIn_info.setText(model.getCheckIn_date() +"\n"+ model.getCheckIn_time());
-        holder.checkOut_info.setText(model.getCheckOut_date() +"\n"+ model.getCheckOut_time());
+        holder.checkIn_info.setText(model.getCheckIn_date() + "\n" + model.getCheckIn_time());
+        holder.checkOut_info.setText(model.getCheckOut_date() + "\n" + model.getCheckOut_time());
         holder.booking_status.setText(model.getBookings_status());
 
-        if(model.getBookings_status().equals("Pending")){
+        if (model.getBookings_status().equals("Pending")) {
             holder.print_receipt.setVisibility(View.GONE);
-        } else if(model.getBookings_status().equals("Rejected")) {
+        } else if (model.getBookings_status().equals("Rejected")) {
             holder.print_receipt.setVisibility(View.GONE);
-        }else {
+        } else {
             holder.print_receipt.setVisibility(View.VISIBLE);
         }
 
@@ -92,6 +92,7 @@ public class Guest_bookingDetails_Adapter extends RecyclerView.Adapter<Guest_boo
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView checkIn_info, checkOut_info, booking_status;
         Button seeMore, print_receipt;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

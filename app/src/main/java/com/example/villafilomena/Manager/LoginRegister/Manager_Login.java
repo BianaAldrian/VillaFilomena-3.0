@@ -64,8 +64,8 @@ public class Manager_Login extends AppCompatActivity {
         login.setOnClickListener(v -> login());
     }
 
-    private void login(){
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/retrieve/manager_login.php";
+    private void login() {
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/retrieve/manager_login.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             switch (response) {
@@ -83,11 +83,10 @@ public class Manager_Login extends AppCompatActivity {
                     break;
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("email", Objects.requireNonNull(email.getText()).toString());
                 map.put("password", Objects.requireNonNull(password.getText()).toString());
                 return map;
@@ -97,22 +96,21 @@ public class Manager_Login extends AppCompatActivity {
     }
 
     private void updateToken() {
-        String url = "http://"+ipAddress+"/VillaFilomena/manager_dir/update/manager_updateToken.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/manager_dir/update/manager_updateToken.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Log.d("Token", "Token Updated");
-            } else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Log.d("Token", "Token Update Failed");
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("email", Objects.requireNonNull(email.getText()).toString().trim());
-                map.put("token",token);
+                map.put("token", token);
 
                 return map;
             }

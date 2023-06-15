@@ -123,14 +123,14 @@ public class FrontDesk_ExpectedData extends AppCompatActivity {
         requestQueue.add(stringRequest);
     }
 
-    private void getDepartureGuest(){
+    private void getDepartureGuest() {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String formattedDate = currentDate.format(formatter);
 
         Holder = new ArrayList<>();
 
-        String url = "http://"+ipAddress+"/VillaFilomena/frontdesk_dir/retrieve/frontdesk_getDeparture.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/frontdesk_dir/retrieve/frontdesk_getDeparture.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             try {
@@ -169,12 +169,10 @@ public class FrontDesk_ExpectedData extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, error -> Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show())
-
-        {
+        }, error -> Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show()) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("date", formattedDate);
                 return map;
             }

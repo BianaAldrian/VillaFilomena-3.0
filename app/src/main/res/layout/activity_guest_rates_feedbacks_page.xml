@@ -34,7 +34,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="Sort by: "
                 android:textColor="@color/black"
-                android:textSize="22sp"/>
+                android:textSize="22sp" />
 
             <Spinner
                 android:id="@+id/guest_starRate"
@@ -48,7 +48,7 @@
             android:layout_height="match_parent"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
-            android:paddingBottom="50dp"/>
+            android:paddingBottom="50dp" />
     </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton

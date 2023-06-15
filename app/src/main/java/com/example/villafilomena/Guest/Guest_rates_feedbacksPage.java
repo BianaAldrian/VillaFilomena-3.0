@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +16,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatRatingBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -59,6 +61,7 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
     //boolean exist_bookings = false, exist_rates = false;
     ArrayList<Feedbacks_Model> feedbacksHolder;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,7 +79,7 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
         sendFeedback = findViewById(R.id.guest_sendFeedback);
         starRate = findViewById(R.id.guest_starRate);
 
-        String[] starOptions = new String[] {"All", "1.0", "2.0", "3.0", "4.0", "5.0"};
+        String[] starOptions = new String[]{"All", "1.0", "2.0", "3.0", "4.0", "5.0"};
 
         ArrayAdapter<String> starSpinnerAdapter = new ArrayAdapter<>(this, R.layout.spinner_layout_list, starOptions);
         starRate.setAdapter(starSpinnerAdapter);
@@ -90,7 +93,7 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
                 // Do something with the selected item
                 Log.d("Selected Item", selectedItem);
 
-                if (selectedItem.equals("All")){
+                if (selectedItem.equals("All")) {
                     displayFeedbacks();
                 } else {
                     displaySortedFeedback(selectedItem);
@@ -103,18 +106,18 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
             }
         });
 
-        if (email.equals("")){
+        if (email.equals("")) {
             sendFeedback.setVisibility(View.GONE);
         }
 
-        displayFeedbacks();
+        //displayFeedbacks();
 
         sendFeedback.setOnClickListener(v -> showFeedbackDialog());
     }
 
-    private void displayFeedbacks(){
+    private void displayFeedbacks() {
         feedbacksHolder = new ArrayList<>();
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getFeedbacks.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getFeedbacks.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
@@ -154,9 +157,9 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
-    private void displaySortedFeedback(String selectedItem){
+    private void displaySortedFeedback(String selectedItem) {
         feedbacksHolder = new ArrayList<>();
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_sortFeedback.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_sortFeedback.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
@@ -248,7 +251,8 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }*/
 
-    private void showFeedbackDialog(){
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void showFeedbackDialog() {
         Dialog feedback = new Dialog(this);
         feedback.setContentView(R.layout.dialog_guest_feedback);
 
@@ -307,7 +311,7 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
         feedback.show();
     }
 
-    private void selectImage(){
+    private void selectImage() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("image/*");
         intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
@@ -339,12 +343,14 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void uploadImages() {
         for (Image_Model image : newImageList) {
             uploadImageToFirebaseStorage(image);
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void uploadImageToFirebaseStorage(Image_Model image) {
         String filename = UUID.randomUUID().toString();
         StorageReference storageRef = FirebaseStorage.getInstance().getReference();
@@ -364,8 +370,10 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
                 .addOnFailureListener(Throwable::printStackTrace);
     }
 
-    private void insertFeedbacks(List<String> downloadUrls){
+    @RequiresApi(api = Build.VERSION_CODES.O)
+    private void insertFeedbacks(List<String> downloadUrls) {
         // Get the current date
+        //LocalDate currentDate = LocalDate.now();
         LocalDate currentDate = LocalDate.now();
 
         // Create a DateTimeFormatter for the desired date format
@@ -374,19 +382,18 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
         // Format the current date using the formatter
         String formattedDate = currentDate.format(formatter);
 
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/insert/guest_insertFeedbacks.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/insert/guest_insertFeedbacks.php";
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
                 response -> {
-                    if (response.equals("success")){
+                    if (response.equals("success")) {
                         Toast.makeText(this, "Feedback successfully", Toast.LENGTH_LONG).show();
                         displayFeedbacks();
-                    } else if(response.equals("failed")){
+                    } else if (response.equals("failed")) {
                         Toast.makeText(this, "Feedback failed", Toast.LENGTH_SHORT).show();
                     }
                 },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
@@ -395,10 +402,10 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
                 params.put("feedback", FeedBack);
                 params.put("date", formattedDate);
 
-                if (downloadUrls == null){
-                    params.put("image_urls","");
+                if (downloadUrls == null) {
+                    params.put("image_urls", "");
                 } else {
-                    params.put("image_urls", String.join(",",downloadUrls));
+                    params.put("image_urls", String.join(",", downloadUrls));
                 }
 
                 return params;

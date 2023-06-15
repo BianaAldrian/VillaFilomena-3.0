@@ -81,17 +81,17 @@
         android:textAllCaps="false"
         tools:ignore="HardcodedText,DuplicateClickableBoundsCheck,VisualLintOverlap" />
 
-   <!-- <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/manager_navView_logInBtn"
-        android:layout_width="200dp"
-        android:layout_height="48dp"
-        android:layout_gravity="center|bottom"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/btn_bg"
-        android:fontFamily="@font/eb_garamond_medium"
-        android:text="Log In"
-        android:textAllCaps="false"
-        android:textSize="20sp"
-        tools:ignore="HardcodedText"/>-->
+    <!-- <androidx.appcompat.widget.AppCompatButton
+         android:id="@+id/manager_navView_logInBtn"
+         android:layout_width="200dp"
+         android:layout_height="48dp"
+         android:layout_gravity="center|bottom"
+         android:layout_marginBottom="30dp"
+         android:background="@drawable/btn_bg"
+         android:fontFamily="@font/eb_garamond_medium"
+         android:text="Log In"
+         android:textAllCaps="false"
+         android:textSize="20sp"
+         tools:ignore="HardcodedText"/>-->
 
 </FrameLayout>

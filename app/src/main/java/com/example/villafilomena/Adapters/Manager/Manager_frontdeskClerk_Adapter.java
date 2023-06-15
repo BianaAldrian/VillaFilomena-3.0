@@ -39,9 +39,9 @@ public class Manager_frontdeskClerk_Adapter extends RecyclerView.Adapter<Manager
         Manager_frondeskClerk_Model model = clerkHolder.get(position);
 
         Picasso.get().load(model.getImageUrl()).into(holder.clerkImage);
-        holder.clerkName.setText(""+model.getClerkName());
-        holder.clerkUsername.setText(""+model.getClerkUsername());
-        holder.clerkContact.setText(""+model.getClerkContact());
+        holder.clerkName.setText("" + model.getClerkName());
+        holder.clerkUsername.setText("" + model.getClerkUsername());
+        holder.clerkContact.setText("" + model.getClerkContact());
 
         holder.delete.setOnClickListener(v -> {
 

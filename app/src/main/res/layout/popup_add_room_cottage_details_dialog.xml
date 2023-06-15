@@ -23,13 +23,13 @@
             android:gravity="center"
             android:text="Add Room Details"
             android:textColor="@color/black"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <ImageView
             android:id="@+id/popup_roomCottageDtl_Close"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/close"/>
+            android:src="@drawable/close" />
     </LinearLayout>
 
     <ImageView
@@ -40,7 +40,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="10dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/popup_roomCottageChsImage_btn"
@@ -50,15 +50,15 @@
         android:fontFamily="@font/eb_garamond_semi_bold"
         android:text="Choose Image"
         android:textAllCaps="false"
-        android:textSize="18sp"/>
-    
+        android:textSize="18sp" />
+
     <EditText
         android:id="@+id/popup_roomCottageDtl_Name"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/eb_garamond_medium"
         android:hint="Room/Cottage Type"
-        android:minHeight="48dp"/>
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/popup_roomCottageDtl_Capacity"
@@ -74,7 +74,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/eb_garamond_medium"
         android:hint="Room/Cottage Rate"
-        android:minHeight="48dp"/>
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/popup_roomCottageDtl_Description"
@@ -86,7 +86,7 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="10dp"/>
+        android:layout_height="10dp" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/popup_roomCottageDtlDone_Btn"
@@ -95,6 +95,6 @@
         android:background="@drawable/btn_bg"
         android:fontFamily="@font/eb_garamond_semi_bold"
         android:text="Done"
-        android:textSize="18sp"/>
+        android:textSize="18sp" />
 
 </LinearLayout>

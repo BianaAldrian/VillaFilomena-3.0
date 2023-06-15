@@ -24,7 +24,7 @@
             android:gravity="center"
             android:text="Capacity"
             android:textColor="#000000"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <TextView
             android:layout_width="150dp"
@@ -36,7 +36,7 @@
             android:gravity="center"
             android:text="Rate"
             android:textColor="#000000"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
     </LinearLayout>
 </LinearLayout>

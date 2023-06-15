@@ -26,13 +26,14 @@
         android:text="7:30 AM - 5:00 PM"
         android:textColor="@color/black"
         android:textSize="16sp" />
+
     <CheckBox
         android:id="@+id/btmDialogDialog_dayTour"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/eb_garamond_regular"
         android:text="Day Tour"
-        android:textSize="22sp"/>
+        android:textSize="22sp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -60,17 +61,17 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/eb_garamond_regular"
         android:text="Night Tour"
-        android:textSize="22sp"/>
-    
+        android:textSize="22sp" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btmDialogDialog_done"
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:layout_marginTop="25dp"
         android:background="@drawable/btn_bg"
+        android:fontFamily="@font/eb_garamond_medium"
         android:text="Done"
         android:textAllCaps="false"
-        android:textSize="20sp"
-        android:fontFamily="@font/eb_garamond_medium"/>
+        android:textSize="20sp" />
 
 </LinearLayout>

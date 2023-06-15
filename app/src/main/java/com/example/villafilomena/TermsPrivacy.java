@@ -21,7 +21,7 @@ public class TermsPrivacy extends AppCompatActivity {
         cont = findViewById(R.id.terms_privacy_continue_btn);
 
         cont.setOnClickListener(v -> {
-            startActivity(new Intent(this,ContinueAs.class));
+            startActivity(new Intent(this, ContinueAs.class));
             finish();
         });
     }

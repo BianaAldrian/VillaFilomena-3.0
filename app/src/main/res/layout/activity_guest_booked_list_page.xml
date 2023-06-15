@@ -28,7 +28,7 @@
             android:gravity="center"
             android:text="My Bookings"
             android:textColor="#F5F5F5"
-            android:textSize="35sp"/>
+            android:textSize="35sp" />
 
 
     </LinearLayout>
@@ -37,8 +37,8 @@
         android:id="@+id/guest_bookedList_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="70dp"
         android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"/>
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="20dp" />
 
 </FrameLayout>

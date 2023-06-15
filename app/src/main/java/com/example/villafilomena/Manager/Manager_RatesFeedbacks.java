@@ -44,7 +44,7 @@ public class Manager_RatesFeedbacks extends AppCompatActivity {
         feedbackContainer = findViewById(R.id.manager_feedbackContainer);
         starRate = findViewById(R.id.manager_starRate);
 
-        String[] starOptions = new String[] {"All", "1.0", "2.0", "3.0", "4.0", "5.0"};
+        String[] starOptions = new String[]{"All", "1.0", "2.0", "3.0", "4.0", "5.0"};
 
         ArrayAdapter<String> starSpinnerAdapter = new ArrayAdapter<>(this, R.layout.spinner_layout_list, starOptions);
         starRate.setAdapter(starSpinnerAdapter);
@@ -58,7 +58,7 @@ public class Manager_RatesFeedbacks extends AppCompatActivity {
                 // Do something with the selected item
                 Log.d("Selected Item", selectedItem);
 
-                if (selectedItem.equals("All")){
+                if (selectedItem.equals("All")) {
                     displayFeedbacks();
                 } else {
                     displaySortedFeedback(selectedItem);
@@ -74,9 +74,9 @@ public class Manager_RatesFeedbacks extends AppCompatActivity {
         displayFeedbacks();
     }
 
-    private void displayFeedbacks(){
+    private void displayFeedbacks() {
         feedbacksHolder = new ArrayList<>();
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getFeedbacks.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getFeedbacks.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
@@ -105,9 +105,9 @@ public class Manager_RatesFeedbacks extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
-    private void displaySortedFeedback(String selectedItem){
+    private void displaySortedFeedback(String selectedItem) {
         feedbacksHolder = new ArrayList<>();
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_sortFeedback.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_sortFeedback.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {

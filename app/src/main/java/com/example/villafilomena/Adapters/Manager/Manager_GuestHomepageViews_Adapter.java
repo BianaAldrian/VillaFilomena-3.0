@@ -35,10 +35,10 @@ public class Manager_GuestHomepageViews_Adapter extends RecyclerView.Adapter<Man
         final Manager_GuestHomepageViews_Model model = GuestView_holder.get(position);
 
         Picasso.get().load(model.getBannerUrl()).into(holder.bannerImage);
-        holder.intro.setText(""+model.getIntroduction());
+        holder.intro.setText("" + model.getIntroduction());
         Picasso.get().load(model.getImageUrl()).into(holder.bannerImage);
 
-        if (model.getIntroduction() == null){
+        if (model.getIntroduction() == null) {
             holder.intro.setVisibility(View.GONE);
         }
 
@@ -52,6 +52,7 @@ public class Manager_GuestHomepageViews_Adapter extends RecyclerView.Adapter<Man
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView bannerImage;
         TextView intro;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

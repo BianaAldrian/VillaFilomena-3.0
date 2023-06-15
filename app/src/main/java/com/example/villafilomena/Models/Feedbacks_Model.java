@@ -35,4 +35,5 @@ public class Feedbacks_Model {
     public String getDate() {
         return date;
     }
+
 }

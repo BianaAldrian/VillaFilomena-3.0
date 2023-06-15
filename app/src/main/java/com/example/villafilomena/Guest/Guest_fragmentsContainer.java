@@ -36,7 +36,7 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class  Guest_fragmentsContainer extends AppCompatActivity {
+public class Guest_fragmentsContainer extends AppCompatActivity {
     public static String fromBooking = "";
     public static String email;
     SharedPreferences sharedPreferencesEmail;
@@ -96,8 +96,8 @@ public class  Guest_fragmentsContainer extends AppCompatActivity {
             home.setPaintFlags(home.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             home.setPaintFlags(home.getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
 
-            if((book.getPaintFlags() & Paint.UNDERLINE_TEXT_FLAG) == Paint.UNDERLINE_TEXT_FLAG &&
-                    (book.getPaintFlags() & Paint.FAKE_BOLD_TEXT_FLAG) == Paint.FAKE_BOLD_TEXT_FLAG){
+            if ((book.getPaintFlags() & Paint.UNDERLINE_TEXT_FLAG) == Paint.UNDERLINE_TEXT_FLAG &&
+                    (book.getPaintFlags() & Paint.FAKE_BOLD_TEXT_FLAG) == Paint.FAKE_BOLD_TEXT_FLAG) {
                 book.setPaintFlags(book.getPaintFlags() ^ Paint.UNDERLINE_TEXT_FLAG);
                 book.setPaintFlags(book.getPaintFlags() ^ Paint.FAKE_BOLD_TEXT_FLAG);
 
@@ -114,8 +114,8 @@ public class  Guest_fragmentsContainer extends AppCompatActivity {
             book.setPaintFlags(book.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
             book.setPaintFlags(book.getPaintFlags() | Paint.FAKE_BOLD_TEXT_FLAG);
 
-            if((home.getPaintFlags() & Paint.UNDERLINE_TEXT_FLAG) == Paint.UNDERLINE_TEXT_FLAG &&
-                    (home.getPaintFlags() & Paint.FAKE_BOLD_TEXT_FLAG) == Paint.FAKE_BOLD_TEXT_FLAG){
+            if ((home.getPaintFlags() & Paint.UNDERLINE_TEXT_FLAG) == Paint.UNDERLINE_TEXT_FLAG &&
+                    (home.getPaintFlags() & Paint.FAKE_BOLD_TEXT_FLAG) == Paint.FAKE_BOLD_TEXT_FLAG) {
                 home.setPaintFlags(home.getPaintFlags() ^ Paint.UNDERLINE_TEXT_FLAG);
                 home.setPaintFlags(home.getPaintFlags() ^ Paint.FAKE_BOLD_TEXT_FLAG);
 
@@ -143,7 +143,7 @@ public class  Guest_fragmentsContainer extends AppCompatActivity {
 
     @SuppressLint("SetTextI18n")
     private void get_Infos() {
-        String url = "http://"+ipAddress+"/VillaFilomena/guest_dir/retrieve/guest_getGuestInfo.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getGuestInfo.php";
         StringRequest request = new StringRequest(Request.Method.POST, url,
                 response -> {
                     try {
@@ -170,9 +170,9 @@ public class  Guest_fragmentsContainer extends AppCompatActivity {
         Volley.newRequestQueue(this).add(request);
     }
 
-    private void toolbarFunctions(){
+    private void toolbarFunctions() {
         toolbar.setOnClickListener(v -> {
-            if (TextUtils.isEmpty(email)){
+            if (TextUtils.isEmpty(email)) {
                 logIn.setVisibility(View.VISIBLE);
                 logOut.setVisibility(View.GONE);
             } else {
@@ -208,24 +208,26 @@ public class  Guest_fragmentsContainer extends AppCompatActivity {
         });
     }
 
-    private void replace(Fragment fragment){
+    private void replace(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
-        transaction.replace(R.id.guestFragmentContainer,fragment).commit();
+        transaction.replace(R.id.guestFragmentContainer, fragment).commit();
     }
 
-    private void replace_home(Fragment fragment){
+    private void replace_home(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_left, R.anim.exit_to_right);
-        transaction.replace(R.id.guestFragmentContainer,fragment).commit();
+        transaction.replace(R.id.guestFragmentContainer, fragment).commit();
     }
+
     private void replace_book(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left);
-        transaction.replace(R.id.guestFragmentContainer,fragment).commit();
+        transaction.replace(R.id.guestFragmentContainer, fragment).commit();
     }
+
     private void toggle(boolean show) {
         CoordinatorLayout.LayoutParams params = (CoordinatorLayout.LayoutParams) appbar.getLayoutParams();
         params.height = banner.getHeight();
@@ -236,7 +238,7 @@ public class  Guest_fragmentsContainer extends AppCompatActivity {
     @Override
     protected void onPostResume() {
         super.onPostResume();
-        if (TextUtils.isEmpty(email)){
+        if (TextUtils.isEmpty(email)) {
             logIn.setVisibility(View.VISIBLE);
             logOut.setVisibility(View.GONE);
         } else {
@@ -245,7 +247,7 @@ public class  Guest_fragmentsContainer extends AppCompatActivity {
         }
     }
 
-    public void closeActivity(){
-         finish();
+    public void closeActivity() {
+        finish();
     }
 }

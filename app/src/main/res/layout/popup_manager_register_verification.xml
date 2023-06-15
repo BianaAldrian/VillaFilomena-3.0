@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="50dp"
-        android:text="Check your gmail to get the verificatrion code"/>
+        android:text="Check your gmail to get the verificatrion code" />
 
     <EditText
         android:id="@+id/popup_verifyRegister_code"
@@ -23,6 +23,6 @@
         android:id="@+id/popup_verifyRegister_verify"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="Verify"/>
+        android:text="Verify" />
 
 </LinearLayout>

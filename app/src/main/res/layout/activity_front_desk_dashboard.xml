@@ -25,7 +25,7 @@
                 android:fontFamily="@font/beaurivage_regular"
                 android:text="Villa Filomena Natural Spring Resort"
                 android:textColor="@color/white"
-                android:textSize="38sp"/>
+                android:textSize="38sp" />
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
@@ -41,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="30dp"
-                android:src="@drawable/booking_icon"/>
+                android:src="@drawable/booking_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="BOOKING"
                 android:textColor="@color/black"
-                android:textSize="24sp"/>
+                android:textSize="24sp" />
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -62,7 +62,7 @@
             android:fontFamily="@font/eb_garamond_regular"
             android:text="EXPECTED DATA"
             android:textColor="@color/black"
-            android:textSize="24sp"/>
+            android:textSize="24sp" />
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/frontdesk_arrival_departure"
@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="30dp"
-                android:src="@drawable/booking_icon"/>
+                android:src="@drawable/booking_icon" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,7 +86,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="EXPECTED ARRIVAL &amp; DEPARTURE"
                 android:textColor="@color/black"
-                android:textSize="18sp"/>
+                android:textSize="18sp" />
 
         </com.google.android.material.card.MaterialCardView>
 

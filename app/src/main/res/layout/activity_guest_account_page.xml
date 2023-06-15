@@ -29,7 +29,7 @@
             android:gravity="center"
             android:text="My Account"
             android:textColor="#F5F5F5"
-            android:textSize="35sp"/>
+            android:textSize="35sp" />
 
         <ImageView
             android:id="@+id/Guest_edit"
@@ -52,7 +52,7 @@
         android:layout_height="150dp"
         android:layout_gravity="center|top"
         android:layout_marginTop="80dp"
-        android:background="@drawable/user"/>
+        android:background="@drawable/user" />
 
     <!--<LinearLayout
         android:layout_width="match_parent"
@@ -87,8 +87,8 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="Full Name:"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
-            
+                android:textSize="20sp" />
+
             <EditText
                 android:id="@+id/Guest_fullname"
                 android:layout_width="300dp"
@@ -97,7 +97,7 @@
                 android:editable="false"
                 android:fontFamily="@font/eb_garamond_regular"
                 android:paddingStart="10dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -111,7 +111,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="Contact Number:"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/Guest_contact"
@@ -121,7 +121,7 @@
                 android:editable="false"
                 android:fontFamily="@font/eb_garamond_regular"
                 android:paddingStart="10dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -135,7 +135,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="Email Address:"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <EditText
                 android:id="@+id/Guest_email"
@@ -145,7 +145,7 @@
                 android:editable="false"
                 android:fontFamily="@font/eb_garamond_regular"
                 android:paddingStart="10dp"
-                android:textColor="@color/black"/>
+                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -159,7 +159,7 @@
                 android:fontFamily="@font/eb_garamond_regular"
                 android:text="Password:"
                 android:textColor="@color/black"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="wrap_content"
@@ -176,7 +176,7 @@
                     android:fontFamily="@font/eb_garamond_regular"
                     android:paddingStart="10dp"
                     android:password="true"
-                    android:textColor="@color/black"/>
+                    android:textColor="@color/black" />
 
             </com.google.android.material.textfield.TextInputLayout>
         </LinearLayout>

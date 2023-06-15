@@ -54,18 +54,18 @@ public class FrontDesk_Arrival_Departure_Adapter extends RecyclerView.Adapter<Fr
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         FrontDesk_Arrival_Departure_Model model = Holder.get(position);
 
-        holder.no.setText(""+model.getCount());
-        holder.guestName.setText(""+model.getGuestEmail());
-        holder.qty.setText("Adult: "+model.getAdultQty() + "\nKid: "+ model.getKidQty());
-        holder.roomCottage.setText(""+model.getRoomId() + model.getCottageId());
-        holder.total.setText(""+model.getTotal());
-        holder.balance.setText(""+model.getBalance());
-        holder.date.setText(""+model.getDate());
+        holder.no.setText("" + model.getCount());
+        holder.guestName.setText("" + model.getGuestEmail());
+        holder.qty.setText("Adult: " + model.getAdultQty() + "\nKid: " + model.getKidQty());
+        holder.roomCottage.setText("" + model.getRoomId() + model.getCottageId());
+        holder.total.setText("" + model.getTotal());
+        holder.balance.setText("" + model.getBalance());
+        holder.date.setText("" + model.getDate());
 
         if (status.equals("Checked-in")) {
             holder.status.setText("Check-in");
 
-            if (!isEnabled){
+            if (!isEnabled) {
                 holder.status.setBackgroundResource(R.color.grey);
                 holder.status.setText("Checked-in");
                 holder.status.setClickable(false);
@@ -93,23 +93,22 @@ public class FrontDesk_Arrival_Departure_Adapter extends RecyclerView.Adapter<Fr
     private void updateStatus(String guestEmail, String s) {
         Log.d("UpdateStatus", "GuestEmail: " + guestEmail + ", Status: " + s);
 
-        String url = "http://"+ipAddress+"/VillaFilomena/frontdesk_dir/update/frontdesk_updateStatus.php";
+        String url = "http://" + ipAddress + "/VillaFilomena/frontdesk_dir/update/frontdesk_updateStatus.php";
         RequestQueue requestQueue = Volley.newRequestQueue(context);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             Log.d("UpdateStatus", "Response: " + response);
-            if (response.equals("success")){
+            if (response.equals("success")) {
                 Log.d("Token Update", "Token Updated");
-            } else if(response.equals("failed")){
+            } else if (response.equals("failed")) {
                 Log.d("Token Update", "Token Update Failed");
             }
         },
-                Throwable::printStackTrace)
-        {
+                Throwable::printStackTrace) {
             @Override
-            protected HashMap<String,String> getParams() {
-                HashMap<String,String> map = new HashMap<>();
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
                 map.put("guest_email", guestEmail);
-                map.put("status",s);
+                map.put("status", s);
 
                 return map;
             }
