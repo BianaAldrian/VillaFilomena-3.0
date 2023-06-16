@@ -206,7 +206,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/eb_garamond_bold"
-                android:text="Tracking Number"
+                android:text="Reference Number"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
