@@ -25,7 +25,9 @@
         android:theme="@style/Theme.VillaFilomena"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Guest.Guest_organization_chart"
+            android:exported="false" />
         <activity
             android:name=".FrontDesk.FrontDesk_ExpectedData"
             android:exported="false" />
@@ -34,9 +36,6 @@
             android:exported="false" />
         <activity
             android:name=".Manager.Manager_Transaction_History"
-            android:exported="false" />
-        <activity
-            android:name=".Manager.Manager_Organizational_Chart"
             android:exported="false" />
         <activity
             android:name=".Manager.Manager_RatesFeedbacks"

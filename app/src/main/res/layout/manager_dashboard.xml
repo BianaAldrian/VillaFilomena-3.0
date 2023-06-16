@@ -227,30 +227,6 @@
                         android:textColor="#131212"
                         android:textSize="20sp" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/manager_orgChart"
-                    android:layout_width="200dp"
-                    android:layout_height="200dp"
-                    android:layout_margin="20dp"
-                    android:background="@drawable/cardview_bg"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageView
-                        android:layout_width="200dp"
-                        android:layout_height="130dp"
-                        android:src="@drawable/organizational_chart_icon" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/eb_garamond_regular"
-                        android:gravity="center"
-                        android:text="ORGANIZATION CHART"
-                        android:textColor="#131212"
-                        android:textSize="20sp" />
-                </LinearLayout>
                 <!--end of 6-->
 
             </GridLayout>

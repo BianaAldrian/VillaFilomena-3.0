@@ -22,11 +22,30 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/manager_pendingBooking_guestName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/eb_garamond_bold"
+                android:text="Name"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:id="@+id/manager_pendingBooking_guestName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Guest Name"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Email Address"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -35,8 +54,18 @@
                 android:id="@+id/manager_pendingBooking_guestEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Guest Email"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Contact Number"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -45,8 +74,18 @@
                 android:id="@+id/manager_pendingBooking_guestContact"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Guest Contact"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Date of Stay"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -55,8 +94,18 @@
                 android:id="@+id/manager_pendingBooking_checkIn_checkOut"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Check-in -- Check-out"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Name of Room"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -65,8 +114,18 @@
                 android:id="@+id/manager_pendingBooking_room"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Room"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Name of Cottage"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -75,8 +134,19 @@
                 android:id="@+id/manager_pendingBooking_cottage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Cottage"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Total Amount"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -85,8 +155,18 @@
                 android:id="@+id/manager_pendingBooking_guestTotal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Total"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Account Balance"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -95,8 +175,18 @@
                 android:id="@+id/manager_pendingBooking_guestBalance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Balance"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="GCash Contact Number"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -105,8 +195,18 @@
                 android:id="@+id/manager_pendingBooking_guestGcashNumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="GCash Number"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Tracking Number"
                 android:textColor="@color/black"
                 android:textSize="24sp"
                 tools:ignore="HardcodedText" />
@@ -115,7 +215,8 @@
                 android:id="@+id/manager_pendingBooking_guestRefNum"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_semi_bold"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Reference Number"
                 android:textColor="@color/black"
                 android:textSize="24sp"
@@ -124,7 +225,17 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/eb_garamond_semi_bold"
+                android:fontFamily="@font/eb_garamond_bold"
+                android:text="Payment Confirmation"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:fontFamily="@font/eb_garamond_medium"
                 android:text="Proof of Transaction Receipt: "
                 android:textColor="@color/black"
                 android:textSize="24sp"
