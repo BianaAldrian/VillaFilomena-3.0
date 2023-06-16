@@ -105,6 +105,7 @@ public class Guest_bookingPage1 extends Fragment {
 
         continueBtn.setOnClickListener(v -> {
             if (Guest_fragmentsContainer.email.equals("")) {
+                // Handle the case when the user is not logged in
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
                 builder.setTitle("Log In?");
                 builder.setMessage("Please Log In first");
@@ -114,7 +115,6 @@ public class Guest_bookingPage1 extends Fragment {
                     Guest_Login.originateFrom = "booking";
                     Guest_fragmentsContainer guest = new Guest_fragmentsContainer();
                     guest.finish();
-
                 });
                 builder.setNegativeButton("Cancel", (dialog, which) -> {
                     // Handle the Cancel button click
@@ -122,41 +122,44 @@ public class Guest_bookingPage1 extends Fragment {
                 });
                 AlertDialog dialog = builder.create();
                 dialog.show();
+            } else if (finalCheckIn_date == null) {
+                // Handle the case when Check-In and Check-Out dates are not set
+                Toast.makeText(getContext(), "Check-In and Check-Out not set", Toast.LENGTH_SHORT).show();
+            } else if (finalAdultQty == 0) {
+                // Handle the case when Adult Quantity is not set
+                Toast.makeText(getContext(), "Adult Quantity not set", Toast.LENGTH_SHORT).show();
             } else {
-                if (finalCheckIn_date == null) {
-                    Toast.makeText(getContext(), "Check-In and Check-Out not set", Toast.LENGTH_SHORT).show();
-                } else if (finalAdultQty == 0) {
-                    Toast.makeText(getContext(), "Adult Quantity not set", Toast.LENGTH_SHORT).show();
+
+                double roomTotalPrice = 0;
+                int roomChildCount = roomList.getChildCount();
+                for (int i = 0; i < roomChildCount; i++) {
+                    View childView = roomList.getLayoutManager().findViewByPosition(i);
+                    ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
+                    if (check.getVisibility() == View.VISIBLE) {
+                        final RoomCottageDetails_Model model = roomHolder.get(i);
+                        selectedRoom_id.add(model.getId());
+                        roomTotalPrice += Double.parseDouble(model.getRate());
+                    }
+                }
+
+                //for getting the checked cottages
+                double cottageTotalPrice = 0;
+                int cottageChildCount = cottageList.getChildCount();
+                for (int i = 0; i < cottageChildCount; i++) {
+                    View childView = cottageList.getLayoutManager().findViewByPosition(i);
+                    ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
+                    if (check.getVisibility() == View.VISIBLE) {
+                        final RoomCottageDetails_Model model = cottageHolder.get(i);
+                        selectedCottage_id.add(model.getId());
+                        cottageTotalPrice += Double.parseDouble(model.getRate());
+                    }
+                }
+
+                // Check if no room or cottage is selected
+                if (selectedRoom_id.isEmpty() || selectedCottage_id.isEmpty()) {
+                    Toast.makeText(getContext(), "Please select a room or cottage", Toast.LENGTH_SHORT).show();
                 } else {
-
                     //for getting the checked rooms
-                    double roomTotalPrice = 0;
-
-                    int roomChildCount = roomList.getChildCount();
-                    for (int i = 0; i < roomChildCount; i++) {
-                        View childView = roomList.getLayoutManager().findViewByPosition(i);
-                        ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
-                        if (check.getVisibility() == View.VISIBLE) {
-                            final RoomCottageDetails_Model model = roomHolder.get(i);
-                            selectedRoom_id.add(model.getId());
-
-                            roomTotalPrice += Double.parseDouble(model.getRate());
-                        }
-                    }
-
-                    //for getting the checked cottages
-                    double cottageTotalPrice = 0;
-                    int cottageChildCount = cottageList.getChildCount();
-                    for (int i = 0; i < cottageChildCount; i++) {
-                        View childView = cottageList.getLayoutManager().findViewByPosition(i);
-                        ImageView check = childView.findViewById(R.id.RoomCottageDetail_check);
-                        if (check.getVisibility() == View.VISIBLE) {
-                            final RoomCottageDetails_Model model = cottageHolder.get(i);
-                            selectedCottage_id.add(model.getId());
-
-                            cottageTotalPrice += Double.parseDouble(model.getRate());
-                        }
-                    }
 
                     double dayTour_roomRate, nightTour_roomRate;
                     double dayTour_cottageRate, nightTour_cottageRate;
@@ -184,6 +187,7 @@ public class Guest_bookingPage1 extends Fragment {
                 }
             }
         });
+
 
         displayRooms();
         displayCottages();
@@ -214,11 +218,6 @@ public class Guest_bookingPage1 extends Fragment {
         dateContainer.setAdapter(calendarAdapter);
 
         applyDatesBtn.setOnClickListener(v -> {
-            /*String firstSelectedDate = calendarAdapter.getFirstSelectedDate();
-            String secondSelectedDate = calendarAdapter.getSecondSelectedDate();
-            String firstSelectedTime = calendarAdapter.getFirstSelectedTime();
-            String secondSelectedTime = calendarAdapter.getSecondSelectedTime();*/
-
             finalCheckIn_date = calendarAdapter.getFirstSelectedDate();
             finalCheckOut_date = calendarAdapter.getSecondSelectedDate();
             finalCheckIn_time = calendarAdapter.getFirstSelectedTime();
@@ -230,7 +229,7 @@ public class Guest_bookingPage1 extends Fragment {
 
                 getDateDifference(finalCheckIn_date, finalCheckOut_date, finalCheckIn_time, finalCheckOut_time);
                 displayAvailableRooms(finalCheckIn_date, finalCheckIn_time, finalCheckOut_date, finalCheckOut_time);
-                //displayAvailableCottage();
+                displayAvailableCottage(finalCheckIn_date, finalCheckIn_time, finalCheckOut_date, finalCheckOut_time);
 
                 try {
                     SimpleDateFormat inputFormat = new SimpleDateFormat("d/M/yyyy");
@@ -596,7 +595,7 @@ public class Guest_bookingPage1 extends Fragment {
             roomList.setLayoutManager(layoutManager);
             roomList.setAdapter(adapter);
 
-        }, error -> Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show());
+        }, error -> Log.e("displayRooms", error.getMessage()));
         requestQueue.add(stringRequest);
 
     }
@@ -631,7 +630,7 @@ public class Guest_bookingPage1 extends Fragment {
             cottageList.setLayoutManager(layoutManager);
             cottageList.setAdapter(adapter);
 
-        }, error -> Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show());
+        }, error -> Log.e("displayCottages", error.getMessage()));
         requestQueue.add(stringRequest);
     }
 
@@ -667,7 +666,8 @@ public class Guest_bookingPage1 extends Fragment {
             roomList.setAdapter(adapter);
 
         },
-                Throwable::printStackTrace) {
+                error -> Log.e("displayAvailableRooms", error.getMessage()))
+        {
             @Override
             protected HashMap<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
@@ -681,7 +681,7 @@ public class Guest_bookingPage1 extends Fragment {
         requestQueue.add(stringRequest);
     }
 
-    /*private void displayAvailableCottage(){
+    private void displayAvailableCottage(String finalCheckIn_date, String finalCheckIn_time, String finalCheckOut_date, String finalCheckOut_time){
         showBox = true;
 
         cottageHolder = new ArrayList<>();
@@ -697,10 +697,10 @@ public class Guest_bookingPage1 extends Fragment {
                     RoomCottageDetails_Model model = new RoomCottageDetails_Model(
                             object.getString("id"),
                             object.getString("imageUrl"),
-                            object.getString("roomName"),
-                            object.getString("roomCapacity"),
-                            object.getString("roomRate"),
-                            object.getString("roomDescription"));
+                            object.getString("cottageName"),
+                            object.getString("cottageCapacity"),
+                            object.getString("cottageRate"),
+                            object.getString("cottageDescription"));
 
                     cottageHolder.add(model);
                 }
@@ -708,23 +708,23 @@ public class Guest_bookingPage1 extends Fragment {
                 e.printStackTrace();
             }
 
-            Room_Adapter adapter = new Room_Adapter(getActivity(),cottageHolder, true);
+            Cottage_Adapter adapter = new Cottage_Adapter(getActivity(),cottageHolder, true);
             LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             cottageList.setLayoutManager(layoutManager);
             cottageList.setAdapter(adapter);
         },
-                error -> Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show())
+                error -> Log.e("displayAvailableCottage", error.getMessage()))
         {
             @Override
             protected HashMap<String,String> getParams() {
                 HashMap<String,String> map = new HashMap<>();
-                map.put("checkIn_date",finalCheckIn_date);
-                map.put("checkIn_time",finalCheckIn_time);
-                map.put("checkOut_date",finalCheckOut_date);
-                map.put("checkOut_time",finalCheckOut_time);
+                map.put("checkIn_date", finalCheckIn_date);
+                map.put("checkIn_time", finalCheckIn_time);
+                map.put("checkOut_date", finalCheckOut_date);
+                map.put("checkOut_time", finalCheckOut_time);
                 return map;
             }
         };
         requestQueue.add(stringRequest);
-    }*/
+    }
 }

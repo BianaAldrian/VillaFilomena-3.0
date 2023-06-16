@@ -1,15 +1,20 @@
 package com.example.villafilomena.Manager;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -239,21 +244,6 @@ public class Manager_Calendar extends AppCompatActivity {
 
             switch (item.getItemId()) {
                 case R.id.menu_item1:
-                    // Handle menu item 1 click
-                    // Your code here
-                    return true;
-
-                case R.id.menu_item2:
-                    // Handle menu item 2 click
-                    // Your code here
-                    return true;
-
-                default:
-                    return false;
-            }
-
-            /*switch (item.getItemId()) {
-                case R.id.menu_item1:
                     schedules();
                     // Handle menu item 1 click
                     Dialog calendar = new Dialog(this);
@@ -280,7 +270,6 @@ public class Manager_Calendar extends AppCompatActivity {
                     List<Date> datesList = generateDatesForMonth(schedCurrentMonth, schedCurrentYear); // Generate your list of dates for the initial month and year
                     manager_adapter = new Manager_DateAdapter(datesList, schedCurrentMonth, schedCurrentYear);
                     daysContainer.setAdapter(manager_adapter);
-
 
                     disable.setOnClickListener(v -> {
                         List<String> dateHolder = manager_adapter.getDateHolder();
@@ -318,7 +307,7 @@ public class Manager_Calendar extends AppCompatActivity {
 
                     return true;
 
-                case R.id.menu_item1:
+                case R.id.menu_item2:
                     // Handle menu item 2 click
                     Dialog capacity = new Dialog(this);
                     capacity.setContentView(R.layout.manager_calendar_capacity_dialog);
@@ -356,7 +345,7 @@ public class Manager_Calendar extends AppCompatActivity {
 
                 default:
                     return false;
-            }*/
+            }
         });
 
         popupMenu.show();

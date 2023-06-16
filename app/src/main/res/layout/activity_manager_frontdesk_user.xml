@@ -34,11 +34,13 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/manager_frontdeskClerk_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:orientation="horizontal">
 
@@ -52,7 +54,7 @@
             android:textAllCaps="false"
             android:textSize="18sp" />
 
-        <Space
+        <androidx.legacy.widget.Space
             android:layout_width="10dp"
             android:layout_height="match_parent" />
 
@@ -66,7 +68,7 @@
             android:textAllCaps="false"
             android:textSize="18sp" />
 
-        <Space
+        <androidx.legacy.widget.Space
             android:layout_width="10dp"
             android:layout_height="wrap_content" />
 

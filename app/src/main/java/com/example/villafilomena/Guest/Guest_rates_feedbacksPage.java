@@ -393,7 +393,7 @@ public class Guest_rates_feedbacksPage extends AppCompatActivity {
                         Toast.makeText(this, "Feedback failed", Toast.LENGTH_SHORT).show();
                     }
                 },
-                Throwable::printStackTrace) {
+                volleyError -> volleyError.printStackTrace()) {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();

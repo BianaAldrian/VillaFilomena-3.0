@@ -38,7 +38,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import com.example.villafilomena.Adapters.Guest.RoomCottageDetails2_Adapter;
+import com.example.villafilomena.Adapters.Guest.RoomDetails2_Adapter;
 import com.example.villafilomena.Models.RoomCottageDetails_Model;
 import com.example.villafilomena.R;
 import com.google.firebase.storage.FirebaseStorage;
@@ -58,10 +58,11 @@ import java.util.UUID;
 public class Guest_bookingPage2 extends Fragment {
     private static final int PICK_IMAGE_REQUEST = 1;
     String ipAddress;
-    RecyclerView roomList;
+    RecyclerView roomList, cottageList;
     TextView total, qty, day_night, tally;
     Button backBtn, continueBtn;
     ArrayList<RoomCottageDetails_Model> detailsHolder;
+    ArrayList<RoomCottageDetails_Model> cottageHolder;
     String postUrl = "https://fcm.googleapis.com/fcm/send";
     String fcmServerKey = "AAAAI4TgXbw:APA91bE2zEO0mZ5SAiJMRN1l7IzpMsTnmGuVaaayK4CjNhNZl8_13wDpR0ciw4uNPrIQhHD0NaMWj-U0K3Lc97_CStmBq1bn7LXct-jwTEW2GfwqyLXmxlIOytd76qskBgu0VW9HxVY7";
     Dialog loading_dialog;
@@ -82,6 +83,7 @@ public class Guest_bookingPage2 extends Fragment {
         ipAddress = sharedPreferences.getString("IP", "");
 
         roomList = view.findViewById(R.id.Guest_booking2_selectedRoomList);
+        cottageList = view.findViewById(R.id.Guest_booking2_selectedCottageList);
         qty = view.findViewById(R.id.Guest_booking2_qty);
         day_night = view.findViewById(R.id.Guest_booking2_days_nights);
         tally = view.findViewById(R.id.Guest_booking2_tally);
@@ -90,14 +92,23 @@ public class Guest_bookingPage2 extends Fragment {
         continueBtn = view.findViewById(R.id.Guest_booking2_continue);
 
         detailsHolder = new ArrayList<>();
+        cottageHolder = new ArrayList<>();
 
         qty.setText("" + Guest_bookingPage1.finalAdultQty + "\n" + Guest_bookingPage1.finalKidQty + "\n" + Guest_bookingPage1.selectedRoom_id.size() + "\n" + Guest_bookingPage1.selectedCottage_id.size());
         day_night.setText("" + Guest_bookingPage1.dayDiff + " day/s\n" + Guest_bookingPage1.nightDiff + " night/s\n");
         tally.setText("₱" + Guest_bookingPage1.adultFee + "\n₱" + Guest_bookingPage1.kidFee + "\n₱" + Guest_bookingPage1.roomRate + "\n₱" + Guest_bookingPage1.cottageRate);
         total.setText("Total Payment: ₱" + Guest_bookingPage1.total);
 
-        for (String roomId : Guest_bookingPage1.selectedRoom_id) {
-            displaySelectedRoom(roomId);
+        if (!Guest_bookingPage1.selectedRoom_id.isEmpty()){
+            for (String roomId : Guest_bookingPage1.selectedRoom_id) {
+                displaySelectedRoom(roomId);
+            }
+        }
+
+        if (!Guest_bookingPage1.selectedCottage_id.isEmpty()){
+            for (String roomId : Guest_bookingPage1.selectedCottage_id) {
+                displaySelectedCottage(roomId);
+            }
         }
 
         StringJoiner str = new StringJoiner(",");
@@ -140,7 +151,7 @@ public class Guest_bookingPage2 extends Fragment {
                     detailsHolder.add(model);
                 }
 
-                RoomCottageDetails2_Adapter adapter = new RoomCottageDetails2_Adapter(detailsHolder);
+                RoomDetails2_Adapter adapter = new RoomDetails2_Adapter(detailsHolder);
                 LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
                 roomList.setLayoutManager(layoutManager);
                 roomList.setAdapter(adapter);
@@ -150,11 +161,54 @@ public class Guest_bookingPage2 extends Fragment {
             }
 
         },
-                error -> Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show()) {
+                error -> Log.e("displaySelectedRoom", error.getMessage()))
+        {
             @Override
             protected HashMap<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("id", roomId);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    private void displaySelectedCottage(String cottageId){
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getSelectedCottageDetails.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(getContext());
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            try {
+                JSONArray jsonArray = new JSONArray(response);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+
+                    RoomCottageDetails_Model model = new RoomCottageDetails_Model(
+                            object.getString("id"),
+                            object.getString("imageUrl"),
+                            object.getString("cottageName"),
+                            object.getString("cottageCapacity"),
+                            object.getString("cottageRate"),
+                            object.getString("cottageDescription"));
+
+                    cottageHolder.add(model);
+                }
+
+                RoomDetails2_Adapter adapter = new RoomDetails2_Adapter(cottageHolder);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false);
+                cottageList.setLayoutManager(layoutManager);
+                cottageList.setAdapter(adapter);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        },
+                error -> Log.e("displaySelectedRoom", error.getMessage()))
+        {
+            @Override
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("id", cottageId);
                 return map;
             }
         };
@@ -171,7 +225,7 @@ public class Guest_bookingPage2 extends Fragment {
 
         contBtn.setOnClickListener(v -> {
             GCashDialog();
-            termsCondition.hide();
+            termsCondition.dismiss();
         });
 
         termsCondition.show();
@@ -221,6 +275,7 @@ public class Guest_bookingPage2 extends Fragment {
         upload.setOnClickListener(v -> {
             chooseImage();
         });
+
         confirm.setOnClickListener(v -> {
             if (gcashNum.getText().length() < 11 || gcashNum.getText().toString().isEmpty()) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
@@ -256,14 +311,23 @@ public class Guest_bookingPage2 extends Fragment {
 
                 //ProgressBar progressBar = loading_dialog.findViewById(R.id.loading_dialog);
 
-                loading_dialog.show();
 
                 // Upload the selected image to Firebase Storage
-                if (selectedImageUri != null) {
+                if (selectedImageUri == null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle("GCash receipt is empty");
+                    builder.setMessage("Please provide a proof of GCash payment");
+                    builder.setPositiveButton("OK", (dialog, which) -> {
+                        dialog.dismiss();
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+
+                } else {
+                    loading_dialog.show();
+                    gcash.dismiss();
                     uploadImage(selectedImageUri);
                 }
-
-                gcash.hide();
             }
         });
         gcash.show();
@@ -290,10 +354,12 @@ public class Guest_bookingPage2 extends Fragment {
                     // Do something with the image URL, such as storing it in a database
                 }).addOnFailureListener(e -> {
                     // Handle any errors that occurred during URL retrieval
+                    Log.e("uploadImage", e.getMessage());
                 });
             } else {
                 // Image upload failed
                 // Handle the failure case
+                Log.e("uploadImage", "Upload Failed");
             }
         });
     }
@@ -324,8 +390,8 @@ public class Guest_bookingPage2 extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getContext());
         StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
             if (response.equals("success")) {
+                selectedImageUri = null;
                 getManagerToken();
-                loading_dialog.dismiss();
 
                 if (!Guest_bookingPage1.selectedRoom_id.isEmpty()) {
                     for (String roomId : Guest_bookingPage1.selectedRoom_id) {
@@ -347,12 +413,14 @@ public class Guest_bookingPage2 extends Fragment {
                 Toast toast = Toast.makeText(getContext(), "Booking Request Successful", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0); // Set the gravity and offset
                 toast.show();
+                loading_dialog.dismiss();
             } else if (response.equals("failed")) {
                 Toast.makeText(getContext(), "Booking Request Failed", Toast.LENGTH_SHORT).show();
                 loading_dialog.hide();
             }
         },
-                Throwable::printStackTrace) {
+                volleyError -> Log.e("requestBooking", volleyError.getMessage()))
+        {
             @Override
             protected HashMap<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
@@ -387,7 +455,8 @@ public class Guest_bookingPage2 extends Fragment {
                 Log.d("Room", "Room Reservation Failed");
             }
         },
-                Throwable::printStackTrace) {
+                volleyError -> Log.e("reserveRoom", volleyError.getMessage()))
+        {
             @Override
             protected HashMap<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
@@ -413,7 +482,8 @@ public class Guest_bookingPage2 extends Fragment {
                 Log.d("Cottage", "Cottage Reservation Failed");
             }
         },
-                Throwable::printStackTrace) {
+                volleyError -> Log.e("reserveCottage", volleyError.getMessage()))
+        {
             @Override
             protected HashMap<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
@@ -446,7 +516,7 @@ public class Guest_bookingPage2 extends Fragment {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }, Throwable::printStackTrace);
+        }, volleyError -> Log.e("getManagerToken", volleyError.getMessage()));
 
         requestQueue.add(stringRequest);
     }

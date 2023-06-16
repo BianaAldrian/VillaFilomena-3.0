@@ -284,7 +284,6 @@ public class Manager_bookingConfirmation_Adapter extends RecyclerView.Adapter<Ma
             };
             requestQueue.add(stringRequest);
         }
-
     }
 
     private void confirmGuestBooking(int position, String id) {

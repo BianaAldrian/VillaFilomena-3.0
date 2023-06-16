@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.webkit.MimeTypeMap;
@@ -86,6 +87,7 @@ public class Manager_room_cottage_details extends AppCompatActivity {
             addCottage.setVisibility(View.VISIBLE);
 
             roomAdapter.setNewData(true, room_detailsHolder);
+            cottageAdapter.setNewData(true, cottage_detailsHolder);
         });
 
         Save.setOnClickListener(v -> {
@@ -95,6 +97,7 @@ public class Manager_room_cottage_details extends AppCompatActivity {
             addCottage.setVisibility(View.GONE);
 
             roomAdapter.setNewData(false, room_detailsHolder);
+            cottageAdapter.setNewData(false, cottage_detailsHolder);
         });
 
         addRoom.setOnClickListener(v -> {
@@ -220,10 +223,10 @@ public class Manager_room_cottage_details extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            cottageAdapter = new Cottage_Adapter(this, room_detailsHolder, false);
+            cottageAdapter = new Cottage_Adapter(this, cottage_detailsHolder, false);
             LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-            roomDetails_Container.setLayoutManager(layoutManager);
-            roomDetails_Container.setAdapter(cottageAdapter);
+            cottageDetails_container.setLayoutManager(layoutManager);
+            cottageDetails_container.setAdapter(cottageAdapter);
         }, error -> Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show());
         requestQueue.add(stringRequest);
 
@@ -269,11 +272,12 @@ public class Manager_room_cottage_details extends AppCompatActivity {
                                 if (response.equals("success")) {
                                     Toast.makeText(this, "Upload Successful", Toast.LENGTH_SHORT).show();
                                     addRoom_details.hide();
+                                    displayRoomDetails();
                                 } else if (response.equals("failed")) {
                                     Toast.makeText(this, "Upload Failed", Toast.LENGTH_SHORT).show();
                                 }
                             },
-                                    error -> Toast.makeText(this, error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
+                                    error -> Log.e("insertRoomDetails", error.getMessage())) {
                                 @Override
                                 protected HashMap<String, String> getParams() {
                                     HashMap<String, String> map = new HashMap<>();
@@ -310,11 +314,13 @@ public class Manager_room_cottage_details extends AppCompatActivity {
                                 if (response.equals("success")) {
                                     Toast.makeText(getApplicationContext(), "Upload Successful", Toast.LENGTH_SHORT).show();
                                     addCottage_details.hide();
+                                    displayCottageDetails();
                                 } else if (response.equals("failed")) {
                                     Toast.makeText(getApplicationContext(), "Upload Failed", Toast.LENGTH_SHORT).show();
                                 }
                             },
-                                    error -> Toast.makeText(getApplicationContext(), error.getMessage().toString(), Toast.LENGTH_LONG).show()) {
+                                    error -> Log.e("insertCottageDetails", error.getMessage()))
+                            {
                                 @Override
                                 protected HashMap<String, String> getParams() {
                                     HashMap<String, String> map = new HashMap<String, String>();

@@ -15,10 +15,10 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class RoomCottageDetails2_Adapter extends RecyclerView.Adapter<RoomCottageDetails2_Adapter.ViewHolder> {
+public class CottageDetails2_Adapter extends RecyclerView.Adapter<CottageDetails2_Adapter.ViewHolder> {
     ArrayList<RoomCottageDetails_Model> detailsHolder;
 
-    public RoomCottageDetails2_Adapter(ArrayList<RoomCottageDetails_Model> detailsHolder) {
+    public CottageDetails2_Adapter(ArrayList<RoomCottageDetails_Model> detailsHolder) {
         this.detailsHolder = detailsHolder;
     }
 

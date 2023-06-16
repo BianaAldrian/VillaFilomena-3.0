@@ -29,7 +29,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.villafilomena.Adapters.Guest.RoomCottageDetails2_Adapter;
+import com.example.villafilomena.Adapters.Guest.RoomDetails2_Adapter;
+import com.example.villafilomena.Guest.Guest_bookingPage1;
 import com.example.villafilomena.Models.RoomCottageDetails_Model;
 import com.example.villafilomena.R;
 
@@ -43,10 +44,11 @@ import java.util.HashMap;
 public class FrontDesk_Booking2 extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     String ipAddress;
-    RecyclerView roomListContainer;
+    RecyclerView roomListContainer, cottageListContainer;
     CheckBox cash, gCash;
     Button backBtn, continueBtn;
     ArrayList<RoomCottageDetails_Model> detailsHolder;
+    ArrayList<RoomCottageDetails_Model> cottageHolder;
     TextView total, qty, day_night, tally;
     String mode_ofPayment, GCash_number, reference_num;
     Dialog loading_dialog;
@@ -65,6 +67,8 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
         ipAddress = sharedPreferences.getString("IP", "");
 
         roomListContainer = findViewById(R.id.frontDesk_booking2_selectedRoomList);
+        cottageListContainer = findViewById(R.id.frontDesk_booking2_selectedCottageList);
+
         total = findViewById(R.id.frontdesk_booking2_total);
         qty = findViewById(R.id.frontdesk_booking2_qty);
         day_night = findViewById(R.id.frontdesk_booking2_days_nights);
@@ -76,6 +80,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
         continueBtn = findViewById(R.id.frontDesk_booking2_continue);
 
         detailsHolder = new ArrayList<>();
+        cottageHolder = new ArrayList<>();
 
         qty.setText("" + FrontDesk_Booking1.finalAdultQty + "\n" + FrontDesk_Booking1.finalKidQty + "\n" + FrontDesk_Booking1.selectedRoom_id.size() + "\n" + FrontDesk_Booking1.selectedCottage_id.size());
         day_night.setText("" + FrontDesk_Booking1.dayDiff + " day/s\n" + FrontDesk_Booking1.nightDiff + " night/s\n");
@@ -85,6 +90,18 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
         if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()) {
             for (String roomId : FrontDesk_Booking1.selectedRoom_id) {
                 displaySelectedRoom(roomId);
+            }
+        }
+
+        if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()){
+            for (String roomId : Guest_bookingPage1.selectedRoom_id) {
+                displaySelectedRoom(roomId);
+            }
+        }
+
+        if (!FrontDesk_Booking1.selectedCottage_id.isEmpty()){
+            for (String roomId : Guest_bookingPage1.selectedCottage_id) {
+                displaySelectedCottage(roomId);
             }
         }
 /*
@@ -157,7 +174,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
                 }
 
                 roomListContainer.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-                RoomCottageDetails2_Adapter adapter = new RoomCottageDetails2_Adapter(detailsHolder);
+                RoomDetails2_Adapter adapter = new RoomDetails2_Adapter(detailsHolder);
                 roomListContainer.setAdapter(adapter);
 
             } catch (JSONException e) {
@@ -169,6 +186,48 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
             protected HashMap<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("id", roomId);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    private void displaySelectedCottage(String cottageId){
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/retrieve/guest_getSelectedCottageDetails.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            try {
+                JSONArray jsonArray = new JSONArray(response);
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject object = jsonArray.getJSONObject(i);
+
+                    RoomCottageDetails_Model model = new RoomCottageDetails_Model(
+                            object.getString("id"),
+                            object.getString("imageUrl"),
+                            object.getString("cottageName"),
+                            object.getString("cottageCapacity"),
+                            object.getString("cottageRate"),
+                            object.getString("cottageDescription"));
+
+                    cottageHolder.add(model);
+                }
+
+                RoomDetails2_Adapter adapter = new RoomDetails2_Adapter(cottageHolder);
+                LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+                cottageListContainer.setLayoutManager(layoutManager);
+                cottageListContainer.setAdapter(adapter);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+        },
+                error -> Log.e("displaySelectedRoom", error.getMessage()))
+        {
+            @Override
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("id", cottageId);
                 return map;
             }
         };

@@ -54,7 +54,7 @@ public class Manager_Dashboard extends AppCompatActivity {
         roomCottage_details = findViewById(R.id.manager_RoomCottage_details);
         employee = findViewById(R.id.manager_Employee);
         rateFeedback = findViewById(R.id.manager_rateFeedback);
-        orgChart = findViewById(R.id.manager_orgChart);
+        //orgChart = findViewById(R.id.manager_orgChart);
         transaction = findViewById(R.id.manager_Transaction);
 
         toolbar = findViewById(R.id.manager_menuToolbar);
@@ -89,9 +89,9 @@ public class Manager_Dashboard extends AppCompatActivity {
         rateFeedback.setOnClickListener(v -> {
             startActivity(new Intent(this, Manager_RatesFeedbacks.class));
         });
-        orgChart.setOnClickListener(v -> {
+      /*  orgChart.setOnClickListener(v -> {
             startActivity(new Intent(this, Manager_Organizational_Chart.class));
-        });
+        });*/
         transaction.setOnClickListener(v -> {
             startActivity(new Intent(this, Manager_Transaction_History.class));
         });

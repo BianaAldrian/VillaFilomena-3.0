@@ -71,7 +71,6 @@ public class Cottage_Adapter extends RecyclerView.Adapter<Cottage_Adapter.ViewHo
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
         if (showBox) {
             holder.box.setVisibility(View.VISIBLE);
         }

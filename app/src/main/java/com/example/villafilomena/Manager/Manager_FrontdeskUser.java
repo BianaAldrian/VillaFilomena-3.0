@@ -87,7 +87,6 @@ public class Manager_FrontdeskUser extends AppCompatActivity {
         });
 
         deleteFrontdesk.setOnClickListener(v -> {
-            //holder.delete.setVisibility(View.VISIBLE);
             Manager_FrontdeskUser.deletingDone.setVisibility(View.VISIBLE);
             Manager_FrontdeskUser.addFrontdesk.setVisibility(View.GONE);
             Manager_FrontdeskUser.deleteFrontdesk.setVisibility(View.GONE);

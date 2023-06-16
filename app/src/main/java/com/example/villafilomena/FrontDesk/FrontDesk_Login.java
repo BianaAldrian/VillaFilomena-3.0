@@ -57,7 +57,7 @@ public class FrontDesk_Login extends AppCompatActivity {
                 startActivity(new Intent(this, FrontDesk_Dashboard.class));
                 //Guest_fragmentsContainer.email = email.getText().toString();
 
-            } else if (response.equals("false")) {
+            } else {
                 Log.d("Login", "Incorrect password"); // Log an incorrect password message
                 Toast.makeText(this, "Password Incorrect", Toast.LENGTH_LONG).show();
             }

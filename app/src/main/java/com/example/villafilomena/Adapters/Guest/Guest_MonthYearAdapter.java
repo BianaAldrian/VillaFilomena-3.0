@@ -75,6 +75,7 @@ public class Guest_MonthYearAdapter extends RecyclerView.Adapter<Guest_MonthYear
         List<String> datesList = generateDatesForMonth(month, year);
         Guest_DateAdapter dayAdapter = new Guest_DateAdapter(holder.itemView.getContext(), month, year, datesList, clickListener);
         holder.daysContainer.setAdapter(dayAdapter);
+
     }
 
     private void OnItemClick() {

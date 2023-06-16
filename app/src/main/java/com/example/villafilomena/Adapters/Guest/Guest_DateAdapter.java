@@ -72,6 +72,20 @@ public class Guest_DateAdapter extends RecyclerView.Adapter<Guest_DateAdapter.Vi
             } else {
                 holder.dayIndicator.setVisibility(View.GONE);
             }
+
+            String strCurrentMonth = String.valueOf(month+1);
+            String strCurrentYear = String.valueOf(year);
+
+            String disableDate = date +"/"+strCurrentMonth+"/"+strCurrentYear;
+
+            if (disableDate.equals("7/7/2023")){
+                holder.day.setTextColor(context.getResources().getColor(R.color.grey));
+            }
+
+           /* holder.day.setOnClickListener(v -> {
+                Toast.makeText(context, date +"/"+strCurrentMonth+"/"+strCurrentYear, Toast.LENGTH_SHORT).show();
+            });*/
+
         } else {
             holder.day.setText("");
             holder.dayIndicator.setVisibility(View.GONE);

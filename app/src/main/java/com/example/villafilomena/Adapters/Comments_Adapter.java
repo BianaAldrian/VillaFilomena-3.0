@@ -1,5 +1,6 @@
 package com.example.villafilomena.Adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,9 +8,19 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.villafilomena.Models.Comments_Model;
 import com.example.villafilomena.R;
 
+import java.util.ArrayList;
+
 public class Comments_Adapter extends RecyclerView.Adapter<Comments_Adapter.ViewHolder> {
+    Context context;
+    ArrayList<Comments_Model> commentsHolder;
+
+    public Comments_Adapter(Context context, ArrayList<Comments_Model> commentsHolder) {
+        this.context = context;
+        this.commentsHolder = commentsHolder;
+    }
 
     @NonNull
     @Override
@@ -25,7 +36,7 @@ public class Comments_Adapter extends RecyclerView.Adapter<Comments_Adapter.View
 
     @Override
     public int getItemCount() {
-        return 0;
+        return commentsHolder.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
