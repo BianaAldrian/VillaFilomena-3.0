@@ -209,10 +209,16 @@
             android:layout_height="wrap_content"
             app:cardCornerRadius="50dp">
 
-            <ImageView
+            <TextView
                 android:layout_width="35dp"
                 android:layout_height="35dp"
-                tools:srcCompat="@tools:sample/avatars" />
+                android:fontFamily="@font/balsamiqsans_regular"
+                android:gravity="center"
+                android:text="A"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                tools:ignore="HardcodedText" />
+
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -228,7 +234,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#C7DDE8"
-                android:fontFamily="@font/balsamiqsans_regular"
+                android:fontFamily="@font/eb_garamond_regular"
                 android:hint="Write a comment..."
                 android:minHeight="40dp"
                 android:paddingStart="10dp"
