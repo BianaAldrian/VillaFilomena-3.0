@@ -1,6 +1,5 @@
-package com.example.villafilomena.Adapters.Guest;
+package com.example.villafilomena.Adapters.Guest.SingleStay;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +14,14 @@ import com.example.villafilomena.R;
 import java.util.Calendar;
 import java.util.List;
 
-public class Guest_DateAdapter extends RecyclerView.Adapter<Guest_DateAdapter.ViewHolder> {
+public class Date_Adapter extends RecyclerView.Adapter<Date_Adapter.ViewHolder> {
     ClickListener clickListener;
     private Context context;
     private List<String> dateList;
     private int month;
     private int year;
 
-    public Guest_DateAdapter(Context context, int month, int year, List<String> dateList, ClickListener clickListener) {
+    public Date_Adapter(Context context, int month, int year, List<String> dateList, ClickListener clickListener) {
         this.context = context;
         this.month = month;
         this.year = year;
@@ -32,14 +31,13 @@ public class Guest_DateAdapter extends RecyclerView.Adapter<Guest_DateAdapter.Vi
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public Date_Adapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.guest_calendar_day_list, parent, false);
-        return new ViewHolder(view);
+        return new Date_Adapter.ViewHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull Date_Adapter.ViewHolder holder, int position) {
         String date = dateList.get(position);
         if (!date.isEmpty()) {
             holder.day.setText(date);
@@ -91,6 +89,7 @@ public class Guest_DateAdapter extends RecyclerView.Adapter<Guest_DateAdapter.Vi
             holder.dayIndicator.setVisibility(View.GONE);
             holder.itemView.setClickable(false); // Disable click for empty dates
         }
+
     }
 
     @Override
@@ -104,7 +103,6 @@ public class Guest_DateAdapter extends RecyclerView.Adapter<Guest_DateAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView day, dayIndicator;
-
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 

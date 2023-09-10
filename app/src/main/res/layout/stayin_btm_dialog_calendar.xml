@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:fontFamily="@font/eb_garamond_medium"
-            android:text="Select Dates"
+            android:text="Select Date"
             android:textColor="@color/black"
             android:textSize="20sp"
             tools:ignore="HardcodedText" />
@@ -122,12 +122,77 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <LinearLayout
+       <!-- <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
+            android:orientation="horizontal"
+            tools:ignore="DisableBaselineAlignment">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_medium"
+                    android:text="Check-in"
+                    android:textColor="#808080"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText,TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/btmDialog_checkIn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_medium"
+                    android:text="Select Dates"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_medium"
+                    android:text="Check-out"
+                    android:textColor="#808080"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText,TextContrastCheck" />
+
+                <TextView
+                    android:id="@+id/btmDialog_checkOut"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/eb_garamond_medium"
+                    android:text="Select Dates"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+        </LinearLayout>-->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="20dp"
             android:orientation="horizontal"
             tools:ignore="DisableBaselineAlignment">
 
@@ -197,7 +262,7 @@
             android:background="@color/grey"
             android:clickable="false"
             android:fontFamily="@font/eb_garamond_medium"
-            android:text="Apply Dates"
+            android:text="Done"
             android:textAllCaps="false"
             android:textSize="20sp"
             tools:ignore="HardcodedText,TouchTargetSizeCheck" />

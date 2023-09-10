@@ -30,7 +30,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.villafilomena.Adapters.Guest.RoomDetails2_Adapter;
-import com.example.villafilomena.Guest.Guest_bookingPage1;
 import com.example.villafilomena.Models.RoomCottageDetails_Model;
 import com.example.villafilomena.R;
 
@@ -54,7 +53,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
     Dialog loading_dialog;
     ImageView receipt;
     String imageUrl;
-    String GCashNum, RefNum, email;
+    String GCashNum="", RefNum="", email="";
     private Uri selectedImageUri;
 
     @SuppressLint("SetTextI18n")
@@ -87,20 +86,20 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
         tally.setText("₱" + FrontDesk_Booking1.adultFee + "\n₱" + FrontDesk_Booking1.kidFee + "\n₱" + FrontDesk_Booking1.roomRate + "\n₱" + FrontDesk_Booking1.cottageRate);
         total.setText("Total Payment: ₱" + FrontDesk_Booking1.total);
 
-        if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()) {
+       /* if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()) {
+            for (String roomId : FrontDesk_Booking1.selectedRoom_id) {
+                displaySelectedRoom(roomId);
+            }
+        }
+*/
+        if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()){
             for (String roomId : FrontDesk_Booking1.selectedRoom_id) {
                 displaySelectedRoom(roomId);
             }
         }
 
-        if (!FrontDesk_Booking1.selectedRoom_id.isEmpty()){
-            for (String roomId : Guest_bookingPage1.selectedRoom_id) {
-                displaySelectedRoom(roomId);
-            }
-        }
-
         if (!FrontDesk_Booking1.selectedCottage_id.isEmpty()){
-            for (String roomId : Guest_bookingPage1.selectedCottage_id) {
+            for (String roomId : FrontDesk_Booking1.selectedCottage_id) {
                 displaySelectedCottage(roomId);
             }
         }
@@ -313,14 +312,14 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
                     }
                 }
 
-                /*if (!Guest_bookingPage1.selectedCottage_id.isEmpty()){
+                if (!FrontDesk_Booking1.selectedCottage_id.isEmpty()){
                     for (String cottageId : FrontDesk_Booking1.selectedCottage_id) {
-                        reserveCottage(cottageId);
+                        bookCottage(cottageId);
                     }
-                }*/
+                }
 
 
-                Toast toast = Toast.makeText(this, "Booking Request Successful", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(this, "Booking Successful", Toast.LENGTH_SHORT);
                 toast.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL, 0, 0); // Set the gravity and offset
                 toast.show();
 
@@ -329,7 +328,7 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
                 FrontDesk_Booking1 booking1 = new FrontDesk_Booking1();
                 booking1.finish();
             } else if (response.equals("failed")) {
-                Toast.makeText(this, "Booking Request Failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Booking Failed", Toast.LENGTH_SHORT).show();
                 loading_dialog.hide();
             }
         },
@@ -372,6 +371,33 @@ public class FrontDesk_Booking2 extends AppCompatActivity {
             protected HashMap<String, String> getParams() {
                 HashMap<String, String> map = new HashMap<>();
                 map.put("room_id", roomId);
+                map.put("bookBy_guest_email", "FrontDesk_Booking1.email");
+                //map.put("bookBy_guest_email", "aldrian.scarlan@gmail.com");
+                map.put("checkIn_date", FrontDesk_Booking1.finalCheckIn_date);
+                map.put("checkIn_time", FrontDesk_Booking1.finalCheckIn_time);
+                map.put("checkOut_date", FrontDesk_Booking1.finalCheckOut_date);
+                map.put("checkOut_time", FrontDesk_Booking1.finalCheckOut_time);
+                return map;
+            }
+        };
+        requestQueue.add(stringRequest);
+    }
+
+    private void bookCottage(String cottageId){
+        String url = "http://" + ipAddress + "/VillaFilomena/guest_dir/insert/guest_cottageReservation.php";
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, response -> {
+            if (response.equals("success")) {
+                Toast.makeText(this, "Room Booking Successful", Toast.LENGTH_SHORT).show();
+            } else if (response.equals("failed")) {
+                Toast.makeText(this, "Room Booking Failed", Toast.LENGTH_SHORT).show();
+            }
+        },
+                error -> Toast.makeText(this, error.getMessage(), Toast.LENGTH_LONG).show()) {
+            @Override
+            protected HashMap<String, String> getParams() {
+                HashMap<String, String> map = new HashMap<>();
+                map.put("cottageId", cottageId);
                 map.put("bookBy_guest_email", "FrontDesk_Booking1.email");
                 //map.put("bookBy_guest_email", "aldrian.scarlan@gmail.com");
                 map.put("checkIn_date", FrontDesk_Booking1.finalCheckIn_date);

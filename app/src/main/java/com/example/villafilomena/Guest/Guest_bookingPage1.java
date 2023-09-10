@@ -34,7 +34,8 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.villafilomena.Adapters.Cottage_Adapter;
-import com.example.villafilomena.Adapters.Guest.Guest_MonthYearAdapter;
+import com.example.villafilomena.Adapters.Guest.SingleStay.MonthYear_Adapter;
+import com.example.villafilomena.Adapters.Guest.StayIn.Guest_MonthYearAdapter;
 import com.example.villafilomena.Adapters.Room_Adapter;
 import com.example.villafilomena.Models.RoomCottageDetails_Model;
 import com.example.villafilomena.R;
@@ -52,13 +53,13 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Guest_bookingPage1 extends Fragment {
     public static String finalCheckIn_date;
     public static String finalCheckOut_date;
     public static String finalCheckIn_time;
     public static String finalCheckOut_time;
-
     public static ArrayList<String> selectedRoom_id;
     public static ArrayList<String> selectedCottage_id;
     public static boolean showBox = false;
@@ -66,14 +67,17 @@ public class Guest_bookingPage1 extends Fragment {
     public static double total;
     public static int dayDiff, nightDiff;
     public static double dayTour_kidFee, dayTour_adultFee, nightTour_kidFee, nightTour_adultFee, kidFee, adultFee, roomRate, cottageRate;
-    String ipAddress;
-    CardView sched, qty;
+    String ipAddress, Str_duration="";
+    CardView sched, qty, nightTour_crdView, dayTour_crdView;
     TextView dayTourInfo, nightTourInfo, displaySched, displayQty;
     RecyclerView roomList, cottageList;
     Button continueBtn;
     ArrayList<RoomCottageDetails_Model> roomHolder;
     ArrayList<RoomCottageDetails_Model> cottageHolder;
+    LinearLayout booking_duration, booking_date, booking_rooms;
+    TextView booking_durationTxt, booking_dateTxt;
     private Guest_MonthYearAdapter calendarAdapter;
+    private MonthYear_Adapter singleStay_Calendar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,21 +88,75 @@ public class Guest_bookingPage1 extends Fragment {
         SharedPreferences sharedPreferences = requireContext().getSharedPreferences("MyPrefs", MODE_PRIVATE);
         ipAddress = sharedPreferences.getString("IP", "");
 
+       /* dayTour_crdView = view.findViewById(R.id.Guest_dayTour);
+        nightTour_crdView = view.findViewById(R.id.Guest_nightTour);
         dayTourInfo = view.findViewById(R.id.guest_dayTourInfo);
         nightTourInfo = view.findViewById(R.id.guest_nightTourInfo);
         sched = view.findViewById(R.id.guest_pickSched);
         qty = view.findViewById(R.id.guest_pickQty);
         displaySched = view.findViewById(R.id.guest_sched);
-        displayQty = view.findViewById(R.id.guest_qty);
+        displayQty = view.findViewById(R.id.guest_qty);*/
+
         roomList = view.findViewById(R.id.Guest_roomList);
         cottageList = view.findViewById(R.id.Guest_cottageList);
         continueBtn = view.findViewById(R.id.Guest_booking_continue);
+        booking_duration = view.findViewById(R.id.booking_duration);
+        booking_date = view.findViewById(R.id.booking_date);
+        booking_rooms = view.findViewById(R.id.booking_rooms);
+        booking_durationTxt = view.findViewById(R.id.booking_durationTxt);
+        booking_dateTxt = view.findViewById(R.id.booking_dateTxt);
 
-        getEntranceFee_Details();
+        booking_duration.setOnClickListener(v -> {
+            Dialog duration = new Dialog(getContext());
+            duration.setContentView(R.layout.dialog_guest_optduration);
+
+            TextView optduration_singledayTxt = duration.findViewById(R.id.optduration_singledayTxt);
+            TextView optduration_singlenightTxt = duration.findViewById(R.id.optduration_singlenightTxt);
+            TextView optduration_stayinTxt = duration.findViewById(R.id.optduration_stayinTxt);
+
+            optduration_singledayTxt.setOnClickListener(v1 -> {
+                booking_durationTxt.setText("Single Day");
+                Str_duration = "singleDay";
+                duration.dismiss();
+            });
+            optduration_singlenightTxt.setOnClickListener(v1 -> {
+                booking_durationTxt.setText("Single Night");
+                Str_duration = "singleNight";
+                duration.dismiss();
+            });
+            optduration_stayinTxt.setOnClickListener(v1 -> {
+                booking_durationTxt.setText("Stay-In");
+                Str_duration = "stayIn";
+                duration.dismiss();
+            });
+
+            duration.show();
+
+        });
+        booking_date.setOnClickListener(v -> {
+            if (Objects.equals(Str_duration, "")){
+                Toast.makeText(getContext(), "Please pick you stay duration first", Toast.LENGTH_SHORT).show();
+            } else if (Objects.equals(Str_duration, "singleDay")) {
+                Toast.makeText(getContext(), "You picked Single Day", Toast.LENGTH_SHORT).show();
+                SingleStay_Calendar();
+            } else if (Objects.equals(Str_duration, "singleNight")){
+                Toast.makeText(getContext(), "You picked Single Night", Toast.LENGTH_SHORT).show();
+                SingleStay_Calendar();
+            } else if (Objects.equals(Str_duration, "stayIn")) {
+                Toast.makeText(getContext(), "You picked Stay-In", Toast.LENGTH_SHORT).show();
+                StayIn_Calendar();
+            }
+
+        });
+        booking_rooms.setOnClickListener(v -> {
+
+        });
+
+        //getEntranceFee_Details();
 
         //sched.setOnClickListener(v -> pickSched());
-        sched.setOnClickListener(v -> showBottomDialog());
-        qty.setOnClickListener(v -> pickQty());
+        //sched.setOnClickListener(v -> showBottomDialog());
+        //qty.setOnClickListener(v -> pickQty());
 
         selectedRoom_id = new ArrayList<>();
         selectedCottage_id = new ArrayList<>();
@@ -129,7 +187,6 @@ public class Guest_bookingPage1 extends Fragment {
                 // Handle the case when Adult Quantity is not set
                 Toast.makeText(getContext(), "Adult Quantity not set", Toast.LENGTH_SHORT).show();
             } else {
-
                 double roomTotalPrice = 0;
                 int roomChildCount = roomList.getChildCount();
                 for (int i = 0; i < roomChildCount; i++) {
@@ -155,39 +212,37 @@ public class Guest_bookingPage1 extends Fragment {
                     }
                 }
 
+                double dayTour_roomRate, nightTour_roomRate;
+                double dayTour_cottageRate, nightTour_cottageRate;
+
+                dayTour_roomRate = roomTotalPrice * dayDiff;
+                nightTour_roomRate = roomTotalPrice * nightDiff;
+                dayTour_cottageRate = cottageTotalPrice * dayDiff;
+                nightTour_cottageRate = cottageTotalPrice * nightDiff;
+
+                roomRate = dayTour_roomRate + nightTour_roomRate;
+                cottageRate = dayTour_cottageRate + nightTour_cottageRate;
+
+                dayTour_kidFee = (finalKidQty * dayTour_kidFee) * dayDiff;
+                dayTour_adultFee = (finalAdultQty * dayTour_adultFee) * dayDiff;
+                nightTour_kidFee = (finalKidQty * nightTour_kidFee) * nightDiff;
+                nightTour_adultFee = (finalAdultQty * nightTour_adultFee) * nightDiff;
+
+                adultFee = dayTour_adultFee + nightTour_adultFee;
+                kidFee = dayTour_kidFee + nightTour_kidFee;
+
+                total = dayTour_kidFee + dayTour_adultFee + nightTour_kidFee + nightTour_adultFee + dayTour_roomRate + nightTour_roomRate + dayTour_cottageRate + nightTour_cottageRate;
+
+                Log.d("Day Diff", dayDiff + "\n" + nightDiff);
+                replace_bookingPage1(new Guest_bookingPage2());
                 // Check if no room or cottage is selected
-                if (selectedRoom_id.isEmpty() || selectedCottage_id.isEmpty()) {
+                /*if (selectedRoom_id.isEmpty() && selectedCottage_id.isEmpty()) {
                     Toast.makeText(getContext(), "Please select a room or cottage", Toast.LENGTH_SHORT).show();
                 } else {
                     //for getting the checked rooms
-
-                    double dayTour_roomRate, nightTour_roomRate;
-                    double dayTour_cottageRate, nightTour_cottageRate;
-
-                    dayTour_roomRate = roomTotalPrice * dayDiff;
-                    nightTour_roomRate = roomTotalPrice * nightDiff;
-                    dayTour_cottageRate = cottageTotalPrice * dayDiff;
-                    nightTour_cottageRate = cottageTotalPrice * nightDiff;
-
-                    roomRate = dayTour_roomRate + nightTour_roomRate;
-                    cottageRate = dayTour_cottageRate + nightTour_cottageRate;
-
-                    dayTour_kidFee = (finalKidQty * dayTour_kidFee) * dayDiff;
-                    dayTour_adultFee = (finalAdultQty * dayTour_adultFee) * dayDiff;
-                    nightTour_kidFee = (finalKidQty * nightTour_kidFee) * nightDiff;
-                    nightTour_adultFee = (finalAdultQty * nightTour_adultFee) * nightDiff;
-
-                    adultFee = dayTour_adultFee + nightTour_adultFee;
-                    kidFee = dayTour_kidFee + nightTour_kidFee;
-
-                    total = dayTour_kidFee + dayTour_adultFee + nightTour_kidFee + nightTour_adultFee + dayTour_roomRate + nightTour_roomRate + dayTour_cottageRate + nightTour_cottageRate;
-
-                    Log.d("Day Diff", dayDiff + "\n" + nightDiff);
-                    replace_bookingPage1(new Guest_bookingPage2());
-                }
+                }*/
             }
         });
-
 
         displayRooms();
         displayCottages();
@@ -195,10 +250,96 @@ public class Guest_bookingPage1 extends Fragment {
         return view;
     }
 
-    private void showBottomDialog() {
+    private void SingleStay_Calendar(){
         final Dialog dialog = new Dialog(getContext());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.guest_btm_dialog_calendar);
+        dialog.setContentView(R.layout.stayin_btm_dialog_calendar);
+
+        ImageView close = dialog.findViewById(R.id.btmDialog_close);
+        RecyclerView dateContainer = dialog.findViewById(R.id.btmDialog_dateContainer);
+        TextView checkInTxt = dialog.findViewById(R.id.btmDialog_checkIn);
+        TextView checkOutTxt = dialog.findViewById(R.id.btmDialog_checkOut);
+        Button applyDatesBtn = dialog.findViewById(R.id.btmDialog_applyDates);
+        close.setOnClickListener(v -> dialog.dismiss());
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
+        dateContainer.setLayoutManager(layoutManager);
+
+        // Generate calendar data
+        List<String> calendarData = generateCalendarData();
+
+        singleStay_Calendar = new MonthYear_Adapter(getContext(), calendarData, checkInTxt, checkOutTxt, Str_duration, applyDatesBtn);
+        dateContainer.setAdapter(singleStay_Calendar);
+
+        applyDatesBtn.setOnClickListener(v -> {
+            String selectedDate = singleStay_Calendar.getSelectedDate();
+
+            finalCheckIn_date = singleStay_Calendar.getSelectedDate();
+            finalCheckOut_date = singleStay_Calendar.getSelectedDate();
+
+            if (Str_duration.equals("singleDay")){
+                finalCheckIn_time = "dayTour";
+                finalCheckOut_time = "dayTour";
+            }else {
+                finalCheckIn_time = "nightTour";
+                finalCheckOut_time = "nightTour";
+            }
+
+            getDateDifference(finalCheckIn_date, finalCheckOut_date, finalCheckIn_time, finalCheckOut_time);
+            displayAvailableRooms(finalCheckIn_date, finalCheckIn_time, finalCheckOut_date, finalCheckOut_time);
+            displayAvailableCottage(finalCheckIn_date, finalCheckIn_time, finalCheckOut_date, finalCheckOut_time);
+
+            try {
+                SimpleDateFormat inputFormat = new SimpleDateFormat("d/M/yyyy");
+
+                //check-in date
+                String inputCheckIn_Date = finalCheckIn_date;
+                Date setCheckIn = inputFormat.parse(inputCheckIn_Date);
+                Calendar setCheckIn_Date = Calendar.getInstance();
+                setCheckIn_Date.setTime(setCheckIn);
+                int checkIn_year = setCheckIn_Date.get(Calendar.YEAR);
+                int checkIn_month = setCheckIn_Date.get(Calendar.MONTH);
+                int checkIn_dayOfMonth = setCheckIn_Date.get(Calendar.DAY_OF_MONTH);
+                // Convert the numeric month to its corresponding word representation
+                String[] checkIn_months = new DateFormatSymbols().getMonths();
+                String checkIn_monthName = checkIn_months[checkIn_month];
+                String checkIn_formattedDate = checkIn_monthName + " " + checkIn_dayOfMonth + ", " + checkIn_year;
+
+                //check-out date
+                String inputCheckOut_Date = finalCheckOut_date;
+                Date setCheckOut = inputFormat.parse(inputCheckOut_Date);
+                Calendar setCheckOut_Date = Calendar.getInstance();
+                setCheckOut_Date.setTime(setCheckOut);
+                int checkOut_year = setCheckOut_Date.get(Calendar.YEAR);
+                int checkOut_month = setCheckOut_Date.get(Calendar.MONTH);
+                int checkOut_dayOfMonth = setCheckOut_Date.get(Calendar.DAY_OF_MONTH);
+                //Convert the numeric month to its corresponding word representation
+                String[] checkOut_months = new DateFormatSymbols().getMonths();
+                String checkOut_monthName = checkOut_months[checkOut_month];
+                String checkOut_formattedDate = checkOut_monthName + " " + checkOut_dayOfMonth + ", " + checkOut_year;
+
+                //Toast.makeText(getContext(), formattedDate, Toast.LENGTH_SHORT).show();
+                booking_dateTxt.setText("Check-In\n" + checkIn_formattedDate + " - " + finalCheckIn_time + "\nCheck-Out\n" + checkOut_formattedDate + " - " + finalCheckOut_time);
+
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+
+            dialog.dismiss();
+
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().getAttributes().windowAnimations = R.style.DialogAnimation;
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    private void StayIn_Calendar() {
+        final Dialog dialog = new Dialog(getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.stayin_btm_dialog_calendar);
 
         ImageView close = dialog.findViewById(R.id.btmDialog_close);
         RecyclerView dateContainer = dialog.findViewById(R.id.btmDialog_dateContainer);
@@ -218,6 +359,11 @@ public class Guest_bookingPage1 extends Fragment {
         dateContainer.setAdapter(calendarAdapter);
 
         applyDatesBtn.setOnClickListener(v -> {
+            /*String firstSelectedDate = calendarAdapter.getFirstSelectedDate();
+            String secondSelectedDate = calendarAdapter.getSecondSelectedDate();
+            String firstSelectedTime = calendarAdapter.getFirstSelectedTime();
+            String secondSelectedTime = calendarAdapter.getSecondSelectedTime();*/
+
             finalCheckIn_date = calendarAdapter.getFirstSelectedDate();
             finalCheckOut_date = calendarAdapter.getSecondSelectedDate();
             finalCheckIn_time = calendarAdapter.getFirstSelectedTime();
@@ -237,7 +383,7 @@ public class Guest_bookingPage1 extends Fragment {
                     //check-in date
                     String inputCheckIn_Date = finalCheckIn_date;
                     Date setCheckIn = inputFormat.parse(inputCheckIn_Date);
-                    Calendar setCheckIn_Date = Calendar.getInstance();
+                    Calendar setCheckIn_Date = Calendar.getInstance(); 
                     setCheckIn_Date.setTime(setCheckIn);
                     int checkIn_year = setCheckIn_Date.get(Calendar.YEAR);
                     int checkIn_month = setCheckIn_Date.get(Calendar.MONTH);
@@ -255,13 +401,13 @@ public class Guest_bookingPage1 extends Fragment {
                     int checkOut_year = setCheckOut_Date.get(Calendar.YEAR);
                     int checkOut_month = setCheckOut_Date.get(Calendar.MONTH);
                     int checkOut_dayOfMonth = setCheckOut_Date.get(Calendar.DAY_OF_MONTH);
-                    // Convert the numeric month to its corresponding word representation
+                    //Convert the numeric month to its corresponding word representation
                     String[] checkOut_months = new DateFormatSymbols().getMonths();
                     String checkOut_monthName = checkOut_months[checkOut_month];
                     String checkOut_formattedDate = checkOut_monthName + " " + checkOut_dayOfMonth + ", " + checkOut_year;
 
                     //Toast.makeText(getContext(), formattedDate, Toast.LENGTH_SHORT).show();
-                    displaySched.setText("Check-In\n" + checkIn_formattedDate + " - " + finalCheckIn_time + "\nCheck-Out\n" + checkOut_formattedDate + " - " + finalCheckOut_time);
+                    booking_dateTxt.setText("Check-In\n" + checkIn_formattedDate + " - " + finalCheckIn_time + "\nCheck-Out\n" + checkOut_formattedDate + " - " + finalCheckOut_time);
 
                 } catch (ParseException e) {
                     e.printStackTrace();

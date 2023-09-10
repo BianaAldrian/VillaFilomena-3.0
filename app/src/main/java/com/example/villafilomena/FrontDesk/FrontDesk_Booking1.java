@@ -28,7 +28,7 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.villafilomena.Adapters.Cottage_Adapter;
-import com.example.villafilomena.Adapters.Guest.Guest_MonthYearAdapter;
+import com.example.villafilomena.Adapters.Guest.StayIn.Guest_MonthYearAdapter;
 import com.example.villafilomena.Adapters.Room_Adapter;
 import com.example.villafilomena.Models.RoomCottageDetails_Model;
 import com.example.villafilomena.R;
@@ -328,7 +328,7 @@ public class FrontDesk_Booking1 extends AppCompatActivity {
     private void showBottomDialog() {
         final Dialog dialog = new Dialog(this);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.guest_btm_dialog_calendar);
+        dialog.setContentView(R.layout.stayin_btm_dialog_calendar);
 
         ImageView close = dialog.findViewById(R.id.btmDialog_close);
         RecyclerView dateContainer = dialog.findViewById(R.id.btmDialog_dateContainer);

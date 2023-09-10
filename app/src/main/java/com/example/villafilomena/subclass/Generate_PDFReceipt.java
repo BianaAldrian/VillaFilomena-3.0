@@ -13,6 +13,7 @@ import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.widget.Toast;
 
@@ -171,7 +172,9 @@ public class Generate_PDFReceipt {
         File file = new File(path, InvoiceName + ".pdf");
 
         try {
-            document.writeTo(Files.newOutputStream(file.toPath()));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                document.writeTo(Files.newOutputStream(file.toPath()));
+            }
             //Toast.makeText(activity, "Booking is confirmed", Toast.LENGTH_SHORT).show();
 
             Uri invoice_Name = Uri.fromFile(new File(path + "/" + file.getName()));

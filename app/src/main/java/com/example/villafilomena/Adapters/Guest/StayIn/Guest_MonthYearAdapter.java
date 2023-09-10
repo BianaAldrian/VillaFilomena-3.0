@@ -1,4 +1,4 @@
-package com.example.villafilomena.Adapters.Guest;
+package com.example.villafilomena.Adapters.Guest.StayIn;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
